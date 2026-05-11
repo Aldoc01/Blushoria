@@ -1,58 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+  <title>Blushoria Admin</title>
 
-<title>Blushoria Admin</title>
+  <link rel="stylesheet" href="style.css"/>
 
-<link rel="stylesheet"
-href="styles.css">
-
-<script type="module"
-src="admin.js"
-defer></script>
-
+  <script type="module" src="firebase-config.js"></script>
+  <script type="module" src="admin.js" defer></script>
 </head>
-
 <body>
 
-<div class="admin-container">
+  <div class="admin-container">
 
-<h1>Admin Dashboard</h1>
+    <h1>Admin Dashboard</h1>
 
-<div class="admin-card">
+    <div class="admin-card">
 
-<input
-type="text"
-id="name"
-placeholder="Product Name">
+      <input type="text" id="product-name" placeholder="Product Name"/>
+      <textarea id="product-description" placeholder="Description"></textarea>
 
-<textarea
-id="description"
-placeholder="Description"></textarea>
+      <input type="number" id="product-price" placeholder="Price"/>
 
-<input
-type="number"
-id="price"
-placeholder="Price">
+      <input type="file" id="product-image"/>
 
-<input
-type="file"
-id="imageFile"
-accept="image/*">
+      <button id="add-product-btn">
+        Upload Product
+      </button>
 
-<button id="uploadBtn">
-Upload Product
-</button>
+    </div>
 
-</div>
+    <div class="products-section">
+      <h2>Existing Products</h2>
 
-<div id="status"></div>
+      <div id="admin-products" class="products-grid"></div>
+    </div>
 
-</div>
+  </div>
 
 </body>
 </html>
