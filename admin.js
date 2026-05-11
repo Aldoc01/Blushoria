@@ -1,3 +1,6 @@
+import { db, storage }
+from "./firebase.js";
+
 import {
 collection,
 addDoc
@@ -5,52 +8,18 @@ addDoc
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 import {
-signInWithEmailAndPassword
+ref,
+uploadBytes,
+getDownloadURL
 }
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
 
-import {
-db,
-auth
-}
-from "./firebase.js";
+const uploadBtn =
+document.getElementById("uploadBtn");
 
-const productsCollection =
-collection(db,"products");
-
-/* LOGIN */
-
-document.getElementById("loginBtn")
-.addEventListener("click", async()=>{
-
-const email =
-document.getElementById("email").value;
-
-const password =
-document.getElementById("password").value;
-
-try{
-
-await signInWithEmailAndPassword(
-auth,
-email,
-password
-);
-
-alert("Login successful");
-
-}catch(error){
-
-alert(error.message);
-
-}
-
-});
-
-/* ADD PRODUCT */
-
-document.getElementById("addBtn")
-.addEventListener("click", async()=>{
+uploadBtn.addEventListener(
+"click",
+async ()=>{
 
 const name =
 document.getElementById("name").value;
@@ -58,33 +27,55 @@ document.getElementById("name").value;
 const description =
 document.getElementById("description").value;
 
-const category =
-document.getElementById("category").value;
-
 const price =
-Number(
-document.getElementById("price").value
+document.getElementById("price").value;
+
+const file =
+document.getElementById("imageFile").files[0];
+
+if(!file){
+alert("Select image");
+return;
+}
+
+document.getElementById("status")
+.innerHTML = "Uploading...";
+
+try{
+
+const storageRef =
+ref(storage,
+"products/" + Date.now());
+
+await uploadBytes(
+storageRef,
+file
 );
 
-const stock =
-Number(
-document.getElementById("stock").value
-);
+const imageURL =
+await getDownloadURL(storageRef);
 
-const img =
-document.getElementById("img").value;
-
-await addDoc(productsCollection,{
-
+await addDoc(
+collection(db,"products"),
+{
 name,
 description,
-category,
 price,
-stock,
-img
+image:imageURL
+}
+);
 
-});
+document.getElementById("status")
+.innerHTML =
+"✅ Product uploaded successfully";
 
-alert("Product Added");
+}
+catch(error){
+
+document.getElementById("status")
+.innerHTML =
+error.message;
+
+}
 
 });
