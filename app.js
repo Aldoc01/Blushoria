@@ -3,141 +3,202 @@ const products = [
     name: "Magic Lipgloss",
     price: 1500,
     image: "product1.jpg",
-    desc: "Glossy pink mirror lip oil ✨"
+    description: "Glossy pink mirror lip oil ✨"
   },
 
   {
     name: "Mini Perfume",
     price: 3000,
     image: "product2.jpg",
-    desc: "Soft feminine fragrance 💕"
+    description: "Soft feminine fragrance 💕"
   },
 
   {
     name: "Girlie Lip Balm",
     price: 1800,
     image: "product3.jpg",
-    desc: "Soft pink glossy lips 🎀"
+    description: "Soft pink glossy lips 🎀"
   },
 
   {
     name: "Beauty Bundle",
     price: 5000,
     image: "product4.jpg",
-    desc: "Everything girly in one set 💖"
+    description: "Everything girly in one set 💖"
   },
 
   {
     name: "Luxury Perfume Oil",
     price: 4500,
     image: "product5.jpg",
-    desc: "Long lasting sweet fragrance ✨"
+    description: "Long lasting sweet fragrance ✨"
   },
 
   {
     name: "Blushoria Special Box",
     price: 8000,
     image: "product6.jpg",
-    desc: "Premium beauty collection 💕"
+    description: "Premium beauty collection 💕"
   },
 
   {
-    name: "Cute Lip Oil",
+    name: "Lip Care Set",
     price: 2500,
     image: "product7.jpg",
-    desc: "Hydrating shiny lips 💋"
+    description: "Cute lip care essentials 💋"
+  },
+
+  {
+    name: "Pink Glow Oil",
+    price: 3500,
+    image: "product8.jpg",
+    description: "Shiny smooth glow skin ✨"
   },
 
   {
     name: "Soft Girl Package",
     price: 7000,
-    image: "product8.jpg",
-    desc: "Luxury girly essentials ✨"
-  },
-
-  {
-    name: "Pink Gloss Set",
-    price: 3500,
     image: "product9.jpg",
-    desc: "Cute glossy collection 💖"
+    description: "Luxury soft girl vibes 💕"
   },
 
   {
-    name: "Aesthetic Beauty Pack",
-    price: 9000,
+    name: "Cherry Lip Oil",
+    price: 2000,
     image: "product10.jpg",
-    desc: "Everything soft feminine 🎀"
+    description: "Sweet cherry glossy lips 🍒"
   }
 ];
 
-const productContainer = document.getElementById("products");
+const productsContainer =
+document.getElementById("products");
+
+const cartTotal =
+document.getElementById("cart-total");
 
 let cart = [];
-let total = 0;
 
-products.forEach((product) => {
+function displayProducts(){
 
-  const card = document.createElement("div");
-  card.classList.add("card");
+  productsContainer.innerHTML = "";
 
-  card.innerHTML = `
-    <img src="${product.image}" alt="${product.name}">
-    
-    <div class="card-content">
-      <h2>${product.name}</h2>
-      <p>${product.desc}</p>
-      <div class="price">₦${product.price.toLocaleString()}</div>
+  products.forEach((product,index)=>{
 
-      <button onclick="addToCart('${product.name}', ${product.price})">
-        Add To Cart
-      </button>
-    </div>
-  `;
+    const card =
+    document.createElement("div");
 
-  productContainer.appendChild(card);
-});
+    card.className = "product-card";
 
-function addToCart(name, price){
+    card.innerHTML = `
+      <img src="${product.image}" alt="${product.name}">
 
-  cart.push(name);
+      <div class="product-info">
 
-  total += price;
+        <h2>${product.name}</h2>
 
-  document.getElementById("total").innerText =
-    `Total: ₦${total.toLocaleString()}`;
+        <p>${product.description}</p>
+
+        <h3>
+          ₦${product.price.toLocaleString()}
+        </h3>
+
+        <button onclick="addToCart(${index})">
+          Add To Cart
+        </button>
+
+      </div>
+    `;
+
+    productsContainer.appendChild(card);
+
+  });
+
 }
 
-function orderWhatsApp(){
+function addToCart(index){
+
+  cart.push(products[index]);
+
+  updateCart();
+
+  alert(products[index].name + " added to cart 💖");
+
+}
+
+function updateCart(){
+
+  let total = 0;
+
+  cart.forEach(item=>{
+
+    total += item.price;
+
+  });
+
+  cartTotal.innerText =
+  `₦${total.toLocaleString()}`;
+
+}
+
+function orderOnWhatsApp(){
 
   const name =
-    document.getElementById("customerName").value;
+  document.getElementById("customer-name").value;
 
   const address =
-    document.getElementById("customerAddress").value;
+  document.getElementById("customer-address").value;
 
   if(cart.length === 0){
-    alert("Cart is empty!");
+
+    alert("Your cart is empty");
+
+    return;
+  }
+
+  if(!name || !address){
+
+    alert("Please enter your details");
+
     return;
   }
 
   let message =
-`Hello Blushoria 💖
+  `✨ BLUSHORIA ORDER ✨%0A%0A`;
 
-My Name: ${name}
+  message +=
+  `👩 Name: ${name}%0A`;
 
-Address: ${address}
+  message +=
+  `📍 Address: ${address}%0A%0A`;
 
-I want to order:
+  message +=
+  `🛍️ ITEMS:%0A`;
 
-${cart.join(", ")}
+  let total = 0;
 
-Total: ₦${total.toLocaleString()}
-`;
+  cart.forEach(item=>{
 
-  const phone = "2347012620748";
+    message +=
+    `• ${item.name} - ₦${item.price}%0A`;
 
-  const url =
-`https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    total += item.price;
 
-  window.open(url, "_blank");
+  });
+
+  message +=
+  `%0A💰 TOTAL: ₦${total.toLocaleString()}%0A`;
+
+  message +=
+  `%0A🚚 Waybill fee depends on location`;
+
+  const phone =
+  "2347012620748";
+
+  window.open(
+    `https://wa.me/${phone}?text=${message}`,
+    "_blank"
+  );
+
 }
+
+displayProducts();
