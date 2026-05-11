@@ -1,37 +1,59 @@
-const products = [
-  {
-    name: "Luxury Fashion Item",
-    price: "$120",
-    image: "images/IMG-20260509-WA0021.jpg"
-  },
-  {
-    name: "Premium Outfit",
-    price: "$150",
-    image: "images/IMG-20260509-WA0034.jpg"
-  },
-  {
-    name: "Elegant Style",
-    price: "$200",
-    image: "images/IMG-20260509-WA0035.jpg"
-  },
-  {
-    name: "Modern Fashion",
-    price: "$180",
-    image: "images/IMG-20260509-WA0036.jpg"
+let cart = [];
+
+function addToCart(product, price){
+
+  cart.push({
+    product,
+    price
+  });
+
+  updateCart();
+}
+
+function updateCart(){
+
+  const cartItems = document.getElementById("cart-items");
+  const total = document.getElementById("total");
+
+  cartItems.innerHTML = "";
+
+  let totalPrice = 0;
+
+  cart.forEach((item) => {
+
+    totalPrice += item.price;
+
+    cartItems.innerHTML += `
+      <div class="cart-item">
+        <span>${item.product}</span>
+        <span>₦${item.price.toLocaleString()}</span>
+      </div>
+    `;
+  });
+
+  total.innerText = `Total: ₦${totalPrice.toLocaleString()}`;
+}
+
+function checkoutWhatsApp(){
+
+  if(cart.length === 0){
+    alert("Your cart is empty");
+    return;
   }
-];
 
-const container = document.getElementById("products-container");
+  let message = "Hello Blushoria Store,%0A%0AI want to order:%0A";
 
-products.forEach(product => {
-  const card = document.createElement("div");
-  card.classList.add("product-card");
+  let total = 0;
 
-  card.innerHTML = `
-    <img src="${product.image}" alt="${product.name}">
-    <h3>${product.name}</h3>
-    <p>${product.price}</p>
-  `;
+  cart.forEach((item) => {
+    message += `- ${item.product} (₦${item.price})%0A`;
+    total += item.price;
+  });
 
-  container.appendChild(card);
-});
+  message += `%0ATotal: ₦${total}`;
+
+  const whatsappURL =
+    `https://wa.me/2347012620748?text=${message}`;
+
+  window.open(whatsappURL, "_blank");
+}
