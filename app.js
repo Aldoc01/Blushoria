@@ -1,94 +1,82 @@
 let cart = [];
 let total = 0;
 
-function addToCart(productName, price){
+function addToCart(product, price){
 
-cart.push({
-name: productName,
-price: price
-});
+  cart.push({
+    product,
+    price
+  });
 
-total += price;
+  total += price;
 
-updateCart();
-
+  displayCart();
 }
 
-function updateCart(){
+function displayCart(){
 
-const cartItems = document.getElementById("cart-items");
-const cartTotal = document.getElementById("cart-total");
+  const cartItems = document.getElementById("cart-items");
 
-cartItems.innerHTML = "";
+  cartItems.innerHTML = "";
 
-cart.forEach((item)=>{
+  cart.forEach(item => {
 
-cartItems.innerHTML += `
-<div class="cart-item">
-${item.name} - ₦${item.price}
-</div>
-`;
+    cartItems.innerHTML += `
+      <p>
+        ${item.product} - ₦${item.price}
+      </p>
+    `;
+  });
 
-});
-
-cartTotal.innerText = total;
-
+  document.getElementById("total").innerText =
+    `Total: ₦${total}`;
 }
 
 function checkoutWhatsApp(){
 
-const customerName = document.getElementById("customer-name").value;
+  const name =
+    document.getElementById("customerName").value;
 
-const customerPhone = document.getElementById("customer-phone").value;
+  const phone =
+    document.getElementById("customerPhone").value;
 
-if(cart.length === 0){
+  if(cart.length === 0){
+    alert("Cart is empty");
+    return;
+  }
 
-alert("Your cart is empty.");
+  if(name === "" || phone === ""){
+    alert("Please enter your name and phone number");
+    return;
+  }
 
-return;
+  let message =
+`Hello Blushoria ✨
 
-}
+Customer Name: ${name}
 
-if(customerName === "" || customerPhone === ""){
+Phone Number: ${phone}
 
-alert("Please enter your name and phone number.");
+Order Details:
+`;
 
-return;
+  cart.forEach(item => {
+    message += `
+${item.product} - ₦${item.price}
+`;
+  });
 
-}
+  message += `
 
-let message = "✨ *NEW BLUSHORIA ORDER* ✨%0A%0A";
+Total: ₦${total}
 
-message += "👩 Customer Name: " + customerName + "%0A";
+Waybill delivery fee will be discussed on WhatsApp.
+`;
 
-message += "📞 Customer Phone: " + customerPhone + "%0A%0A";
+  const whatsappNumber = "2347012620748";
 
-message += "🛍 PRODUCTS:%0A";
+  const url =
+`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
-cart.forEach((item)=>{
-
-message += "• " + item.name + " - ₦" + item.price + "%0A";
-
-});
-
-message += "%0A💰 TOTAL: ₦" + total;
-
-message += "%0A%0A🚚 Waybill delivery fee will be discussed based on customer location in Nigeria.";
-
-const whatsappNumber = "2347012620748";
-
-const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
-
-window.open(whatsappURL,"_blank");
-
-cart = [];
-
-total = 0;
-
-updateCart();
-
-document.getElementById("customer-name").value = "";
-
-document.getElementById("customer-phone").value = "";
-
+  window.open(url, "_blank");
 }
