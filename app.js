@@ -1,14 +1,14 @@
 const buttons = document.querySelectorAll(".order-btn");
 
-buttons.forEach(button => {
+buttons.forEach((button)=>{
 
-  button.addEventListener("click", () => {
+  button.addEventListener("click",()=>{
 
     const product =
-      button.getAttribute("data-product");
+    button.getAttribute("data-product");
 
     const price =
-      button.getAttribute("data-price");
+    button.getAttribute("data-price");
 
     const message =
 `Hello Blushoria ✨
@@ -16,14 +16,15 @@ buttons.forEach(button => {
 I want to order:
 
 🛍 Product: ${product}
+
 💵 Price: ${price}
 
 Please tell me the delivery fee to my location in Nigeria 🇳🇬`;
 
-    const whatsapp =
+    const whatsappURL =
 `https://wa.me/2347012620748?text=${encodeURIComponent(message)}`;
 
-    window.open(whatsapp, "_blank");
+    window.open(whatsappURL,"_blank");
 
   });
 
