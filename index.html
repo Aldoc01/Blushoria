@@ -23,11 +23,15 @@ content="width=device-width, initial-scale=1.0">
 
 <header>
 
+<div class="logo-area">
+
 <h1>✨ BLUSHORIA</h1>
 
 <p>
-Luxury Beauty & Korean Skincare
+Luxury Korean Beauty Store 🇳🇬
 </p>
+
+</div>
 
 <input
 type="text"
@@ -37,16 +41,19 @@ onkeyup="searchProducts()">
 
 </header>
 
+<!-- HERO -->
+
 <section class="hero">
 
 <div class="hero-overlay">
 
 <h2>
-Glow Soft. Glow Feminine ✨
+Glow Naturally ✨
 </h2>
 
 <p>
-Luxury Beauty Products In Nigeria 🇳🇬
+Luxury Korean Beauty &
+Gloss Essentials
 </p>
 
 <a href="#products">
@@ -62,6 +69,8 @@ Shop Now
 </div>
 
 </section>
+
+<!-- CATEGORIES -->
 
 <section class="categories">
 
@@ -81,39 +90,49 @@ Masks
 Beauty
 </button>
 
-<button onclick="filterCategory('Skincare')">
-Skincare
-</button>
-
 </section>
+
+<!-- PRODUCTS -->
 
 <section
 class="products"
 id="products">
 
 <div class="loader">
+
 Loading Products...
+
 </div>
 
 </section>
 
+<!-- CART -->
+
 <section class="cart">
 
-<h2>🛒 Shopping Cart</h2>
+<h2>
+🛒 Shopping Cart
+</h2>
 
 <div id="cartItems"></div>
 
 <h3 id="cartSubtotal">
+
 Subtotal: ₦0
+
 </h3>
 
 <h3>
+
 Waybill Fee:
 To Be Discussed On WhatsApp
+
 </h3>
 
 <h2 id="cartTotal">
+
 Grand Total: ₦0
+
 </h2>
 
 <input
@@ -154,7 +173,7 @@ Benin
 </option>
 
 <option value="Other">
-Other Location
+Other
 </option>
 
 </select>
@@ -169,15 +188,17 @@ Order Via WhatsApp
 
 <p>✔ Secure Orders</p>
 
-<p>✔ Fast Nigerian Delivery 🇳🇬</p>
-
 <p>✔ Luxury Beauty Products</p>
 
-<p>✔ WhatsApp Support</p>
+<p>✔ Fast Delivery In Nigeria 🇳🇬</p>
+
+<p>✔ WhatsApp Customer Support</p>
 
 </div>
 
 </section>
+
+<!-- ABOUT -->
 
 <section class="about">
 
@@ -187,42 +208,49 @@ About Blushoria ✨
 
 <p>
 
-Blushoria is a luxury Nigerian beauty brand
-bringing feminine beauty, Korean skincare,
-glossy lip products and soft luxury aesthetics
-to beauty lovers across Nigeria 🇳🇬
+Blushoria is a luxury Nigerian beauty
+store inspired by Korean skincare,
+soft feminine aesthetics and glossy
+Instagram beauty culture.
+
+We provide affordable luxury beauty
+products across Nigeria 🇳🇬
 
 </p>
 
 </section>
 
+<!-- GALLERY -->
+
 <section class="instagram">
 
 <h2>
-Instagram Beauty Gallery ✨
+Beauty Gallery ✨
 </h2>
 
 <div class="insta-grid">
 
-<img src="images/gallery1.jpg">
+<img src="images/banner1.jpg">
 
-<img src="images/gallery2.jpg">
+<img src="images/banner2.jpg">
 
-<img src="images/gallery3.jpg">
+<img src="images/banner3.jpg">
 
-<img src="images/gallery4.jpg">
+<img src="images/gloss-flatlay.jpg">
 
-<img src="images/gallery5.jpg">
+<img src="images/kbeauty.jpg">
 
-<img src="images/gallery6.jpg">
+<img src="images/pink-skincare.jpg">
 
-<img src="images/gallery7.jpg">
+<img src="images/luxury-makeup.jpg">
 
-<img src="images/gallery8.jpg">
+<img src="images/hero-bg.jpg">
 
 </div>
 
 </section>
+
+<!-- REVIEWS -->
 
 <section class="reviews">
 
@@ -233,15 +261,24 @@ Customer Reviews ✨
 <div id="reviewsContainer">
 
 <div class="review-card">
-★★★★★ Amazing quality products!
+
+★★★★★
+Amazing quality products
+
 </div>
 
 <div class="review-card">
-★★★★★ Fast delivery in Nigeria 🇳🇬
+
+★★★★★
+Fast delivery in Nigeria 🇳🇬
+
 </div>
 
 <div class="review-card">
-★★★★★ My lip gloss was so pretty 😍
+
+★★★★★
+Very glossy lip products 😍
+
 </div>
 
 </div>
@@ -252,10 +289,14 @@ id="reviewInput"
 placeholder="Write a review...">
 
 <button onclick="addReview()">
+
 Submit Review
+
 </button>
 
 </section>
+
+<!-- FOOTER -->
 
 <footer>
 
@@ -282,6 +323,8 @@ Instagram:
 </p>
 
 </footer>
+
+<!-- FLOATING WHATSAPP -->
 
 <a
 href="https://wa.me/2347012620748"
