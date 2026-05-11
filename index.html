@@ -6,7 +6,7 @@
 
   <title>Blushoria</title>
 
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css"/>
 </head>
 
 <body>
@@ -15,11 +15,10 @@
 
   <header class="hero">
 
-    <img src="./logo.png" class="logo" />
+    <img src="logo.png" class="logo"/>
 
     <h1>
-      Luxury Girlie<br>
-      Essentials ✨
+      Luxury Girlie Essentials ✨
     </h1>
 
     <p>
@@ -28,11 +27,13 @@
 
   </header>
 
-  <main id="products"></main>
+  <section id="products"></section>
 
-  <section class="cart-section">
+  <section class="cart">
 
-    <h2>🛒 Your Cart</h2>
+    <h2>Your Cart 🛒</h2>
+
+    <div id="cart-items"></div>
 
     <h3>
       Total:
@@ -41,37 +42,19 @@
 
     <input
       type="text"
-      id="customerName"
+      id="customer-name"
       placeholder="Your Name"
     />
 
     <input
-      type="tel"
-      id="customerPhone"
-      placeholder="Your Phone Number"
+      type="text"
+      id="customer-address"
+      placeholder="Your Address"
     />
 
     <button onclick="orderWhatsApp()">
       Order On WhatsApp
     </button>
-
-  </section>
-
-  <section class="reviews">
-
-    <h2>Customer Reviews ✨</h2>
-
-    <div class="review">
-      ⭐⭐⭐⭐⭐
-      <p>Everything is sooo cute 😍</p>
-      <span>— Amanda</span>
-    </div>
-
-    <div class="review">
-      ⭐⭐⭐⭐⭐
-      <p>Fast delivery and amazing products 💖</p>
-      <span>— Sophia</span>
-    </div>
 
   </section>
 
