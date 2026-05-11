@@ -6,38 +6,30 @@ import {
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-import {
-  getAuth
-}
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
-/* FIREBASE CONFIG */
-
 const firebaseConfig = {
 
-  apiKey: "AIzaSyABLuEiYrf8BvuC2hjwimhoqHYnK8ZxKs",
+  apiKey: "YOUR_API_KEY",
 
-  authDomain: "blushoriastore.firebaseapp.com",
+  authDomain:
+  "YOUR_PROJECT.firebaseapp.com",
 
-  projectId: "blushoriastore",
+  projectId:
+  "YOUR_PROJECT_ID",
 
-  storageBucket: "blushoriastore.appspot.com",
+  storageBucket:
+  "YOUR_PROJECT.appspot.com",
 
-  messagingSenderId: "574652420119",
+  messagingSenderId:
+  "XXXX",
 
-  appId: "1:574652420119:web:3157682a34e9e942a40c52"
-
+  appId:
+  "XXXX"
 };
 
-/* INITIALIZE FIREBASE */
+const app =
+initializeApp(firebaseConfig);
 
-const app = initializeApp(firebaseConfig);
+const db =
+getFirestore(app);
 
-const db = getFirestore(app);
-
-const auth = getAuth(app);
-
-export {
-  db,
-  auth
-};
+export { db };
