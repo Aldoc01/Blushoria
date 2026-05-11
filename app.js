@@ -1,11 +1,11 @@
 let cart = [];
 let total = 0;
 
-function addToCart(name, price){
+function addToCart(productName, price){
 
 cart.push({
-name,
-price
+name: productName,
+price: price
 });
 
 total += price;
@@ -17,12 +17,11 @@ updateCart();
 function updateCart(){
 
 const cartItems = document.getElementById("cart-items");
-
 const cartTotal = document.getElementById("cart-total");
 
 cartItems.innerHTML = "";
 
-cart.forEach(item => {
+cart.forEach((item)=>{
 
 cartItems.innerHTML += `
 <div class="cart-item">
@@ -34,40 +33,62 @@ ${item.name} - ₦${item.price}
 
 cartTotal.innerText = total;
 
-const customerName =
-document.getElementById("customer-name").value;
+}
 
-const customerPhone =
-document.getElementById("customer-phone").value;
+function checkoutWhatsApp(){
 
-let message =
-"Hello Blushoria ✨%0A%0A";
+const customerName = document.getElementById("customer-name").value;
 
-message += "Customer Name: " + customerName + "%0A";
+const customerPhone = document.getElementById("customer-phone").value;
 
-message += "Phone Number: " + customerPhone + "%0A%0A";
+if(cart.length === 0){
 
-message += "I want to order:%0A";
+alert("Your cart is empty.");
 
-cart.forEach(item => {
-
-message += `- ${item.name} (₦${item.price})%0A`;
-
-});
-
-message += `%0ATotal: ₦${total}%0A%0A`;
-
-message += "Waybill delivery fee will be discussed.";
-
-document.getElementById(
-"whatsapp-order"
-).href =
-"https://wa.me/2347012620748?text=" + message;
+return;
 
 }
 
-document.getElementById("customer-name")
-.addEventListener("input", updateCart);
+if(customerName === "" || customerPhone === ""){
 
-document.getElementById("customer-phone")
-.addEventListener("input", updateCart);
+alert("Please enter your name and phone number.");
+
+return;
+
+}
+
+let message = "✨ *NEW BLUSHORIA ORDER* ✨%0A%0A";
+
+message += "👩 Customer Name: " + customerName + "%0A";
+
+message += "📞 Customer Phone: " + customerPhone + "%0A%0A";
+
+message += "🛍 PRODUCTS:%0A";
+
+cart.forEach((item)=>{
+
+message += "• " + item.name + " - ₦" + item.price + "%0A";
+
+});
+
+message += "%0A💰 TOTAL: ₦" + total;
+
+message += "%0A%0A🚚 Waybill delivery fee will be discussed based on customer location in Nigeria.";
+
+const whatsappNumber = "2347012620748";
+
+const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
+
+window.open(whatsappURL,"_blank");
+
+cart = [];
+
+total = 0;
+
+updateCart();
+
+document.getElementById("customer-name").value = "";
+
+document.getElementById("customer-phone").value = "";
+
+}
