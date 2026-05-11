@@ -1,32 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BLUSHORIA</title>
 
-  <link rel="stylesheet" href="styles.css"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>BLUSHORIA ✨</title>
+
+<link rel="stylesheet" href="styles.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
 
 <!-- HEADER -->
 
-<header class="header">
+<header>
 
   <div class="logo">
-    ✨ <span>BLUSHORIA</span>
+    ✨ BLUSHORIA
   </div>
 
-  <p class="tagline">
-    Luxury Korean Beauty Store 🇳🇬
-  </p>
+  <nav>
 
-  <div class="search-box">
-    <input type="text" placeholder="Search beauty products...">
-  </div>
+    <a href="#">Home</a>
+    <a href="#products">Products</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact">Contact</a>
+
+  </nav>
 
 </header>
 
@@ -37,21 +41,34 @@
   <div class="hero-content">
 
     <h1>
-      Glow <br>
-      Naturally ✨
+      Glow Naturally ✨
     </h1>
 
     <p>
-      Luxury Korean Beauty & Gloss Essentials
+      Luxury Korean Beauty Store For Lip Gloss,
+      Skincare, Face Masks & Beauty Essentials
     </p>
 
     <a href="#products">
-      <button class="shop-btn">
+
+      <button>
         Shop Now
       </button>
+
     </a>
 
   </div>
+
+</section>
+
+<!-- SEARCH -->
+
+<section class="search-section">
+
+  <input
+  type="text"
+  placeholder="Search beauty products..."
+  class="search-box">
 
 </section>
 
@@ -59,20 +76,50 @@
 
 <section class="features">
 
-  <div class="feature-card">
-    🚚 Fast Delivery
+  <div class="feature">
+    🚚 Fast Delivery In Nigeria
   </div>
 
-  <div class="feature-card">
-    💎 Luxury Products
+  <div class="feature">
+    💎 Luxury Beauty Products
   </div>
 
-  <div class="feature-card">
+  <div class="feature">
     ✨ Korean Skincare
   </div>
 
-  <div class="feature-card">
+  <div class="feature">
     💖 Customer Satisfaction
+  </div>
+
+</section>
+
+<!-- CATEGORIES -->
+
+<section class="categories">
+
+  <h2>
+    Shop Categories ✨
+  </h2>
+
+  <div class="category-grid">
+
+    <div class="category-box">
+      Lip Gloss
+    </div>
+
+    <div class="category-box">
+      Face Masks
+    </div>
+
+    <div class="category-box">
+      Skincare
+    </div>
+
+    <div class="category-box">
+      Beauty Essentials
+    </div>
+
   </div>
 
 </section>
@@ -82,7 +129,7 @@
 <section class="products" id="products">
 
   <h2>
-    Featured Products ✨
+    Trending Beauty Products ✨
   </h2>
 
   <div class="product-grid">
@@ -91,19 +138,32 @@
 
     <div class="product-card">
 
-      <img src="images/lip-mask.jpg">
+      <img
+      src="images/lip-mask.jpg"
+      class="product-image">
 
-      <h3>Lip Masks</h3>
+      <div class="product-info">
 
-      <p>
-        Deep moisturizing collagen lip masks that help soften and hydrate dry lips.
-      </p>
+        <h3>Lip Masks</h3>
 
-      <span>₦400</span>
+        <p>
+          Moisturizing collagen lip masks for soft smooth hydrated lips.
+        </p>
 
-      <button onclick="orderNow('Lip Masks - ₦400')">
-        Order Now
-      </button>
+        <div class="price">
+          ₦400
+        </div>
+
+        <button
+        class="order-btn"
+        data-product="Lip Masks"
+        data-price="₦400">
+
+          Order On WhatsApp
+
+        </button>
+
+      </div>
 
     </div>
 
@@ -111,19 +171,32 @@
 
     <div class="product-card">
 
-      <img src="images/sadoer-sheet-mask.jpg">
+      <img
+      src="images/sadoer-sheet-mask.jpg"
+      class="product-image">
 
-      <h3>Sadoer Face Mask Sheet</h3>
+      <div class="product-info">
 
-      <p>
-        Korean sheet face masks for hydration, nourishment and glowing skin.
-      </p>
+        <h3>Sadoer Face Mask Sheet</h3>
 
-      <span>₦400</span>
+        <p>
+          Korean sheet face masks for hydration and glowing skin.
+        </p>
 
-      <button onclick="orderNow('Sadoer Face Mask Sheet - ₦400')">
-        Order Now
-      </button>
+        <div class="price">
+          ₦400
+        </div>
+
+        <button
+        class="order-btn"
+        data-product="Sadoer Face Mask Sheet"
+        data-price="₦400">
+
+          Order On WhatsApp
+
+        </button>
+
+      </div>
 
     </div>
 
@@ -131,19 +204,32 @@
 
     <div class="product-card">
 
-      <img src="images/salicylic-mask.jpg">
+      <img
+      src="images/salicylic-mask.jpg"
+      class="product-image">
 
-      <h3>Sadoer Salicylic Acid Face Mask</h3>
+      <div class="product-info">
 
-      <p>
-        Acne control sheet mask with salicylic acid for smoother clearer skin.
-      </p>
+        <h3>Sadoer Salicylic Acid Face Mask</h3>
 
-      <span>₦400</span>
+        <p>
+          Salicylic acid acne face mask for clearer smoother skin.
+        </p>
 
-      <button onclick="orderNow('Sadoer Salicylic Acid Face Mask - ₦400')">
-        Order Now
-      </button>
+        <div class="price">
+          ₦400
+        </div>
+
+        <button
+        class="order-btn"
+        data-product="Sadoer Salicylic Acid Face Mask"
+        data-price="₦400">
+
+          Order On WhatsApp
+
+        </button>
+
+      </div>
 
     </div>
 
@@ -151,19 +237,32 @@
 
     <div class="product-card">
 
-      <img src="images/sadoer-face-mask.jpg">
+      <img
+      src="images/sadoer-face-mask.jpg"
+      class="product-image">
 
-      <h3>Sadoer Face Masks</h3>
+      <div class="product-info">
 
-      <p>
-        Premium Korean skincare masks enriched with fruit and vitamin extracts.
-      </p>
+        <h3>Sadoer Face Masks</h3>
 
-      <span>₦400</span>
+        <p>
+          Vitamin enriched Korean skincare face masks for glowing skin.
+        </p>
 
-      <button onclick="orderNow('Sadoer Face Masks - ₦400')">
-        Order Now
-      </button>
+        <div class="price">
+          ₦400
+        </div>
+
+        <button
+        class="order-btn"
+        data-product="Sadoer Face Masks"
+        data-price="₦400">
+
+          Order On WhatsApp
+
+        </button>
+
+      </div>
 
     </div>
 
@@ -171,19 +270,32 @@
 
     <div class="product-card">
 
-      <img src="images/cute-lipgloss.jpg">
+      <img
+      src="images/cute-lipgloss.jpg"
+      class="product-image">
 
-      <h3>Cute Lipgloss</h3>
+      <div class="product-info">
 
-      <p>
-        Cute glossy lip shine with smooth hydration and sparkling finish.
-      </p>
+        <h3>Cute Lipgloss</h3>
 
-      <span>₦1200</span>
+        <p>
+          Cute glossy lip shine with smooth moisturizing finish.
+        </p>
 
-      <button onclick="orderNow('Cute Lipgloss - ₦1200')">
-        Order Now
-      </button>
+        <div class="price">
+          ₦1200
+        </div>
+
+        <button
+        class="order-btn"
+        data-product="Cute Lipgloss"
+        data-price="₦1200">
+
+          Order On WhatsApp
+
+        </button>
+
+      </div>
 
     </div>
 
@@ -191,19 +303,32 @@
 
     <div class="product-card">
 
-      <img src="images/clear-lipgloss-mirror.jpg">
+      <img
+      src="images/clear-lipgloss-mirror.jpg"
+      class="product-image">
 
-      <h3>Clear Lip Gloss With Mirror</h3>
+      <div class="product-info">
 
-      <p>
-        Elegant clear lip gloss with built-in mirror for beauty touchups anywhere.
-      </p>
+        <h3>Clear Lip Gloss With Mirror</h3>
 
-      <span>₦1500</span>
+        <p>
+          Clear lip gloss with mirror accessory and luxury shine.
+        </p>
 
-      <button onclick="orderNow('Clear Lip Gloss With Mirror - ₦1500')">
-        Order Now
-      </button>
+        <div class="price">
+          ₦1500
+        </div>
+
+        <button
+        class="order-btn"
+        data-product="Clear Lip Gloss With Mirror"
+        data-price="₦1500">
+
+          Order On WhatsApp
+
+        </button>
+
+      </div>
 
     </div>
 
@@ -211,19 +336,32 @@
 
     <div class="product-card">
 
-      <img src="images/coloured-lipgloss.jpg">
+      <img
+      src="images/coloured-lipgloss.jpg"
+      class="product-image">
 
-      <h3>Coloured Lipgloss</h3>
+      <div class="product-info">
 
-      <p>
-        Glossy pigmented lip gloss with rich colors and moisturizing formula.
-      </p>
+        <h3>Coloured Lipgloss</h3>
 
-      <span>₦1500</span>
+        <p>
+          Luxury coloured glossy lip shine with smooth finish.
+        </p>
 
-      <button onclick="orderNow('Coloured Lipgloss - ₦1500')">
-        Order Now
-      </button>
+        <div class="price">
+          ₦1500
+        </div>
+
+        <button
+        class="order-btn"
+        data-product="Coloured Lipgloss"
+        data-price="₦1500">
+
+          Order On WhatsApp
+
+        </button>
+
+      </div>
 
     </div>
 
@@ -231,19 +369,32 @@
 
     <div class="product-card">
 
-      <img src="images/mini-lipgloss.jpg">
+      <img
+      src="images/mini-lipgloss.jpg"
+      class="product-image">
 
-      <h3>Mini Lipgloss</h3>
+      <div class="product-info">
 
-      <p>
-        Portable mini gloss perfect for handbags and quick beauty touchups.
-      </p>
+        <h3>Mini Lipgloss</h3>
 
-      <span>₦1000</span>
+        <p>
+          Portable mini lip gloss perfect for handbags and travel.
+        </p>
 
-      <button onclick="orderNow('Mini Lipgloss - ₦1000')">
-        Order Now
-      </button>
+        <div class="price">
+          ₦1000
+        </div>
+
+        <button
+        class="order-btn"
+        data-product="Mini Lipgloss"
+        data-price="₦1000">
+
+          Order On WhatsApp
+
+        </button>
+
+      </div>
 
     </div>
 
@@ -251,19 +402,32 @@
 
     <div class="product-card">
 
-      <img src="images/magic-lipgloss.jpg">
+      <img
+      src="images/magic-lipgloss.jpg"
+      class="product-image">
 
-      <h3>Magic Lipgloss</h3>
+      <div class="product-info">
 
-      <p>
-        Cute glossy lip oil with magical shine and soft moisturizing feel.
-      </p>
+        <h3>Magic Lipgloss</h3>
 
-      <span>₦1200</span>
+        <p>
+          Beautiful glossy lip oil with magical shiny finish.
+        </p>
 
-      <button onclick="orderNow('Magic Lipgloss - ₦1200')">
-        Order Now
-      </button>
+        <div class="price">
+          ₦1200
+        </div>
+
+        <button
+        class="order-btn"
+        data-product="Magic Lipgloss"
+        data-price="₦1200">
+
+          Order On WhatsApp
+
+        </button>
+
+      </div>
 
     </div>
 
@@ -271,19 +435,32 @@
 
     <div class="product-card">
 
-      <img src="images/magic-lipgloss-mirror.jpg">
+      <img
+      src="images/magic-lipgloss-mirror.jpg"
+      class="product-image">
 
-      <h3>Magic Lipgloss With Mirror</h3>
+      <div class="product-info">
 
-      <p>
-        Luxury glossy lip oil with mirror accessory and glitter finish.
-      </p>
+        <h3>Magic Lipgloss With Mirror</h3>
 
-      <span>₦1500</span>
+        <p>
+          Luxury mirror lip gloss with sparkling glow and shine.
+        </p>
 
-      <button onclick="orderNow('Magic Lipgloss With Mirror - ₦1500')">
-        Order Now
-      </button>
+        <div class="price">
+          ₦1500
+        </div>
+
+        <button
+        class="order-btn"
+        data-product="Magic Lipgloss With Mirror"
+        data-price="₦1500">
+
+          Order On WhatsApp
+
+        </button>
+
+      </div>
 
     </div>
 
@@ -293,7 +470,7 @@
 
 <!-- REVIEWS -->
 
-<section class="reviews">
+<section class="reviews" id="reviews">
 
   <h2>
     Customer Reviews ✨
@@ -302,30 +479,89 @@
   <div class="review-grid">
 
     <div class="review-card">
+
       ⭐⭐⭐⭐⭐
+
       <p>
-        "Very beautiful products and fast delivery!"
+        Amazing products and beautiful packaging.
       </p>
-      <small>- Amanda</small>
+
+      <small>
+        - Amanda
+      </small>
+
     </div>
 
     <div class="review-card">
+
       ⭐⭐⭐⭐⭐
+
       <p>
-        "The lip gloss quality is amazing 😍"
+        Fast delivery and the lip gloss quality is amazing.
       </p>
-      <small>- Sophia</small>
+
+      <small>
+        - Sophia
+      </small>
+
     </div>
 
     <div class="review-card">
+
       ⭐⭐⭐⭐⭐
+
       <p>
-        "My skincare arrived perfectly packaged."
+        My skincare arrived safely and looks beautiful.
       </p>
-      <small>- Precious</small>
+
+      <small>
+        - Jessica
+      </small>
+
     </div>
 
   </div>
+
+</section>
+
+<!-- GALLERY -->
+
+<section class="gallery">
+
+  <h2>
+    Beauty Gallery ✨
+  </h2>
+
+  <div class="gallery-grid">
+
+    <img src="images/lip-mask.jpg">
+    <img src="images/sadoer-sheet-mask.jpg">
+    <img src="images/cute-lipgloss.jpg">
+    <img src="images/magic-lipgloss.jpg">
+
+  </div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+  <h2>
+    Contact Us 💬
+  </h2>
+
+  <p>
+    Delivery fee depends on your location in Nigeria 🇳🇬
+  </p>
+
+  <a
+  href="https://wa.me/2347012620748"
+  class="whatsapp-btn">
+
+    Chat On WhatsApp
+
+  </a>
 
 </section>
 
@@ -333,18 +569,8 @@
 
 <footer>
 
-  <h3>BLUSHORIA ✨</h3>
-
   <p>
-    Luxury Korean Beauty Store 🇳🇬
-  </p>
-
-  <p>
-    WhatsApp: 07012620748
-  </p>
-
-  <p>
-    © 2025 Blushoria Store
+    © 2025 BLUSHORIA STORE ✨
   </p>
 
 </footer>
@@ -353,10 +579,10 @@
 
 <a
 href="https://wa.me/2347012620748"
-class="whatsapp-float"
-target="_blank"
->
+class="float-whatsapp">
+
 💬
+
 </a>
 
 <script src="app.js"></script>
