@@ -2,143 +2,119 @@ const products = [
   {
     name: "Magic Lipgloss",
     price: 1500,
-    image: "./product1.jpg",
-    desc: "Glossy pink mirror lip oil ✨"
+    image: "product1.jpg",
+    description: "Glossy pink mirror lip oil ✨"
   },
   {
     name: "Mini Perfume",
     price: 3000,
-    image: "./product2.jpg",
-    desc: "Soft feminine fragrance 💕"
+    image: "product2.jpg",
+    description: "Soft feminine fragrance 💕"
   },
   {
     name: "Girlie Lip Balm",
     price: 1800,
-    image: "./product3.jpg",
-    desc: "Soft pink glossy lips 🎀"
+    image: "product3.jpg",
+    description: "Soft pink glossy lips 🎀"
   },
   {
-    name: "Lip Mask",
-    price: 1200,
-    image: "./product4.jpg",
-    desc: "Cute overnight lip care 💖"
-  },
-  {
-    name: "Beauty Mask",
-    price: 2500,
-    image: "./product5.jpg",
-    desc: "Luxury skincare glow ✨"
-  },
-  {
-    name: "Soft Gloss",
+    name: "Luxury Face Mask",
     price: 2000,
-    image: "./product6.jpg",
-    desc: "Shiny soft pink gloss 💗"
+    image: "product4.jpg",
+    description: "Cute skincare glow ✨"
   },
   {
-    name: "Cherry Balm",
-    price: 1700,
-    image: "./product7.jpg",
-    desc: "Cherry sweet lips 🍒"
-  },
-  {
-    name: "Pink Serum",
-    price: 3500,
-    image: "./product8.jpg",
-    desc: "Smooth glowing skin 🌸"
-  },
-  {
-    name: "Aesthetic Kit",
+    name: "Beauty Bundle",
     price: 5000,
-    image: "./product9.jpg",
-    desc: "Cute beauty essentials 🎀"
-  },
-  {
-    name: "Glow Package",
-    price: 6500,
-    image: "./product10.jpg",
-    desc: "Luxury feminine bundle ✨"
+    image: "product5.jpg",
+    description: "Everything girly in one set 💖"
   }
 ];
 
 const productContainer = document.getElementById("products");
 
-products.forEach((product) => {
-  const card = document.createElement("div");
-  card.className = "product-card";
-
-  card.innerHTML = `
-    <img 
-      src="${product.image}" 
-      alt="${product.name}"
-      onerror="this.src='logo.png'"
-    />
-
-    <div class="product-info">
-      <h2>${product.name}</h2>
-      <p>${product.desc}</p>
-
-      <div class="price">
-        ₦${product.price.toLocaleString()}
-      </div>
-
-      <button onclick="addToCart('${product.name}', ${product.price})">
-        Add To Cart
-      </button>
-    </div>
-  `;
-
-  productContainer.appendChild(card);
-});
-
 let cart = [];
 
-function addToCart(name, price) {
-  cart.push({ name, price });
+products.forEach((product, index) => {
+  productContainer.innerHTML += `
+    <div class="product-card">
+      <img 
+        src="${product.image}" 
+        alt="${product.name}"
+        onerror="this.src='logo.png'"
+      >
 
+      <div class="product-info">
+        <h2>${product.name}</h2>
+        <p>${product.description}</p>
+
+        <div class="price">₦${product.price.toLocaleString()}</div>
+
+        <button onclick="addToCart(${index})">
+          Add To Cart
+        </button>
+      </div>
+    </div>
+  `;
+});
+
+function addToCart(index) {
+  cart.push(products[index]);
   updateCart();
 
-  alert(name + " added to cart 💖");
+  alert(products[index].name + " added to cart 💖");
 }
 
 function updateCart() {
-  const total = cart.reduce((sum, item) => sum + item.price, 0);
+  const cartItems = document.getElementById("cart-items");
+  const total = document.getElementById("cart-total");
 
-  document.getElementById("cart-total").innerText =
-    "₦" + total.toLocaleString();
+  cartItems.innerHTML = "";
+
+  let totalPrice = 0;
+
+  cart.forEach(item => {
+    totalPrice += item.price;
+
+    cartItems.innerHTML += `
+      <div class="cart-item">
+        ${item.name} - ₦${item.price.toLocaleString()}
+      </div>
+    `;
+  });
+
+  total.innerText = `₦${totalPrice.toLocaleString()}`;
 }
 
 function orderWhatsApp() {
-  const name = document.getElementById("customerName").value;
-  const phone = document.getElementById("customerPhone").value;
-
-  if (!name || !phone) {
-    alert("Please fill your details 💕");
-    return;
-  }
+  const name = document.getElementById("customer-name").value;
+  const address = document.getElementById("customer-address").value;
 
   if (cart.length === 0) {
-    alert("Your cart is empty 🛒");
+    alert("Your cart is empty 💔");
     return;
   }
 
-  let message = `💖 BLUSHORIA ORDER 💖%0A%0A`;
+  let message = "💖 *BLUSHORIA ORDER* %0A%0A";
 
-  message += `Name: ${name}%0A`;
-  message += `Phone: ${phone}%0A%0A`;
+  message += "👩 Name: " + name + "%0A";
+  message += "📍 Address: " + address + "%0A%0A";
 
-  message += `Items:%0A`;
+  message += "🛍️ Order Items:%0A";
 
-  cart.forEach((item) => {
-    message += `• ${item.name} - ₦${item.price}%0A`;
+  let total = 0;
+
+  cart.forEach(item => {
+    message += "- " + item.name + " (₦" + item.price + ")%0A";
+    total += item.price;
   });
 
-  const total = cart.reduce((sum, item) => sum + item.price, 0);
+  message += "%0A💰 Total: ₦" + total;
 
-  message += `%0ATotal: ₦${total}`;
+  const phone = "2347012620748";
 
   window.open(
-    `https://wa.me/234XXXXXXXXXX?text=${message}`,
+    `https://wa.me/${phone}?text=${message}`,
     "_blank"
   );
 }
