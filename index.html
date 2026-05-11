@@ -1,305 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BLUSHORIA ✨</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blushoria</title>
 
-<link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css"/>
 
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
-<!-- HERO -->
+  <!-- HEADER -->
+  <header class="hero">
 
-<div class="hero">
+    <img src="logo.png" class="logo">
 
-<h1>BLUSHORIA ✨</h1>
+    <h1>Luxury Girlie Essentials ✨</h1>
 
-<p>
-Luxury Girly Essentials & Aesthetic Beauty 💖
-</p>
+    <p>
+      Cute • Soft • Feminine • Aesthetic
+    </p>
 
-</div>
+  </header>
 
-<!-- PRODUCTS -->
+  <!-- PRODUCTS -->
+  <section class="products">
 
-<div class="products">
+    <!-- PRODUCT 1 -->
+    <div class="card">
+      <img src="product1.jpg">
 
-<div class="product-card">
-<img src="product1.jpg">
+      <div class="card-content">
+        <h2>Magic Lipgloss</h2>
+        <p>Glossy pink mirror lip oil ✨</p>
 
-<div class="product-info">
+        <h3>₦1,500</h3>
 
-<h2>Magic Lipgloss With Mirror</h2>
+        <button onclick="addToCart('Magic Lipgloss',1500)">
+          Add To Cart
+        </button>
+      </div>
+    </div>
 
-<p>
-Luxury glossy mirror lip oil ✨
-</p>
+    <!-- PRODUCT 2 -->
+    <div class="card">
+      <img src="product2.jpg">
 
-<div class="price">₦1,500</div>
+      <div class="card-content">
+        <h2>Fruit Lip Oil</h2>
+        <p>Hydrating glossy aesthetic lip oil 💖</p>
 
-<button onclick="addToCart('Magic Lipgloss With Mirror',1500)">
-Add To Cart
-</button>
+        <h3>₦2,000</h3>
 
-</div>
-</div>
+        <button onclick="addToCart('Fruit Lip Oil',2000)">
+          Add To Cart
+        </button>
+      </div>
+    </div>
 
-<div class="product-card">
-<img src="product2.jpg">
+    <!-- PRODUCT 3 -->
+    <div class="card">
+      <img src="product3.jpg">
 
-<div class="product-info">
+      <div class="card-content">
+        <h2>Pink Sheet Mask</h2>
+        <p>Soft skincare glow masks 🌸</p>
 
-<h2>Fruit Lip Oil</h2>
+        <h3>₦1,200</h3>
 
-<p>
-Hydrating glossy aesthetic lip oil 💖
-</p>
+        <button onclick="addToCart('Pink Sheet Mask',1200)">
+          Add To Cart
+        </button>
+      </div>
+    </div>
 
-<div class="price">₦2,000</div>
+    <!-- PRODUCT 4 -->
+    <div class="card">
+      <img src="product4.jpg">
 
-<button onclick="addToCart('Fruit Lip Oil',2000)">
-Add To Cart
-</button>
+      <div class="card-content">
+        <h2>Beauty Face Mask</h2>
+        <p>Korean skincare glow ✨</p>
 
-</div>
-</div>
+        <h3>₦2,500</h3>
 
-<div class="product-card">
-<img src="product3.jpg">
+        <button onclick="addToCart('Beauty Face Mask',2500)">
+          Add To Cart
+        </button>
+      </div>
+    </div>
 
-<div class="product-info">
+    <!-- PRODUCT 5 -->
+    <div class="card">
+      <img src="product5.jpg">
 
-<h2>Pink Sheet Mask</h2>
+      <div class="card-content">
+        <h2>Mini Perfume</h2>
+        <p>Soft feminine fragrance 💕</p>
 
-<p>
-Soft skincare glow masks 🌸
-</p>
+        <h3>₦3,000</h3>
 
-<div class="price">₦1,200</div>
+        <button onclick="addToCart('Mini Perfume',3000)">
+          Add To Cart
+        </button>
+      </div>
+    </div>
 
-<button onclick="addToCart('Pink Sheet Mask',1200)">
-Add To Cart
-</button>
+    <!-- PRODUCT 6 -->
+    <div class="card">
+      <img src="product6.jpg">
 
-</div>
-</div>
+      <div class="card-content">
+        <h2>Girlie Lip Balm</h2>
+        <p>Soft pink glossy lips 🎀</p>
 
-<div class="product-card">
-<img src="product4.jpg">
+        <h3>₦1,800</h3>
 
-<div class="product-info">
+        <button onclick="addToCart('Girlie Lip Balm',1800)">
+          Add To Cart
+        </button>
+      </div>
+    </div>
 
-<h2>Glossy Lip Balm</h2>
+  </section>
 
-<p>
-Soft glossy lips with cute shine 💕
-</p>
+  <!-- CART -->
+  <section class="cart">
 
-<div class="price">₦1,000</div>
+    <h2>🛒 Your Cart</h2>
 
-<button onclick="addToCart('Glossy Lip Balm',1000)">
-Add To Cart
-</button>
+    <div id="cart-items"></div>
 
-</div>
-</div>
+    <h3 id="total">Total: ₦0</h3>
 
-<div class="product-card">
-<img src="product5.jpg">
+    <input type="text" id="customerName" placeholder="Your Name">
 
-<div class="product-info">
+    <input type="text" id="customerPhone" placeholder="Your Phone Number">
 
-<h2>Luxury Face Mask</h2>
+    <p class="waybill">
+      🚚 Waybill delivery fee depends on your location in Nigeria and will be discussed on WhatsApp.
+    </p>
 
-<p>
-Hydrating skincare selfcare masks ✨
-</p>
+    <button class="whatsapp-btn" onclick="checkoutWhatsApp()">
+      Order On WhatsApp
+    </button>
 
-<div class="price">₦1,500</div>
+  </section>
 
-<button onclick="addToCart('Luxury Face Mask',1500)">
-Add To Cart
-</button>
+  <!-- REVIEWS -->
+  <section class="reviews">
 
-</div>
-</div>
+    <h2>Customer Reviews ✨</h2>
 
-<div class="product-card">
-<img src="product6.jpg">
+    <div class="review-box">
+      ⭐⭐⭐⭐⭐ <br><br>
+      Everything is sooo cute 😍
+      <br><br>
+      — Amanda
+    </div>
 
-<div class="product-info">
+    <div class="review-box">
+      ⭐⭐⭐⭐⭐ <br><br>
+      Fast delivery and amazing products 💖
+      <br><br>
+      — Sophia
+    </div>
 
-<h2>Pink Lip Oil</h2>
+  </section>
 
-<p>
-Soft pink glossy lip oil 💖
-</p>
+  <!-- FOOTER -->
+  <footer>
+    © 2025 BLUSHORIA ✨
+  </footer>
 
-<div class="price">₦1,300</div>
-
-<button onclick="addToCart('Pink Lip Oil',1300)">
-Add To Cart
-</button>
-
-</div>
-</div>
-
-<div class="product-card">
-<img src="product7.jpg">
-
-<div class="product-info">
-
-<h2>Beauty Sheet Mask</h2>
-
-<p>
-Korean skincare glow treatment 🌸
-</p>
-
-<div class="price">₦1,200</div>
-
-<button onclick="addToCart('Beauty Sheet Mask',1200)">
-Add To Cart
-</button>
-
-</div>
-</div>
-
-<div class="product-card">
-<img src="product8.jpg">
-
-<div class="product-info">
-
-<h2>Mini Lip Care Set</h2>
-
-<p>
-Cute aesthetic lip combo 💕
-</p>
-
-<div class="price">₦2,500</div>
-
-<button onclick="addToCart('Mini Lip Care Set',2500)">
-Add To Cart
-</button>
-
-</div>
-</div>
-
-<div class="product-card">
-<img src="product9.jpg">
-
-<div class="product-info">
-
-<h2>Hydrating Lip Mask</h2>
-
-<p>
-Soft smooth lips overnight ✨
-</p>
-
-<div class="price">₦1,400</div>
-
-<button onclick="addToCart('Hydrating Lip Mask',1400)">
-Add To Cart
-</button>
-
-</div>
-</div>
-
-<div class="product-card">
-<img src="product10.jpg">
-
-<div class="product-info">
-
-<h2>Girly Skincare Pack</h2>
-
-<p>
-Luxury feminine skincare bundle 💖
-</p>
-
-<div class="price">₦3,000</div>
-
-<button onclick="addToCart('Girly Skincare Pack',3000)">
-Add To Cart
-</button>
-
-</div>
-</div>
-
-</div>
-
-<!-- CART -->
-
-<div class="cart-section">
-
-<h2>🛒 Your Cart</h2>
-
-<div id="cart-items"></div>
-
-<h3>
-Total: ₦<span id="cart-total">0</span>
-</h3>
-
-<input
-type="text"
-id="customer-name"
-placeholder="Your Name"
->
-
-<input
-type="tel"
-id="customer-phone"
-placeholder="Your Phone Number"
->
-
-<p class="delivery-note">
-🚚 Waybill delivery fee depends on your location in Nigeria and will be discussed on WhatsApp.
-</p>
-
-<a
-href="#"
-class="whatsapp-btn"
-onclick="checkoutWhatsApp()"
->
-Order On WhatsApp
-</a>
-
-</div>
-
-<!-- REVIEWS -->
-
-<div class="reviews">
-
-<h2>Customer Reviews ✨</h2>
-
-<div class="review">
-⭐⭐⭐⭐⭐ <br><br>
-Everything is sooo cute 😍
-</div>
-
-<div class="review">
-⭐⭐⭐⭐⭐ <br><br>
-Fast delivery and amazing products 💖
-</div>
-
-</div>
-
-<!-- FLOATING WHATSAPP -->
-
-<a
-href="https://wa.me/2347012620748"
-class="floating-whatsapp"
-target="_blank"
->
-💬
-</a>
-
-<footer>
-© 2025 BLUSHORIA ✨
-</footer>
-
-<script src="app.js"></script>
+  <script src="app.js"></script>
 
 </body>
 </html>
