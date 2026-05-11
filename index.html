@@ -5,57 +5,80 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BLUSHORIA ✨</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,sans-serif;
+font-family:'Poppins',sans-serif;
 }
 
 body{
-background:linear-gradient(to bottom,#12000f,#1e0017,#12000f);
+background:
+linear-gradient(rgba(15,0,10,0.85),rgba(15,0,10,0.9)),
+url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1200&auto=format&fit=crop');
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
 color:white;
-padding:15px;
+overflow-x:hidden;
+}
+
+.container{
+width:100%;
+max-width:500px;
+margin:auto;
+padding:20px;
 }
 
 .hero{
 text-align:center;
-padding:20px 10px 40px;
+padding:40px 20px 50px;
 }
 
 .hero img{
-width:230px;
-max-width:90%;
-border-radius:25px;
-box-shadow:0 0 30px rgba(255,105,180,0.3);
-margin-bottom:20px;
+width:180px;
+height:180px;
+object-fit:cover;
+border-radius:50%;
+background:white;
+padding:8px;
+box-shadow:0 0 40px rgba(255,105,180,0.35);
+margin-bottom:25px;
 }
 
 .hero h1{
-font-size:42px;
-color:#ff4da6;
+font-size:3rem;
+line-height:1.1;
+color:#ff1493;
 margin-bottom:10px;
+font-weight:700;
+text-shadow:0 0 15px rgba(255,20,147,0.5);
 }
 
 .hero p{
-color:#ffd6e8;
-font-size:18px;
+font-size:1rem;
+color:#ffd6ea;
 }
 
 .products{
-display:grid;
-grid-template-columns:1fr;
-gap:25px;
-margin-top:30px;
+display:flex;
+flex-direction:column;
+gap:30px;
+margin-top:20px;
 }
 
 .card{
-background:#1a0015;
-border-radius:28px;
+background:rgba(20,0,15,0.8);
+border-radius:30px;
 overflow:hidden;
-box-shadow:0 0 20px rgba(255,20,147,0.12);
+box-shadow:0 0 25px rgba(255,20,147,0.18);
+border:1px solid rgba(255,255,255,0.06);
+backdrop-filter:blur(10px);
 }
 
 .card img{
@@ -66,26 +89,25 @@ display:block;
 }
 
 .card-content{
-padding:20px;
+padding:25px;
 }
 
 .card h2{
-font-size:28px;
+font-size:2rem;
 margin-bottom:10px;
 }
 
 .card p{
-font-size:16px;
-color:#f6c8dd;
+color:#ffd6ea;
 margin-bottom:15px;
-line-height:1.5;
+font-size:1rem;
 }
 
 .price{
-font-size:36px;
+font-size:2.4rem;
 font-weight:bold;
 color:#ff1493;
-margin-bottom:20px;
+margin-bottom:25px;
 }
 
 button{
@@ -95,132 +117,99 @@ border:none;
 border-radius:50px;
 background:linear-gradient(to right,#ff1493,#ff69b4);
 color:white;
-font-size:20px;
-font-weight:bold;
+font-size:1.2rem;
+font-weight:600;
 cursor:pointer;
-box-shadow:0 0 20px rgba(255,20,147,0.35);
+box-shadow:0 0 20px rgba(255,20,147,0.4);
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.02);
 }
 
 .cart{
 margin-top:50px;
-background:#1a0015;
+background:rgba(20,0,15,0.8);
 padding:25px;
-border-radius:25px;
-box-shadow:0 0 20px rgba(255,20,147,0.15);
+border-radius:30px;
+box-shadow:0 0 25px rgba(255,20,147,0.15);
 }
 
 .cart h2{
-font-size:38px;
-margin-bottom:20px;
-color:#ff4da6;
+font-size:2rem;
+margin-bottom:15px;
 }
 
-#cart-items{
-margin-bottom:20px;
-}
-
-#cart-items div{
-background:#2a0021;
-padding:14px;
-border-radius:15px;
+.cart-item{
 margin-bottom:10px;
-font-size:17px;
+color:#fff;
 }
 
 .total{
-font-size:28px;
+font-size:2rem;
 font-weight:bold;
+margin-top:15px;
 margin-bottom:20px;
 }
 
 input{
 width:100%;
-padding:18px;
+padding:15px;
 margin-bottom:15px;
 border:none;
 border-radius:15px;
-background:#2b0021;
+background:rgba(255,255,255,0.08);
 color:white;
-font-size:17px;
+font-size:1rem;
+outline:none;
 }
 
 input::placeholder{
-color:#e3adc7;
-}
-
-.notice{
-font-size:15px;
-line-height:1.6;
-color:#ffd9eb;
-margin-bottom:25px;
+color:#ccc;
 }
 
 .whatsapp-btn{
-display:block;
-width:100%;
-text-align:center;
-padding:20px;
 background:#25D366;
-border-radius:50px;
-text-decoration:none;
-color:white;
-font-size:23px;
-font-weight:bold;
-box-shadow:0 0 20px rgba(37,211,102,0.35);
+margin-top:10px;
+}
+
+.notice{
+margin-top:15px;
+font-size:0.95rem;
+color:#ffd6ea;
+line-height:1.5;
 }
 
 .reviews{
-margin-top:50px;
+margin-top:60px;
 }
 
 .reviews h2{
-font-size:40px;
+font-size:2.5rem;
 color:#ff1493;
 margin-bottom:25px;
 text-align:center;
 }
 
-.review{
-background:#190014;
-padding:20px;
-border-radius:20px;
+.review-card{
+background:rgba(15,0,10,0.85);
+padding:25px;
+border-radius:25px;
 margin-bottom:20px;
 }
 
 .review-stars{
-font-size:24px;
+font-size:1.5rem;
 margin-bottom:10px;
+color:gold;
 }
 
-.review p{
-font-size:17px;
-line-height:1.6;
-color:#ffe5f1;
-}
-
-.review span{
-display:block;
-margin-top:10px;
-color:#ff9ccf;
-}
-
-footer{
-margin-top:60px;
+.footer{
 text-align:center;
-padding:20px;
-color:#ffc9e1;
-}
-
-@media(min-width:768px){
-
-.products{
-grid-template-columns:repeat(2,1fr);
-}
-
-.card img{
-height:350px;
-}
-
+padding:40px 20px;
+font-size:0.9rem;
+color:#ffd6ea;
 }
 
 </style>
@@ -228,121 +217,25 @@ height:350px;
 
 <body>
 
+<div class="container">
+
 <div class="hero">
-<img src="logo.jpg" alt="BLUSHORIA">
+
+<img src="./logo.jpg" alt="BLUSHORIA">
+
 <h1>Luxury Girlie Essentials ✨</h1>
+
 <p>Cute • Soft • Feminine • Aesthetic</p>
-</div>
-
-<div class="products">
-
-<div class="card">
-<img src="product1.jpg">
-<div class="card-content">
-<h2>Magic Lipgloss</h2>
-<p>Glossy pink mirror lip oil ✨</p>
-<div class="price">₦1,500</div>
-<button onclick="addToCart('Magic Lipgloss',1500)">Add To Cart</button>
-</div>
-</div>
-
-<div class="card">
-<img src="product2.jpg">
-<div class="card-content">
-<h2>Fruit Lip Oil</h2>
-<p>Hydrating glossy aesthetic lip oil 💖</p>
-<div class="price">₦2,000</div>
-<button onclick="addToCart('Fruit Lip Oil',2000)">Add To Cart</button>
-</div>
-</div>
-
-<div class="card">
-<img src="product3.jpg">
-<div class="card-content">
-<h2>Pink Sheet Mask</h2>
-<p>Soft skincare glow masks 🌸</p>
-<div class="price">₦1,200</div>
-<button onclick="addToCart('Pink Sheet Mask',1200)">Add To Cart</button>
-</div>
-</div>
-
-<div class="card">
-<img src="product4.jpg">
-<div class="card-content">
-<h2>Mini Perfume</h2>
-<p>Soft feminine fragrance 💕</p>
-<div class="price">₦3,000</div>
-<button onclick="addToCart('Mini Perfume',3000)">Add To Cart</button>
-</div>
-</div>
-
-<div class="card">
-<img src="product5.jpg">
-<div class="card-content">
-<h2>Girlie Lip Balm</h2>
-<p>Soft pink glossy lips 🎀</p>
-<div class="price">₦1,800</div>
-<button onclick="addToCart('Girlie Lip Balm',1800)">Add To Cart</button>
-</div>
-</div>
-
-<div class="card">
-<img src="product6.jpg">
-<div class="card-content">
-<h2>Beauty Face Mask</h2>
-<p>Fresh glowing skincare 💗</p>
-<div class="price">₦1,500</div>
-<button onclick="addToCart('Beauty Face Mask',1500)">Add To Cart</button>
-</div>
-</div>
-
-<div class="card">
-<img src="product7.jpg">
-<div class="card-content">
-<h2>Aesthetic Gloss</h2>
-<p>Luxury glossy lips ✨</p>
-<div class="price">₦2,500</div>
-<button onclick="addToCart('Aesthetic Gloss',2500)">Add To Cart</button>
-</div>
-</div>
-
-<div class="card">
-<img src="product8.jpg">
-<div class="card-content">
-<h2>Soft Girl Kit</h2>
-<p>Everything cute and feminine 💕</p>
-<div class="price">₦5,000</div>
-<button onclick="addToCart('Soft Girl Kit',5000)">Add To Cart</button>
-</div>
-</div>
-
-<div class="card">
-<img src="product9.jpg">
-<div class="card-content">
-<h2>Glow Package</h2>
-<p>Skincare + gloss combo ✨</p>
-<div class="price">₦4,500</div>
-<button onclick="addToCart('Glow Package',4500)">Add To Cart</button>
-</div>
-</div>
-
-<div class="card">
-<img src="product10.jpg">
-<div class="card-content">
-<h2>Luxury Bundle</h2>
-<p>Girlie aesthetic essentials 💖</p>
-<div class="price">₦7,000</div>
-<button onclick="addToCart('Luxury Bundle',7000)">Add To Cart</button>
-</div>
-</div>
 
 </div>
+
+<div class="products" id="products"></div>
 
 <div class="cart">
 
 <h2>🛒 Your Cart</h2>
 
-<div id="cart-items"></div>
+<div id="cartItems"></div>
 
 <div class="total">
 Total: ₦<span id="total">0</span>
@@ -356,9 +249,9 @@ Total: ₦<span id="total">0</span>
 🚚 Waybill delivery fee depends on your location in Nigeria and will be discussed on WhatsApp.
 </p>
 
-<a class="whatsapp-btn" href="#" onclick="checkoutWhatsApp()">
+<button class="whatsapp-btn" onclick="sendOrder()">
 Order On WhatsApp
-</a>
+</button>
 
 </div>
 
@@ -366,92 +259,220 @@ Order On WhatsApp
 
 <h2>Customer Reviews ✨</h2>
 
-<div class="review">
-<div class="review-stars">⭐⭐⭐⭐⭐</div>
+<div class="review-card">
+<div class="review-stars">★★★★★</div>
 <p>Everything is sooo cute 😍</p>
-<span>— Amanda</span>
+<br>
+<small>— Amanda</small>
 </div>
 
-<div class="review">
-<div class="review-stars">⭐⭐⭐⭐⭐</div>
+<div class="review-card">
+<div class="review-stars">★★★★★</div>
 <p>Fast delivery and amazing products 💖</p>
-<span>— Sophia</span>
+<br>
+<small>— Sophia</small>
+</div>
+
+<div class="review-card">
+<div class="review-stars">★★★★★</div>
+<p>The packaging is super aesthetic 🎀</p>
+<br>
+<small>— Miracle</small>
 </div>
 
 </div>
 
-<footer>
+<div class="footer">
 © 2025 BLUSHORIA ✨
-</footer>
+</div>
+
+</div>
 
 <script>
 
-let cart=[];
-let total=0;
+const products = [
 
-function addToCart(name,price){
+{
+name:"Magic Lipgloss",
+price:1500,
+image:"product1.jpg",
+description:"Glossy pink mirror lip oil ✨"
+},
 
-cart.push({name,price});
+{
+name:"Fruit Lip Oil",
+price:2000,
+image:"product2.jpg",
+description:"Hydrating glossy aesthetic lip oil 💖"
+},
 
-total += price;
+{
+name:"Pink Sheet Mask",
+price:1200,
+image:"product3.jpg",
+description:"Soft skincare glow masks 🌸"
+},
 
-displayCart();
+{
+name:"Mini Perfume",
+price:3000,
+image:"product4.jpg",
+description:"Soft feminine fragrance 💕"
+},
+
+{
+name:"Girlie Lip Balm",
+price:1800,
+image:"product5.jpg",
+description:"Soft pink glossy lips 🎀"
+},
+
+{
+name:"Face Serum",
+price:3500,
+image:"product6.jpg",
+description:"Glow boosting skincare serum ✨"
+},
+
+{
+name:"Beauty Sponge",
+price:1000,
+image:"product7.jpg",
+description:"Soft makeup blender 💗"
+},
+
+{
+name:"Cute Lash Set",
+price:2500,
+image:"product8.jpg",
+description:"Pretty fluffy lashes 💕"
+},
+
+{
+name:"Hydrating Mist",
+price:2800,
+image:"product9.jpg",
+description:"Fresh glowing skin spray 🌸"
+},
+
+{
+name:"Luxury Lip Mask",
+price:2200,
+image:"product10.jpg",
+description:"Night lip treatment 💖"
+}
+
+];
+
+let cart = [];
+
+const productsContainer = document.getElementById("products");
+
+products.forEach((product,index)=>{
+
+productsContainer.innerHTML += `
+
+<div class="card">
+
+<img src="${product.image}">
+
+<div class="card-content">
+
+<h2>${product.name}</h2>
+
+<p>${product.description}</p>
+
+<div class="price">₦${product.price.toLocaleString()}</div>
+
+<button onclick="addToCart(${index})">
+Add To Cart
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+function addToCart(index){
+
+cart.push(products[index]);
+
+updateCart();
 
 }
 
-function displayCart(){
+function updateCart(){
 
-const cartItems=document.getElementById("cart-items");
+const cartItems = document.getElementById("cartItems");
 
-cartItems.innerHTML="";
+const total = document.getElementById("total");
+
+cartItems.innerHTML = "";
+
+let totalPrice = 0;
 
 cart.forEach(item=>{
 
+totalPrice += item.price;
+
 cartItems.innerHTML += `
-<div>
-${item.name} — ₦${item.price}
+<div class="cart-item">
+${item.name} — ₦${item.price.toLocaleString()}
 </div>
 `;
 
 });
 
-document.getElementById("total").innerText=total;
+total.innerText = totalPrice.toLocaleString();
 
 }
 
-function checkoutWhatsApp(){
+function sendOrder(){
 
-const name=document.getElementById("customerName").value;
+const name = document.getElementById("customerName").value;
 
-const phone=document.getElementById("customerPhone").value;
+const phone = document.getElementById("customerPhone").value;
 
-if(cart.length===0){
+if(cart.length === 0){
+
 alert("Add products to cart first.");
+
 return;
+
 }
 
-if(name==="" || phone===""){
+if(name === "" || phone === ""){
+
 alert("Please enter your name and phone number.");
+
 return;
+
 }
 
-let message=`🛍️ BLUSHORIA ORDER%0A%0A`;
+let message = `✨ BLUSHORIA ORDER ✨%0A%0A`;
 
 message += `👩 Name: ${name}%0A`;
 
 message += `📞 Phone: ${phone}%0A%0A`;
 
-message += `🛒 Products:%0A`;
+message += `🛍 Products:%0A`;
 
 cart.forEach(item=>{
+
 message += `- ${item.name} (₦${item.price})%0A`;
+
 });
+
+let total = cart.reduce((sum,item)=>sum + item.price,0);
 
 message += `%0A💰 Total: ₦${total}%0A`;
 
 message += `%0A🚚 Waybill fee will be discussed on WhatsApp.`;
 
-window.open(`https://wa.me/2347012620748?text=${message}`,"_blank");
+window.open(`https://wa.me/2347012620748?text=${message}`);
 
 }
 
