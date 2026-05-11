@@ -1,71 +1,64 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>BLUSHORIA ✨</title>
-<link rel="stylesheet" href="styles.css">
-</head>
-
 <body>
 
-<div class="logo">
-<h1>✨ BLUSHORIA</h1>
-<p>Luxury Girly Essentials Nigeria 🇳🇬</p>
-</div>
+<header>
+<h1>BLUSHORIA ✨</h1>
+<p>Girlie Essentials & Cute Aesthetics 💕</p>
+</header>
 
-<input type="text" class="search-box" placeholder="Search girly essentials...">
-
-<div class="hero">
-<h2>Glow <br> Softly ✨</h2>
-<p>Luxury lip oils, cute beauty accessories & aesthetic essentials.</p>
-<button>Shop Now</button>
-</div>
-
-<div class="products">
+<section class="products">
 
 <div class="product">
 <img src="product1.jpg">
 <div class="product-info">
-<h3>Magic Lipgloss Set</h3>
-<p>Luxury glossy lip oils with mirror design.</p>
+<h2>Magic Lipgloss</h2>
+<p>Glossy pink mirror lip oil ✨</p>
 <div class="price">₦1,500</div>
-<button onclick="addToCart('Magic Lipgloss Set',1500)">Add To Cart</button>
+<button onclick="addToCart('Magic Lipgloss',1500)">
+Add To Cart
+</button>
 </div>
 </div>
 
 <div class="product">
 <img src="product2.jpg">
 <div class="product-info">
-<h3>Girly Lip Oils</h3>
-<p>Soft shiny lip oils for everyday glow.</p>
+<h2>Fruit Lip Oil</h2>
+<p>Hydrating glossy aesthetic lip oil 💖</p>
 <div class="price">₦2,000</div>
-<button onclick="addToCart('Girly Lip Oils',2000)">Add To Cart</button>
+<button onclick="addToCart('Fruit Lip Oil',2000)">
+Add To Cart
+</button>
 </div>
 </div>
 
 <div class="product">
 <img src="product3.jpg">
 <div class="product-info">
-<h3>Aesthetic Lip Bundle</h3>
-<p>Luxury pink gloss collection.</p>
-<div class="price">₦3,500</div>
-<button onclick="addToCart('Aesthetic Lip Bundle',3500)">Add To Cart</button>
+<h2>Collagen Lip Mask</h2>
+<p>Soft pink overnight lip care 💕</p>
+<div class="price">₦1,800</div>
+<button onclick="addToCart('Lip Mask',1800)">
+Add To Cart
+</button>
 </div>
 </div>
 
 <div class="product">
 <img src="product4.jpg">
 <div class="product-info">
-<h3>Beauty Face Masks</h3>
-<p>Soft skincare sheet masks collection.</p>
-<div class="price">₦1,200</div>
-<button onclick="addToCart('Beauty Face Masks',1200)">Add To Cart</button>
+<h2>Hydrating Sheet Mask</h2>
+<p>Luxury self-care skincare ✨</p>
+<div class="price">₦2,500</div>
+<button onclick="addToCart('Sheet Mask',2500)">
+Add To Cart
+</button>
 </div>
 </div>
 
-</div>
+</section>
 
 <div class="cart">
-<h2>🛒 Your Cart</h2>
+<h3>🛒 Your Cart</h3>
 
 <div id="cart-items"></div>
 
@@ -73,32 +66,28 @@
 Total: ₦<span id="cart-total">0</span>
 </div>
 
-<div class="delivery">
-🚚 Waybill delivery fee depends on your location in Nigeria and will be discussed on WhatsApp.
-</div>
-
-<a class="whatsapp-btn" id="whatsapp-link" target="_blank">
+<a id="whatsapp-order"
+class="whatsapp-btn"
+target="_blank">
 Order On WhatsApp
 </a>
-
 </div>
 
-<div class="reviews">
+<section class="reviews">
+
 <h2>Customer Reviews ✨</h2>
 
 <div class="review">
-<div class="review-stars">⭐⭐⭐⭐⭐</div>
-<p>Everything is soooo cute 😍</p>
+<p>Everything is sooo cute 😍💕</p>
 <span>- Amanda</span>
 </div>
 
 <div class="review">
-<div class="review-stars">⭐⭐⭐⭐⭐</div>
-<p>Fast delivery and amazing products 💖</p>
+<p>Fast delivery and amazing quality ✨</p>
 <span>- Sophia</span>
 </div>
 
-</div>
+</section>
 
 <footer>
 © 2025 BLUSHORIA ✨
@@ -107,4 +96,3 @@ Order On WhatsApp
 <script src="app.js"></script>
 
 </body>
-</html>
