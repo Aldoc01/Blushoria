@@ -3,55 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Blushoria</title>
+  <title>Blushoria Beauty</title>
 
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css"/>
 
-  <script type="module" src="firebase.js"></script>
+  <script type="module" src="firebase-config.js"></script>
   <script type="module" src="app.js" defer></script>
 </head>
-
 <body>
 
-  <header>
-    <h1>Blushoria</h1>
+  <header class="navbar">
+    <h1>Blushoria ✨</h1>
 
     <div class="nav-buttons">
-      <button class="cart-btn">🛍 Cart</button>
-
-      <button id="adminBtn"
-        onclick="location.href='admin.html'">
-        ADMIN
-      </button>
+      <button id="cart-btn">🛍 Cart</button>
+      <a href="admin.html">
+        <button class="admin-btn">ADMIN</button>
+      </a>
     </div>
   </header>
 
   <section class="hero">
-
-    <div class="overlay"></div>
-
-    <div class="hero-content">
+    <div class="hero-overlay">
       <h2>Luxury Beauty Collection</h2>
-
-      <p>
-        Glow with confidence ✨
-      </p>
-
-      <button class="shop-btn">
-        Shop Now
-      </button>
+      <p>Glow with confidence ✨</p>
     </div>
-
   </section>
 
   <section class="products-section">
-
     <h2>Featured Products</h2>
 
-    <div id="products" class="products-grid">
-
+    <div id="products-container" class="products-grid">
     </div>
-
   </section>
 
 </body>
