@@ -129,24 +129,6 @@ font-size:14px;
 color:#6aff8e;
 }
 
-.quantity-controls{
-display:flex;
-align-items:center;
-justify-content:center;
-gap:10px;
-margin-top:10px;
-}
-
-.quantity-controls button{
-width:35px;
-height:35px;
-border:none;
-border-radius:50%;
-background:#ff4f87;
-color:white;
-cursor:pointer;
-}
-
 .add-btn{
 width:100%;
 padding:12px;
@@ -204,6 +186,25 @@ color:white;
 cursor:pointer;
 }
 
+.about{
+padding:40px 20px;
+text-align:center;
+background:#151515;
+}
+
+.about h2{
+margin-bottom:15px;
+font-size:32px;
+color:#ff4f87;
+}
+
+.about p{
+max-width:700px;
+margin:auto;
+line-height:1.8;
+color:#ccc;
+}
+
 .instagram{
 padding:20px;
 }
@@ -251,6 +252,51 @@ border-radius:10px;
 color:white;
 margin-top:10px;
 cursor:pointer;
+}
+
+.trust-badges{
+margin-top:20px;
+background:#111;
+padding:20px;
+border-radius:15px;
+}
+
+.trust-badges p{
+margin-top:10px;
+color:#ccc;
+}
+
+.empty-cart{
+text-align:center;
+padding:20px;
+color:#aaa;
+}
+
+.loader{
+width:100%;
+text-align:center;
+padding:40px;
+font-size:20px;
+color:#ff4f87;
+animation:pulse 1.5s infinite;
+}
+
+footer{
+background:#111;
+padding:40px 20px;
+text-align:center;
+margin-top:40px;
+}
+
+footer h3{
+font-size:30px;
+color:#ff4f87;
+margin-bottom:10px;
+}
+
+footer p{
+margin-top:10px;
+color:#bbb;
 }
 
 .floating-whatsapp{
