@@ -1,201 +1,424 @@
-const products = [
+let cart =
+JSON.parse(localStorage.getItem("cart"))
+|| [];
 
-  {
-    name: "Lip Masks",
-    price: 400,
-    image: "images/IMG-20260509-WA0021.jpg",
-    description:
-      "Moisturizing collagen lip masks that help soften dry lips and improve smoothness."
-  },
+const productsContainer =
+document.getElementById("products");
 
-  {
-    name: "Sadoer Face Mask Sheet",
-    price: 400,
-    image: "images/IMG-20260509-WA0034.jpg",
-    description:
-      "Hydrating fruit face sheet masks designed to refresh and nourish the skin."
-  },
+/* LOAD PRODUCTS */
 
-  {
-    name: "Sadoer Salicylic Acid Face Mask",
-    price: 400,
-    image: "images/IMG-20260509-WA0035.jpg",
-    description:
-      "Acne care facial sheet mask with salicylic acid for clearer healthier skin."
-  },
+function loadProducts(){
 
-  {
-    name: "Sadoer Face Masks",
-    price: 400,
-    image: "images/IMG-20260509-WA0036.jpg",
-    description:
-      "Luxury vitamin and hyaluronic facial masks for glowing and hydrated skin."
-  },
+productsContainer.innerHTML = "";
 
-  {
-    name: "Cute Lipgloss",
-    price: 1200,
-    image: "images/IMG-20260509-WA0041.jpg",
-    description:
-      "Cute glitter lip gloss with glossy shine and moisturizing formula."
-  },
+db.collection("products")
+.onSnapshot(snapshot=>{
 
-  {
-    name: "Clear Lip Gloss With Mirror",
-    price: 1500,
-    image: "images/IMG-20260509-WA0043.jpg",
-    description:
-      "Crystal clear lip gloss with mini mirror design and long lasting shine."
-  },
+productsContainer.innerHTML = "";
 
-  {
-    name: "Coloured Lipgloss",
-    price: 1500,
-    image: "images/IMG-20260509-WA0044.jpg",
-    description:
-      "Beautiful nude and pink colored lip gloss collection with smooth finish."
-  },
+snapshot.forEach(doc=>{
 
-  {
-    name: "Mini Lipgloss",
-    price: 1000,
-    image: "images/IMG-20260510-WA0003.jpg",
-    description:
-      "Mini cute lip gloss set with fruity flavors and glossy finish."
-  },
+const product = doc.data();
 
-  {
-    name: "Magic Lipgloss",
-    price: 1200,
-    image: "images/IMG-20260509-WA0042.jpg",
-    description:
-      "Color changing glossy lip oil with smooth moisturizing effect."
-  },
+productsContainer.innerHTML += `
 
-  {
-    name: "Magic Lipgloss With Mirror",
-    price: 1500,
-    image: "images/IMG-20260509-WA0045.jpg",
-    description:
-      "Luxury glossy lip oil with mirror packaging and sparkling shine."
-  }
+<div class="card">
 
-];
+<img
+src="${product.image}"
+onclick="openImage('${product.image}')">
 
-const productGrid = document.getElementById("product-grid");
+<div class="card-content">
 
-let cart = [];
+<div class="badge">
+${product.badge}
+</div>
 
-products.forEach((product) => {
+<h3>${product.name}</h3>
 
-  const card = document.createElement("div");
+<p class="desc">
+${product.description}
+</p>
 
-  card.classList.add("product-card");
+<p class="price">
+₦${product.price.toLocaleString()}
+</p>
 
-  card.innerHTML = `
+<p class="stock">
+${product.stock}
+</p>
 
-    <img src="${product.image}" alt="${product.name}">
+<button
+class="add-btn"
+onclick="addToCart(
+'${product.name}',
+${product.price}
+)">
 
-    <div class="product-info">
+Add To Cart
 
-      <h3>${product.name}</h3>
+</button>
 
-      <p>${product.description}</p>
+</div>
 
-      <span class="price">
-        ₦${product.price.toLocaleString()}
-      </span>
+</div>
 
-      <button onclick="addToCart('${product.name}', ${product.price})">
-        Add To Cart
-      </button>
-
-    </div>
-
-  `;
-
-  productGrid.appendChild(card);
+`;
 
 });
 
-function addToCart(name, price){
-
-  cart.push({
-    name,
-    price
-  });
-
-  alert(name + " added to cart ✨");
+});
 
 }
 
-function orderOnWhatsApp(){
+loadProducts();
 
-  const name =
-    document.getElementById("customerName").value;
+/* CART */
 
-  const phone =
-    document.getElementById("customerPhone").value;
+function addToCart(name,price){
 
-  const address =
-    document.getElementById("customerAddress").value;
+cart.push({
+name,
+price
+});
 
-  if(
-    name === "" ||
-    phone === "" ||
-    address === ""
-  ){
+saveCart();
+updateCart();
 
-    alert("Please fill all fields");
+}
 
-    return;
+function removeFromCart(index){
 
-  }
+cart.splice(index,1);
 
-  if(cart.length === 0){
+saveCart();
+updateCart();
 
-    alert("Your cart is empty");
+}
 
-    return;
+function saveCart(){
 
-  }
+localStorage.setItem(
+"cart",
+JSON.stringify(cart)
+);
 
-  let message =
-`Hello Blushoria Store ✨
+}
 
-CUSTOMER DETAILS
+function updateCart(){
 
-Name: ${name}
-Phone: ${phone}
-Address: ${address}
+const cartItems =
+document.getElementById(
+"cartItems"
+);
 
-ORDER LIST
+const subtotal =
+document.getElementById(
+"cartSubtotal"
+);
+
+const total =
+document.getElementById(
+"cartTotal"
+);
+
+cartItems.innerHTML = "";
+
+if(cart.length === 0){
+
+cartItems.innerHTML = `
+
+<p class="empty-cart">
+
+Your cart is empty 🛒
+
+</p>
+
 `;
 
-  let total = 0;
+}
 
-  cart.forEach((item) => {
+let grandTotal = 0;
 
-    message += `
-• ${item.name} - ₦${item.price}
+cart.forEach((item,index)=>{
+
+grandTotal += item.price;
+
+cartItems.innerHTML += `
+
+<div class="cart-item">
+
+<div>
+
+${item.name}
+
+</div>
+
+<div>
+
+₦${item.price}
+
+<button
+class="remove-btn"
+onclick="removeFromCart(${index})">
+
+❌
+
+</button>
+
+</div>
+
+</div>
+
 `;
 
-    total += item.price;
+});
 
-  });
+subtotal.innerText =
+`Subtotal: ₦${grandTotal}`;
 
-  message += `
+total.innerText =
+`Grand Total: ₦${grandTotal}`;
 
-TOTAL: ₦${total}
+}
 
-Delivery fee depends on customer location in Nigeria 🇳🇬
+updateCart();
+
+/* CHECKOUT */
+
+function checkoutWhatsApp(){
+
+const name =
+document.getElementById(
+"customerName"
+).value;
+
+const phone =
+document.getElementById(
+"customerPhone"
+).value;
+
+const address =
+document.getElementById(
+"customerAddress"
+).value;
+
+const location =
+document.getElementById(
+"deliveryLocation"
+).value;
+
+if(cart.length === 0){
+
+alert("Cart is empty");
+
+return;
+
+}
+
+let total = 0;
+
+db.collection("orders")
+.add({
+
+customer:name,
+phone:phone,
+address:address,
+location:location,
+items:cart,
+createdAt:new Date()
+
+});
+
+let message =
+`Hello Blushoria Store,%0A%0A`;
+
+message +=
+`Customer: ${name}%0A`;
+
+message +=
+`Phone: ${phone}%0A`;
+
+message +=
+`Address: ${address}%0A`;
+
+message +=
+`Location: ${location}%0A`;
+
+message +=
+`Waybill Fee: To Be Discussed%0A%0A`;
+
+message +=
+`ORDER:%0A`;
+
+cart.forEach(item=>{
+
+message +=
+`- ${item.name}
+(₦${item.price})%0A`;
+
+total += item.price;
+
+});
+
+message +=
+`%0ATotal:
+₦${total}`;
+
+window.open(
+`https://wa.me/2347012620748?text=${message}`,
+"_blank"
+);
+
+}
+
+/* SEARCH */
+
+function searchProducts(){
+
+const search =
+document.getElementById(
+"searchInput"
+).value.toLowerCase();
+
+db.collection("products")
+.get()
+.then(snapshot=>{
+
+productsContainer.innerHTML = "";
+
+snapshot.forEach(doc=>{
+
+const product = doc.data();
+
+if(
+product.name.toLowerCase()
+.includes(search)
+){
+
+displayProduct(product);
+
+}
+
+});
+
+});
+
+}
+
+/* CATEGORY */
+
+function filterCategory(category){
+
+db.collection("products")
+.get()
+.then(snapshot=>{
+
+productsContainer.innerHTML = "";
+
+snapshot.forEach(doc=>{
+
+const product = doc.data();
+
+if(
+category === "All" ||
+product.category === category
+){
+
+displayProduct(product);
+
+}
+
+});
+
+});
+
+}
+
+/* DISPLAY PRODUCT */
+
+function displayProduct(product){
+
+productsContainer.innerHTML += `
+
+<div class="card">
+
+<img
+src="${product.image}"
+onclick="openImage('${product.image}')">
+
+<div class="card-content">
+
+<div class="badge">
+${product.badge}
+</div>
+
+<h3>${product.name}</h3>
+
+<p class="desc">
+${product.description}
+</p>
+
+<p class="price">
+₦${product.price}
+</p>
+
+<p class="stock">
+${product.stock}
+</p>
+
+<button
+class="add-btn"
+onclick="addToCart(
+'${product.name}',
+${product.price}
+)">
+
+Add To Cart
+
+</button>
+
+</div>
+
+</div>
+
 `;
 
-  const whatsappNumber = "2347012620748";
+}
 
-  const whatsappURL =
-`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+/* REVIEWS */
 
-  window.open(whatsappURL, "_blank");
+function addReview(){
+
+const review =
+document.getElementById(
+"reviewInput"
+).value;
+
+if(review === "") return;
+
+document.getElementById(
+"reviewsContainer"
+).innerHTML += `
+
+<div class="review-card">
+
+★★★★★ ${review}
+
+</div>
+
+`;
+
+document.getElementById(
+"reviewInput"
+).value = "";
+
+}
+
+/* OPEN IMAGE */
+
+function openImage(image){
+
+window.open(image,"_blank");
 
 }
