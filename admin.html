@@ -13,13 +13,29 @@
 
 <header>
 
-<h1>
-Blushoria Admin Dashboard
-</h1>
+<h1>Blushoria Admin</h1>
 
 </header>
 
 <section class="cart">
+
+<input
+type="password"
+id="adminPassword"
+placeholder="Admin Password">
+
+<button onclick="loginAdmin()">
+Login
+</button>
+
+</section>
+
+<section
+class="cart"
+id="adminPanel"
+style="display:none;">
+
+<h2>Add Product</h2>
 
 <input
 id="productName"
@@ -28,6 +44,22 @@ placeholder="Product Name">
 <input
 id="productPrice"
 placeholder="Price">
+
+<input
+id="productCategory"
+placeholder="Category">
+
+<input
+id="productDescription"
+placeholder="Description">
+
+<input
+id="productBadge"
+placeholder="Badge">
+
+<input
+id="productStock"
+placeholder="Stock">
 
 <input
 id="productImage"
@@ -39,7 +71,17 @@ Add Product
 
 </button>
 
+<h2 style="margin-top:30px;">
+Products
+</h2>
+
+<div id="adminProducts"></div>
+
 </section>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
 <script src="firebase.js"></script>
 
