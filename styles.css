@@ -1,3 +1,7 @@
+html{
+  scroll-behavior:smooth;
+}
+
 *{
   margin:0;
   padding:0;
@@ -6,35 +10,68 @@
 
 body{
   font-family:'Poppins',sans-serif;
-  background:#12020d;
+  background:linear-gradient(to bottom,#12020d,#1b0813,#12020d);
   color:white;
+  overflow-x:hidden;
+  position:relative;
+}
+
+/* GLOW EFFECTS */
+
+body::before{
+  content:"";
+  position:fixed;
+  width:300px;
+  height:300px;
+  background:#ff1493;
+  filter:blur(150px);
+  top:-100px;
+  left:-100px;
+  opacity:0.2;
+  z-index:-1;
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  width:300px;
+  height:300px;
+  background:#ff77b7;
+  filter:blur(150px);
+  bottom:-100px;
+  right:-100px;
+  opacity:0.2;
+  z-index:-1;
 }
 
 /* HERO */
 
 .hero{
   text-align:center;
-  padding:30px 20px 10px;
+  padding:40px 20px 20px;
 }
 
 .logo{
   width:260px;
   max-width:90%;
   display:block;
-  margin:0 auto 20px;
+  margin:0 auto 25px;
   border-radius:30px;
+  box-shadow:0 10px 40px rgba(255,192,203,0.3);
 }
 
 .hero h1{
-  font-size:34px;
+  font-size:38px;
   color:#ff4fa3;
-  margin-bottom:10px;
+  margin-bottom:12px;
   line-height:1.2;
+  font-weight:700;
 }
 
 .hero p{
   color:#f7c8d8;
-  font-size:15px;
+  font-size:16px;
+  line-height:1.6;
 }
 
 /* PRODUCTS */
@@ -43,7 +80,7 @@ body{
   padding:20px;
   display:flex;
   flex-direction:column;
-  gap:30px;
+  gap:35px;
 }
 
 .card{
@@ -51,6 +88,12 @@ body{
   border-radius:30px;
   overflow:hidden;
   box-shadow:0 0 30px rgba(255,79,163,0.15);
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 0 40px rgba(255,79,163,0.35);
 }
 
 .card img{
@@ -61,24 +104,26 @@ body{
 }
 
 .card-content{
-  padding:22px;
+  padding:24px;
 }
 
 .card h2{
-  font-size:28px;
+  font-size:30px;
   margin-bottom:10px;
+  line-height:1.3;
 }
 
 .card p{
   color:#f5bfd4;
-  margin-bottom:15px;
+  margin-bottom:18px;
   font-size:16px;
+  line-height:1.5;
 }
 
 .card h3{
   color:#ff1493;
-  font-size:36px;
-  margin-bottom:20px;
+  font-size:38px;
+  margin-bottom:22px;
 }
 
 .card button{
@@ -90,6 +135,12 @@ body{
   color:white;
   font-size:20px;
   font-weight:700;
+  transition:0.3s;
+  box-shadow:0 8px 20px rgba(255,20,147,0.4);
+}
+
+.card button:active{
+  transform:scale(0.97);
 }
 
 /* CART */
@@ -105,28 +156,31 @@ body{
 .cart h2{
   color:#ff4fa3;
   margin-bottom:20px;
-  font-size:35px;
+  font-size:38px;
 }
 
 #cart-items{
   margin-bottom:20px;
   line-height:2;
+  color:#fff;
 }
 
 #total{
   margin-bottom:20px;
-  font-size:30px;
+  font-size:32px;
+  font-weight:700;
 }
 
 .cart input{
   width:100%;
   padding:16px;
   border:none;
-  border-radius:15px;
+  border-radius:16px;
   margin-bottom:15px;
   background:#2c1020;
   color:white;
   font-size:16px;
+  outline:none;
 }
 
 .cart input::placeholder{
@@ -136,7 +190,8 @@ body{
 .waybill{
   color:#f0bfd0;
   margin-bottom:20px;
-  line-height:1.6;
+  line-height:1.7;
+  font-size:15px;
 }
 
 .whatsapp-btn{
@@ -148,6 +203,11 @@ body{
   color:white;
   font-size:24px;
   font-weight:700;
+  transition:0.3s;
+}
+
+.whatsapp-btn:active{
+  transform:scale(0.97);
 }
 
 /* REVIEWS */
@@ -172,6 +232,10 @@ body{
   box-shadow:0 0 20px rgba(255,79,163,0.1);
 }
 
+.review-box p{
+  font-size:18px;
+}
+
 /* FOOTER */
 
 footer{
@@ -179,4 +243,27 @@ footer{
   padding:40px 20px;
   color:#f0bfd0;
   font-size:15px;
+  line-height:1.7;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+  .hero h1{
+    font-size:32px;
+  }
+
+  .card h2{
+    font-size:26px;
+  }
+
+  .card h3{
+    font-size:34px;
+  }
+
+  .reviews h2{
+    font-size:34px;
+  }
+
 }
