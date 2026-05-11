@@ -11,7 +11,7 @@
 
 <body>
 
-  <!-- HERO SECTION -->
+  <!-- HERO -->
   <section class="hero">
 
     <img src="logo.png" alt="Blushoria Logo" class="logo">
@@ -30,28 +30,32 @@
   <section class="products" id="products"></section>
 
   <!-- CART -->
-  <section class="cart">
+  <section class="cart-section">
 
     <h2>Your Cart 🛒</h2>
 
-    <p id="total">Total: ₦0</p>
+    <h3>
+      Total:
+      <span id="cart-total">₦0</span>
+    </h3>
 
     <input
       type="text"
-      id="customerName"
+      id="customer-name"
       placeholder="Your Name"
     >
 
     <input
       type="text"
-      id="customerAddress"
-      placeholder="Your Address"
+      id="customer-address"
+      placeholder="Delivery Address"
     >
 
-    <button
-      class="whatsapp-btn"
-      onclick="orderWhatsApp()"
-    >
+    <p class="delivery-note">
+      🚚 Waybill delivery fee depends on your location and will be discussed on WhatsApp.
+    </p>
+
+    <button onclick="orderOnWhatsApp()">
       Order On WhatsApp
     </button>
 
@@ -62,7 +66,6 @@
     © 2025 BLUSHORIA ✨
   </footer>
 
-  <!-- SCRIPT -->
   <script src="app.js"></script>
 
 </body>
