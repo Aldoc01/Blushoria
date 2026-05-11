@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blushoria Store</title>
+
+  <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+
+<header>
+  <h1>Blushoria</h1>
+
+  <div class="header-buttons">
+    <button onclick="toggleCart()">🛍 Cart</button>
+    <button onclick="window.location.href='admin.html'">
+      ADMIN
+    </button>
+  </div>
+</header>
+
+<section class="hero">
+  <h2>Luxury Beauty Collection</h2>
+  <p>Glow with confidence ✨</p>
+</section>
+
+<section class="products-section">
+
+  <h2>Products</h2>
+
+  <div id="productGrid" class="product-grid">
+
+  </div>
+
+</section>
+
+<!-- CART -->
+
+<div id="cartDrawer" class="cart-drawer">
+
+  <div class="cart-header">
+    <h2>Your Cart</h2>
+    <button onclick="toggleCart()">✖</button>
+  </div>
+
+  <div id="cartItems"></div>
+
+  <div class="checkout-box">
+
+    <input
+      id="custName"
+      placeholder="Your Name"
+    />
+
+    <input
+      id="custPhone"
+      placeholder="Phone Number"
+    />
+
+    <select id="shippingLocation" onchange="updateTotal()">
+      <option value="">Shipping Location</option>
+      <option value="lagos">Lagos</option>
+      <option value="other">Outside Lagos</option>
+    </select>
+
+    <h3 id="totalText">
+      Total: ₦0
+    </h3>
+
+    <button onclick="checkout()">
+      Checkout on WhatsApp
+    </button>
+
+  </div>
+
+</div>
+
+<script type="module" src="app.js"></script>
+
+</body>
+</html>
