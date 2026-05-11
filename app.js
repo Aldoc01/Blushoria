@@ -1,43 +1,37 @@
-import {
-  collection,
-  getDocs
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+const products = [
+  {
+    name: "Luxury Fashion Item",
+    price: "$120",
+    image: "images/IMG-20260509-WA0021.jpg"
+  },
+  {
+    name: "Premium Outfit",
+    price: "$150",
+    image: "images/IMG-20260509-WA0034.jpg"
+  },
+  {
+    name: "Elegant Style",
+    price: "$200",
+    image: "images/IMG-20260509-WA0035.jpg"
+  },
+  {
+    name: "Modern Fashion",
+    price: "$180",
+    image: "images/IMG-20260509-WA0036.jpg"
+  }
+];
 
-import { db } from "./firebase-config.js";
+const container = document.getElementById("products-container");
 
-const productsContainer = document.getElementById("products-container");
+products.forEach(product => {
+  const card = document.createElement("div");
+  card.classList.add("product-card");
 
-async function loadProducts(){
+  card.innerHTML = `
+    <img src="${product.image}" alt="${product.name}">
+    <h3>${product.name}</h3>
+    <p>${product.price}</p>
+  `;
 
-  const querySnapshot = await getDocs(collection(db,"products"));
-
-  productsContainer.innerHTML = "";
-
-  querySnapshot.forEach((doc)=>{
-
-    const product = doc.data();
-
-    productsContainer.innerHTML += `
-
-      <div class="product-card">
-
-        <img src="${product.image}" />
-
-        <div class="product-info">
-
-          <h3>${product.name}</h3>
-
-          <p>${product.description}</p>
-
-          <div class="price">
-            UGX ${product.price}
-          </div>
-
-        </div>
-
-      </div>
-    `;
-  });
-}
-
-loadProducts();
+  container.appendChild(card);
+});
