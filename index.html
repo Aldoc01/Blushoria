@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Blushoria Store</title>
 
@@ -11,6 +14,7 @@
 
 <!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
 </head>
@@ -33,14 +37,16 @@ onkeyup="searchProducts()">
 
 <section class="categories">
 
-<button onclick="filterCategory('All')">All</button>
+<button onclick="filterCategory('All')">
+All
+</button>
 
 <button onclick="filterCategory('Lip Gloss')">
 Lip Gloss
 </button>
 
 <button onclick="filterCategory('Mask')">
-Face Masks
+Masks
 </button>
 
 <button onclick="filterCategory('Beauty')">
@@ -49,7 +55,9 @@ Beauty
 
 </section>
 
-<section class="products" id="products">
+<section
+class="products"
+id="products">
 
 </section>
 
@@ -73,22 +81,59 @@ type="text"
 id="customerPhone"
 placeholder="Phone Number">
 
+<input
+type="text"
+id="customerAddress"
+placeholder="Delivery Address">
+
+<select id="deliveryLocation">
+
+<option value="Lagos">
+Lagos
+</option>
+
+<option value="Abuja">
+Abuja
+</option>
+
+<option value="Port Harcourt">
+Port Harcourt
+</option>
+
+<option value="Ibadan">
+Ibadan
+</option>
+
+<option value="Benin">
+Benin
+</option>
+
+<option value="Other">
+Other Location
+</option>
+
+</select>
+
 <button onclick="checkoutWhatsApp()">
-Order via WhatsApp
+
+Order Via WhatsApp
+
 </button>
 
 </section>
 
 <section class="reviews">
 
-<h2>Customer Reviews ✨</h2>
+<h2>
+Customer Reviews ✨
+</h2>
 
 <div class="review-card">
-★★★★★ Amazing products!
+★★★★★ Amazing quality products!
 </div>
 
 <div class="review-card">
-★★★★★ Fast delivery in Lagos!
+★★★★★ Fast delivery in Nigeria 🇳🇬
 </div>
 
 <div class="review-card">
@@ -97,7 +142,17 @@ Order via WhatsApp
 
 </section>
 
+<a
+href="https://wa.me/2347012620748"
+class="floating-whatsapp"
+target="_blank">
+
+💬
+
+</a>
+
 <script src="firebase.js"></script>
+
 <script src="app.js"></script>
 
 </body>
