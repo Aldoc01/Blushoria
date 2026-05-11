@@ -1,182 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<title>Blushoria ✨</title>
+  <title>Blushoria ✨</title>
 
-<link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-<!-- HERO -->
-<section class="hero">
+  <!-- HERO SECTION -->
+  <section class="hero">
 
-<img src="logo.png" class="logo">
+    <img src="logo.png" alt="Blushoria Logo" class="logo">
 
-<h1>
-Luxury Girlie Essentials ✨
-</h1>
+    <h1>
+      Luxury Girlie Essentials ✨
+    </h1>
 
-<p>
-Cute • Soft • Feminine • Aesthetic
-</p>
+    <p>
+      Cute • Soft • Feminine • Aesthetic
+    </p>
 
-</section>
+  </section>
 
-<!-- PRODUCTS -->
-<section class="products">
+  <!-- PRODUCTS -->
+  <section class="products" id="products"></section>
 
-<div class="card">
-<img src="product1.jpg">
-<div class="card-content">
-<h2>Magic Lipgloss</h2>
-<p>Glossy pink mirror lip oil ✨</p>
-<div class="price">₦1,500</div>
-<button onclick="addToCart('Magic Lipgloss',1500)">
-Add To Cart
-</button>
-</div>
-</div>
+  <!-- CART -->
+  <section class="cart">
 
-<div class="card">
-<img src="product2.jpg">
-<div class="card-content">
-<h2>Beauty Bundle</h2>
-<p>Everything girly in one set 💖</p>
-<div class="price">₦5,000</div>
-<button onclick="addToCart('Beauty Bundle',5000)">
-Add To Cart
-</button>
-</div>
-</div>
+    <h2>Your Cart 🛒</h2>
 
-<div class="card">
-<img src="product3.jpg">
-<div class="card-content">
-<h2>Mini Perfume</h2>
-<p>Soft feminine fragrance 💕</p>
-<div class="price">₦3,000</div>
-<button onclick="addToCart('Mini Perfume',3000)">
-Add To Cart
-</button>
-</div>
-</div>
+    <p id="total">Total: ₦0</p>
 
-<div class="card">
-<img src="product4.jpg">
-<div class="card-content">
-<h2>Girlie Lip Balm</h2>
-<p>Soft pink glossy lips 🎀</p>
-<div class="price">₦1,800</div>
-<button onclick="addToCart('Girlie Lip Balm',1800)">
-Add To Cart
-</button>
-</div>
-</div>
+    <input
+      type="text"
+      id="customerName"
+      placeholder="Your Name"
+    >
 
-<div class="card">
-<img src="product5.jpg">
-<div class="card-content">
-<h2>Face Mask Set</h2>
-<p>Luxury skincare essentials ✨</p>
-<div class="price">₦2,500</div>
-<button onclick="addToCart('Face Mask Set',2500)">
-Add To Cart
-</button>
-</div>
-</div>
+    <input
+      type="text"
+      id="customerAddress"
+      placeholder="Your Address"
+    >
 
-<div class="card">
-<img src="product6.jpg">
-<div class="card-content">
-<h2>Pink Beauty Oil</h2>
-<p>Glow and shine beauty oil 💖</p>
-<div class="price">₦4,000</div>
-<button onclick="addToCart('Pink Beauty Oil',4000)">
-Add To Cart
-</button>
-</div>
-</div>
+    <button
+      class="whatsapp-btn"
+      onclick="orderWhatsApp()"
+    >
+      Order On WhatsApp
+    </button>
 
-<div class="card">
-<img src="product7.jpg">
-<div class="card-content">
-<h2>Soft Girl Kit</h2>
-<p>Everything cute and feminine 🌸</p>
-<div class="price">₦6,000</div>
-<button onclick="addToCart('Soft Girl Kit',6000)">
-Add To Cart
-</button>
-</div>
-</div>
+  </section>
 
-<div class="card">
-<img src="product8.jpg">
-<div class="card-content">
-<h2>Pink Gloss Set</h2>
-<p>Shiny glossy lips collection 💋</p>
-<div class="price">₦3,500</div>
-<button onclick="addToCart('Pink Gloss Set',3500)">
-Add To Cart
-</button>
-</div>
-</div>
+  <!-- FOOTER -->
+  <footer>
+    © 2025 BLUSHORIA ✨
+  </footer>
 
-<div class="card">
-<img src="product9.jpg">
-<div class="card-content">
-<h2>Luxury Perfume Oil</h2>
-<p>Long lasting sweet fragrance ✨</p>
-<div class="price">₦4,500</div>
-<button onclick="addToCart('Luxury Perfume Oil',4500)">
-Add To Cart
-</button>
-</div>
-</div>
-
-<div class="card">
-<img src="product10.jpg">
-<div class="card-content">
-<h2>Blushoria Special Box</h2>
-<p>Premium beauty collection 💕</p>
-<div class="price">₦8,000</div>
-<button onclick="addToCart('Blushoria Special Box',8000)">
-Add To Cart
-</button>
-</div>
-</div>
-
-</section>
-
-<!-- CART -->
-<section class="cart">
-
-<h2>Your Cart 🛒</h2>
-
-<div class="total">
-Total: <span id="total">₦0</span>
-</div>
-
-<input type="text" id="name" placeholder="Your Name">
-
-<input type="text" id="address" placeholder="Your Address">
-
-<button class="whatsapp-btn" onclick="orderWhatsApp()">
-Order On WhatsApp
-</button>
-
-</section>
-
-<!-- FOOTER -->
-<footer>
-© 2025 BLUSHORIA ✨
-</footer>
-
-<script src="app.js"></script>
+  <!-- SCRIPT -->
+  <script src="app.js"></script>
 
 </body>
 </html>
