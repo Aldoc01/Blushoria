@@ -1,74 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Blushoria Store</title>
 
-  <link rel="stylesheet" href="styles.css"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<title>Blushoria Store</title>
+
+<link rel="stylesheet" href="styles.css">
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
 </head>
 
 <body>
 
-  <header>
-    <h1>✨ Blushoria Store</h1>
-    <p>Luxury Beauty Products</p>
-  </header>
+<header>
 
-  <section class="hero">
-    <h2>Glow With Confidence 💄</h2>
-    <p>Shop luxury beauty products in Nigeria.</p>
-  </section>
+<h1>✨ BLUSHORIA</h1>
 
-  <section class="products">
+<p>Luxury Beauty Store</p>
 
-    <div class="card">
-      <img src="images/IMG-20260509-WA0044.jpg">
-      <h3>Luxury Lip Gloss</h3>
-      <p>₦8,000</p>
-      <button onclick="addToCart('Luxury Lip Gloss', 8000)">
-        Add to Cart
-      </button>
-    </div>
+<input
+type="text"
+id="searchInput"
+placeholder="Search products..."
+onkeyup="searchProducts()">
 
-    <div class="card">
-      <img src="images/IMG-20260510-WA0005.jpg">
-      <h3>Beauty Powder Kit</h3>
-      <p>₦15,000</p>
-      <button onclick="addToCart('Beauty Powder Kit', 15000)">
-        Add to Cart
-      </button>
-    </div>
+</header>
 
-    <div class="card">
-      <img src="images/IMG-20260509-WA0021.jpg">
-      <h3>Matte Foundation</h3>
-      <p>₦12,000</p>
-      <button onclick="addToCart('Matte Foundation', 12000)">
-        Add to Cart
-      </button>
-    </div>
+<section class="categories">
 
-  </section>
+<button onclick="filterCategory('All')">All</button>
 
-  <section class="cart">
-    <h2>🛒 Cart</h2>
+<button onclick="filterCategory('Lip Gloss')">
+Lip Gloss
+</button>
 
-    <div id="cart-items"></div>
+<button onclick="filterCategory('Mask')">
+Face Masks
+</button>
 
-    <h3 id="total">Total: ₦0</h3>
+<button onclick="filterCategory('Beauty')">
+Beauty
+</button>
 
-    <button class="whatsapp-btn" onclick="checkoutWhatsApp()">
-      Order via WhatsApp
-    </button>
-  </section>
+</section>
 
-  <script src="firebase.js"></script>
-  <script src="app.js"></script>
+<section class="products" id="products">
+
+</section>
+
+<section class="cart">
+
+<h2>🛒 Shopping Cart</h2>
+
+<div id="cartItems"></div>
+
+<h3 id="cartTotal">
+Total: ₦0
+</h3>
+
+<input
+type="text"
+id="customerName"
+placeholder="Your Name">
+
+<input
+type="text"
+id="customerPhone"
+placeholder="Phone Number">
+
+<button onclick="checkoutWhatsApp()">
+Order via WhatsApp
+</button>
+
+</section>
+
+<section class="reviews">
+
+<h2>Customer Reviews ✨</h2>
+
+<div class="review-card">
+★★★★★ Amazing products!
+</div>
+
+<div class="review-card">
+★★★★★ Fast delivery in Lagos!
+</div>
+
+<div class="review-card">
+★★★★★ Luxury packaging 😍
+</div>
+
+</section>
+
+<script src="firebase.js"></script>
+<script src="app.js"></script>
 
 </body>
 </html>
