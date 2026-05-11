@@ -3,81 +3,56 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Blushoria Store</title>
+  <title>Blushoria</title>
 
   <link rel="stylesheet" href="styles.css">
 
+  <script type="module" src="firebase.js"></script>
+  <script type="module" src="app.js" defer></script>
 </head>
+
 <body>
 
-<header>
-  <h1>Blushoria</h1>
+  <header>
+    <h1>Blushoria</h1>
 
-  <div class="header-buttons">
-    <button onclick="toggleCart()">🛍 Cart</button>
-    <button onclick="window.location.href='admin.html'">
-      ADMIN
-    </button>
-  </div>
-</header>
+    <div class="nav-buttons">
+      <button class="cart-btn">🛍 Cart</button>
 
-<section class="hero">
-  <h2>Luxury Beauty Collection</h2>
-  <p>Glow with confidence ✨</p>
-</section>
+      <button id="adminBtn"
+        onclick="location.href='admin.html'">
+        ADMIN
+      </button>
+    </div>
+  </header>
 
-<section class="products-section">
+  <section class="hero">
 
-  <h2>Products</h2>
+    <div class="overlay"></div>
 
-  <div id="productGrid" class="product-grid">
+    <div class="hero-content">
+      <h2>Luxury Beauty Collection</h2>
 
-  </div>
+      <p>
+        Glow with confidence ✨
+      </p>
 
-</section>
+      <button class="shop-btn">
+        Shop Now
+      </button>
+    </div>
 
-<!-- CART -->
+  </section>
 
-<div id="cartDrawer" class="cart-drawer">
+  <section class="products-section">
 
-  <div class="cart-header">
-    <h2>Your Cart</h2>
-    <button onclick="toggleCart()">✖</button>
-  </div>
+    <h2>Featured Products</h2>
 
-  <div id="cartItems"></div>
+    <div id="products" class="products-grid">
 
-  <div class="checkout-box">
+    </div>
 
-    <input
-      id="custName"
-      placeholder="Your Name"
-    />
-
-    <input
-      id="custPhone"
-      placeholder="Phone Number"
-    />
-
-    <select id="shippingLocation" onchange="updateTotal()">
-      <option value="">Shipping Location</option>
-      <option value="lagos">Lagos</option>
-      <option value="other">Outside Lagos</option>
-    </select>
-
-    <h3 id="totalText">
-      Total: ₦0
-    </h3>
-
-    <button onclick="checkout()">
-      Checkout on WhatsApp
-    </button>
-
-  </div>
-
-</div>
-
-<script type="module" src="app.js"></script>
+  </section>
 
 </body>
 </html>
