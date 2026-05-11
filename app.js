@@ -5,6 +5,8 @@ name:"Lip Masks",
 price:400,
 category:"Mask",
 description:"Soft pink hydrating lip mask.",
+badge:"HOT 🔥",
+stock:"In Stock",
 image:"images/IMG-20260509-WA0034.jpg"
 },
 
@@ -13,15 +15,9 @@ name:"Sadoer Face Mask Sheet",
 price:400,
 category:"Mask",
 description:"Refreshing skincare sheet mask.",
+badge:"NEW",
+stock:"Only 3 Left",
 image:"images/IMG-20260509-WA0035.jpg"
-},
-
-{
-name:"Sadoer Salicylic Face Mask",
-price:400,
-category:"Mask",
-description:"Deep cleansing acne control mask.",
-image:"images/IMG-20260509-WA0036.jpg"
 },
 
 {
@@ -29,31 +25,9 @@ name:"Cute Lip Gloss",
 price:1200,
 category:"Lip Gloss",
 description:"Cute glossy shine lip gloss.",
+badge:"BEST SELLER",
+stock:"In Stock",
 image:"images/IMG-20260509-WA0041.jpg"
-},
-
-{
-name:"Clear Lip Gloss With Mirror",
-price:1500,
-category:"Lip Gloss",
-description:"Luxury gloss with mini mirror.",
-image:"images/IMG-20260509-WA0044.jpg"
-},
-
-{
-name:"Coloured Lip Gloss",
-price:1500,
-category:"Lip Gloss",
-description:"Long lasting colourful lip gloss.",
-image:"images/IMG-20260510-WA0003.jpg"
-},
-
-{
-name:"Mini Lip Gloss",
-price:1000,
-category:"Lip Gloss",
-description:"Portable mini beauty gloss.",
-image:"images/IMG-20260510-WA0004.jpg"
 },
 
 {
@@ -61,12 +35,16 @@ name:"Magic Lip Gloss",
 price:1200,
 category:"Lip Gloss",
 description:"Magic colour changing lip gloss.",
+badge:"LIMITED",
+stock:"Only 2 Left",
 image:"images/IMG-20260510-WA0005.jpg"
 }
 
 ];
 
-let cart = [];
+let cart =
+JSON.parse(localStorage.getItem("cart"))
+|| [];
 
 const productsContainer =
 document.getElementById("products");
@@ -75,15 +53,21 @@ function renderProducts(filteredProducts){
 
 productsContainer.innerHTML = "";
 
-filteredProducts.forEach(product => {
+filteredProducts.forEach((product,index)=>{
 
 productsContainer.innerHTML += `
 
 <div class="card">
 
-<img src="${product.image}">
+<img
+src="${product.image}"
+onclick="openImage('${product.image}')">
 
 <div class="card-content">
+
+<div class="badge">
+${product.badge}
+</div>
 
 <h3>${product.name}</h3>
 
@@ -95,11 +79,36 @@ ${product.description}
 ₦${product.price.toLocaleString()}
 </p>
 
-<button onclick="addToCart(
+<p class="stock">
+${product.stock}
+</p>
+
+<div class="quantity-controls">
+
+<button onclick="changeQty(${index},-1)">
+-
+</button>
+
+<span id="qty-${index}">
+1
+</span>
+
+<button onclick="changeQty(${index},1)">
++
+</button>
+
+</div>
+
+<button
+class="add-btn"
+onclick="addToCart(
 '${product.name}',
-${product.price}
+${product.price},
+${index}
 )">
+
 Add To Cart
+
 </button>
 
 </div>
@@ -114,9 +123,37 @@ Add To Cart
 
 renderProducts(products);
 
-function addToCart(name,price){
+let quantities = {};
 
-cart.push({name,price});
+function changeQty(index,change){
+
+if(!quantities[index]){
+quantities[index] = 1;
+}
+
+quantities[index] += change;
+
+if(quantities[index] < 1){
+quantities[index] = 1;
+}
+
+document.getElementById(
+`qty-${index}`
+).innerText = quantities[index];
+
+}
+
+function addToCart(name,price,index){
+
+const qty = quantities[index] || 1;
+
+cart.push({
+name,
+price,
+qty
+});
+
+saveCart();
 
 updateCart();
 
@@ -126,7 +163,18 @@ function removeFromCart(index){
 
 cart.splice(index,1);
 
+saveCart();
+
 updateCart();
+
+}
+
+function saveCart(){
+
+localStorage.setItem(
+"cart",
+JSON.stringify(cart)
+);
 
 }
 
@@ -135,28 +183,42 @@ function updateCart(){
 const cartItems =
 document.getElementById("cartItems");
 
-const cartTotal =
-document.getElementById("cartTotal");
+const subtotal =
+document.getElementById(
+"cartSubtotal"
+);
+
+const total =
+document.getElementById(
+"cartTotal"
+);
 
 cartItems.innerHTML = "";
 
-let total = 0;
+let grandTotal = 0;
 
 cart.forEach((item,index)=>{
 
-total += item.price;
+const itemTotal =
+item.price * item.qty;
+
+grandTotal += itemTotal;
 
 cartItems.innerHTML += `
 
 <div class="cart-item">
 
-<span>
+<div>
+
 ${item.name}
-</span>
 
-<span>
+x${item.qty}
 
-₦${item.price.toLocaleString()}
+</div>
+
+<div>
+
+₦${itemTotal.toLocaleString()}
 
 <button
 class="remove-btn"
@@ -166,7 +228,7 @@ onclick="removeFromCart(${index})">
 
 </button>
 
-</span>
+</div>
 
 </div>
 
@@ -174,10 +236,15 @@ onclick="removeFromCart(${index})">
 
 });
 
-cartTotal.innerText =
-`Total: ₦${total.toLocaleString()}`;
+subtotal.innerText =
+`Subtotal: ₦${grandTotal.toLocaleString()}`;
+
+total.innerText =
+`Grand Total: ₦${grandTotal.toLocaleString()}`;
 
 }
+
+updateCart();
 
 function checkoutWhatsApp(){
 
@@ -209,6 +276,10 @@ return;
 
 }
 
+alert(
+"Thank you for shopping with Blushoria ✨"
+);
+
 let message =
 `Hello Blushoria Store,%0A%0A`;
 
@@ -234,15 +305,21 @@ let total = 0;
 
 cart.forEach(item=>{
 
-message +=
-`- ${item.name} (₦${item.price})%0A`;
+const itemTotal =
+item.price * item.qty;
 
-total += item.price;
+message +=
+`- ${item.name}
+x${item.qty}
+(₦${itemTotal})%0A`;
+
+total += itemTotal;
 
 });
 
 message +=
-`%0ATotal Product Cost: ₦${total.toLocaleString()}`;
+`%0ATotal Product Cost:
+₦${total.toLocaleString()}`;
 
 window.open(
 `https://wa.me/2347012620748?text=${message}`,
@@ -288,5 +365,38 @@ product.category === category
 );
 
 renderProducts(filtered);
+
+}
+
+function addReview(){
+
+const review =
+document.getElementById(
+"reviewInput"
+).value;
+
+if(review === "") return;
+
+document.getElementById(
+"reviewsContainer"
+).innerHTML += `
+
+<div class="review-card">
+
+★★★★★ ${review}
+
+</div>
+
+`;
+
+document.getElementById(
+"reviewInput"
+).value = "";
+
+}
+
+function openImage(image){
+
+window.open(image,"_blank");
 
 }
