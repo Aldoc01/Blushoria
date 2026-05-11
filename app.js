@@ -1,112 +1,110 @@
 const products = [
   {
+    id: 1,
     name: "Magic Lipgloss",
     price: 1500,
     image: "product1.jpg",
-    description: "Glossy pink mirror lip oil ✨"
+    desc: "Glossy pink mirror lip oil ✨"
   },
-
   {
+    id: 2,
     name: "Mini Perfume",
     price: 3000,
     image: "product2.jpg",
-    description: "Soft feminine fragrance 💕"
+    desc: "Soft feminine fragrance 💕"
   },
-
   {
+    id: 3,
     name: "Girlie Lip Balm",
     price: 1800,
     image: "product3.jpg",
-    description: "Soft pink glossy lips 🎀"
+    desc: "Soft pink glossy lips 🎀"
   },
-
   {
-    name: "Glow Face Mask",
+    id: 4,
+    name: "Lip Mask",
     price: 1200,
     image: "product4.jpg",
-    description: "Soft skincare glow masks 🌸"
+    desc: "Overnight lip repair 💖"
   },
-
   {
-    name: "Cute Beauty Set",
-    price: 4500,
+    id: 5,
+    name: "Facial Mask Pack",
+    price: 2500,
     image: "product5.jpg",
-    description: "Luxury beauty essentials ✨"
+    desc: "Cute skincare bundle ✨"
   },
-
   {
-    name: "Pink Makeup Kit",
-    price: 5500,
+    id: 6,
+    name: "Pink Beauty Set",
+    price: 5000,
     image: "product6.jpg",
-    description: "Everything cute and feminine 💖"
+    desc: "Luxury girly collection 💕"
   },
-
   {
-    name: "Soft Girl Package",
-    price: 7000,
+    id: 7,
+    name: "Soft Gloss Oil",
+    price: 1700,
     image: "product7.jpg",
-    description: "Aesthetic beauty combo 🎀"
+    desc: "Hydrating glossy lips 💄"
   },
-
   {
-    name: "Luxury Spa Set",
-    price: 8500,
+    id: 8,
+    name: "Beauty Essentials",
+    price: 4000,
     image: "product8.jpg",
-    description: "Relax and glow ✨"
+    desc: "Cute aesthetic essentials 🎀"
   },
-
   {
-    name: "Princess Collection",
-    price: 9500,
+    id: 9,
+    name: "Pink Glow Kit",
+    price: 4500,
     image: "product9.jpg",
-    description: "Girlie luxury products 👑"
+    desc: "Glow-up skincare combo ✨"
   },
-
   {
-    name: "Blushoria Premium Box",
-    price: 12000,
+    id: 10,
+    name: "Luxury Beauty Box",
+    price: 7000,
     image: "product10.jpg",
-    description: "Ultimate feminine collection 💕"
+    desc: "Full feminine beauty package 💕"
   }
 ];
 
-let cart = [];
-
-const productsContainer = document.getElementById("products");
+const productContainer = document.getElementById("products");
 const cartTotal = document.getElementById("cart-total");
 
-function displayProducts() {
-  productsContainer.innerHTML = "";
+let cart = [];
 
-  products.forEach((product, index) => {
-    const productCard = document.createElement("div");
+function renderProducts() {
+  productContainer.innerHTML = "";
 
-    productCard.classList.add("product-card");
+  products.forEach(product => {
+    const card = document.createElement("div");
+    card.className = "product-card";
 
-    productCard.innerHTML = `
+    card.innerHTML = `
       <img src="${product.image}" alt="${product.name}">
-      
       <div class="product-info">
         <h2>${product.name}</h2>
-        <p>${product.description}</p>
+        <p>${product.desc}</p>
         <h3>₦${product.price.toLocaleString()}</h3>
-
-        <button onclick="addToCart(${index})">
+        <button onclick="addToCart(${product.id})">
           Add To Cart
         </button>
       </div>
     `;
 
-    productsContainer.appendChild(productCard);
+    productContainer.appendChild(card);
   });
 }
 
-function addToCart(index) {
-  cart.push(products[index]);
+function addToCart(id) {
+  const item = products.find(p => p.id === id);
+
+  cart.push(item);
 
   updateCart();
-
-  alert(products[index].name + " added to cart 💕");
 }
 
 function updateCart() {
@@ -119,32 +117,30 @@ function updateCart() {
   cartTotal.innerText = `₦${total.toLocaleString()}`;
 }
 
-function orderOnWhatsApp() {
+function orderWhatsApp() {
   const name = document.getElementById("customer-name").value;
   const phone = document.getElementById("customer-phone").value;
 
   if (cart.length === 0) {
-    alert("Your cart is empty.");
+    alert("Your cart is empty");
     return;
   }
 
-  let message = `🛍️ *NEW ORDER - BLUSHORIA* %0A%0A`;
+  let message = "🌸 BLUSHORIA ORDER 🌸%0A%0A";
 
   message += `👩 Name: ${name}%0A`;
   message += `📞 Phone: ${phone}%0A%0A`;
 
-  message += `✨ ORDER ITEMS ✨%0A`;
+  message += "🛍 Products:%0A";
 
   let total = 0;
 
   cart.forEach(item => {
     message += `• ${item.name} - ₦${item.price}%0A`;
-
     total += item.price;
   });
 
-  message += `%0A💰 Total: ₦${total.toLocaleString()}%0A`;
-  message += `%0A📍 Delivery fee depends on location`;
+  message += `%0A💰 Total: ₦${total}`;
 
   const whatsappNumber = "234XXXXXXXXXX";
 
@@ -154,4 +150,4 @@ function orderOnWhatsApp() {
   );
 }
 
-displayProducts();
+renderProducts();
