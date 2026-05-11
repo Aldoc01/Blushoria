@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
   <title>BLUSHORIA</title>
-  <link rel="stylesheet" href="styles.css"/>
+
+  <link rel="stylesheet" href="styles.css">
+
 </head>
+
 <body>
 
   <!-- HEADER -->
@@ -22,9 +31,9 @@
 
     <input
       type="text"
-      placeholder="Search beauty products..."
+      placeholder="Search products..."
       class="search-box"
-    />
+    >
 
   </header>
 
@@ -32,20 +41,50 @@
 
   <section class="hero">
 
-    <h1>
-      Glow Naturally ✨
-    </h1>
+    <div class="overlay"></div>
 
-    <p>
-      Luxury Korean Beauty, Lip Oils,
-      Aesthetic Girlie Essentials & Skincare
-    </p>
+    <div class="hero-content">
 
-    <a href="#products">
-      <button class="shop-btn">
-        Shop Now
-      </button>
-    </a>
+      <h1>
+        Glow Naturally ✨
+      </h1>
+
+      <p>
+        Cute lip oils, aesthetic skincare,
+        glossy essentials & soft girl luxury vibes 💖
+      </p>
+
+      <a href="#products">
+
+        <button class="shop-btn">
+          Shop Now
+        </button>
+
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- FEATURES -->
+
+  <section class="features">
+
+    <div class="feature-box">
+      ✨ Aesthetic Products
+    </div>
+
+    <div class="feature-box">
+      🚚 Nationwide Delivery
+    </div>
+
+    <div class="feature-box">
+      💖 Soft Girl Essentials
+    </div>
+
+    <div class="feature-box">
+      🇳🇬 Nigerian Store
+    </div>
 
   </section>
 
@@ -54,7 +93,7 @@
   <section class="products" id="products">
 
     <h2>
-      Featured Products 💖
+      Trending Products 💖
     </h2>
 
     <div class="product-grid">
@@ -62,145 +101,433 @@
       <!-- PRODUCT 1 -->
 
       <div class="product-card">
-        <img src="product1.jpg">
-        <h3>Luxury Lip Masks</h3>
-        <p>Soft glossy lip treatment essentials</p>
-        <span>₦4,500</span>
 
-        <a href="https://wa.me/2347012620748?text=Hi%20I%20want%20to%20order%20Luxury%20Lip%20Masks">
-          <button>Order Now</button>
-        </a>
+        <img src="product1.jpg">
+
+        <h3>
+          Lip Masks
+        </h3>
+
+        <p>
+          Soft glossy lip care essentials.
+        </p>
+
+        <span>
+          ₦400
+        </span>
+
+        <button
+          onclick="addToCart('Lip Masks',400)"
+        >
+          Add To Cart
+        </button>
+
       </div>
 
       <!-- PRODUCT 2 -->
 
       <div class="product-card">
-        <img src="product2.jpg">
-        <h3>SADOER Face Masks</h3>
-        <p>Korean skincare sheet masks</p>
-        <span>₦3,500</span>
 
-        <a href="https://wa.me/2347012620748?text=Hi%20I%20want%20to%20order%20SADOER%20Face%20Masks">
-          <button>Order Now</button>
-        </a>
+        <img src="product2.jpg">
+
+        <h3>
+          Sadoer Face Mask Sheet
+        </h3>
+
+        <p>
+          Hydrating Korean skincare mask.
+        </p>
+
+        <span>
+          ₦400
+        </span>
+
+        <button
+          onclick="addToCart('Sadoer Face Mask Sheet',400)"
+        >
+          Add To Cart
+        </button>
+
       </div>
 
       <!-- PRODUCT 3 -->
 
       <div class="product-card">
-        <img src="product3.jpg">
-        <h3>Acne Repair Mask</h3>
-        <p>Hydrating skincare essentials</p>
-        <span>₦5,000</span>
 
-        <a href="https://wa.me/2347012620748?text=Hi%20I%20want%20to%20order%20Acne%20Repair%20Mask">
-          <button>Order Now</button>
-        </a>
+        <img src="product3.jpg">
+
+        <h3>
+          Salicylic Acid Face Mask
+        </h3>
+
+        <p>
+          Acne repair skincare treatment.
+        </p>
+
+        <span>
+          ₦400
+        </span>
+
+        <button
+          onclick="addToCart('Salicylic Acid Face Mask',400)"
+        >
+          Add To Cart
+        </button>
+
       </div>
 
       <!-- PRODUCT 4 -->
 
       <div class="product-card">
-        <img src="product4.jpg">
-        <h3>Vitamin C Facial Masks</h3>
-        <p>Brightening Korean skincare</p>
-        <span>₦5,500</span>
 
-        <a href="https://wa.me/2347012620748?text=Hi%20I%20want%20to%20order%20Vitamin%20C%20Masks">
-          <button>Order Now</button>
-        </a>
+        <img src="product4.jpg">
+
+        <h3>
+          Sadoer Face Masks
+        </h3>
+
+        <p>
+          Moisturizing facial sheet masks.
+        </p>
+
+        <span>
+          ₦400
+        </span>
+
+        <button
+          onclick="addToCart('Sadoer Face Masks',400)"
+        >
+          Add To Cart
+        </button>
+
       </div>
 
       <!-- PRODUCT 5 -->
 
       <div class="product-card">
-        <img src="product5.jpg">
-        <h3>Aesthetic Lip Oils</h3>
-        <p>Luxury glossy lip oils</p>
-        <span>₦6,000</span>
 
-        <a href="https://wa.me/2347012620748?text=Hi%20I%20want%20to%20order%20Aesthetic%20Lip%20Oils">
-          <button>Order Now</button>
-        </a>
+        <img src="product5.jpg">
+
+        <h3>
+          Cute Lipgloss
+        </h3>
+
+        <p>
+          Glitter glossy soft girl lip shine.
+        </p>
+
+        <span>
+          ₦1,200
+        </span>
+
+        <button
+          onclick="addToCart('Cute Lipgloss',1200)"
+        >
+          Add To Cart
+        </button>
+
       </div>
 
       <!-- PRODUCT 6 -->
 
       <div class="product-card">
-        <img src="product6.jpg">
-        <h3>Cherry Lip Oil</h3>
-        <p>Girlie shiny lip glow</p>
-        <span>₦4,000</span>
 
-        <a href="https://wa.me/2347012620748?text=Hi%20I%20want%20to%20order%20Cherry%20Lip%20Oil">
-          <button>Order Now</button>
-        </a>
+        <img src="product6.jpg">
+
+        <h3>
+          Clear Lip Gloss With Mirror
+        </h3>
+
+        <p>
+          Cute aesthetic mirror lip gloss.
+        </p>
+
+        <span>
+          ₦1,500
+        </span>
+
+        <button
+          onclick="addToCart('Clear Lip Gloss With Mirror',1500)"
+        >
+          Add To Cart
+        </button>
+
       </div>
 
       <!-- PRODUCT 7 -->
 
       <div class="product-card">
-        <img src="product7.jpg">
-        <h3>Nude Lip Gloss Set</h3>
-        <p>Soft glam nude collection</p>
-        <span>₦8,500</span>
 
-        <a href="https://wa.me/2347012620748?text=Hi%20I%20want%20to%20order%20Nude%20Lip%20Gloss%20Set">
-          <button>Order Now</button>
-        </a>
+        <img src="product7.jpg">
+
+        <h3>
+          Coloured Lipgloss
+        </h3>
+
+        <p>
+          Luxury colourful glossy lips.
+        </p>
+
+        <span>
+          ₦1,500
+        </span>
+
+        <button
+          onclick="addToCart('Coloured Lipgloss',1500)"
+        >
+          Add To Cart
+        </button>
+
       </div>
 
       <!-- PRODUCT 8 -->
 
       <div class="product-card">
-        <img src="product8.jpg">
-        <h3>Hydra Kiss Lip Oil</h3>
-        <p>Luxury hydrating lip oils</p>
-        <span>₦5,500</span>
 
-        <a href="https://wa.me/2347012620748?text=Hi%20I%20want%20to%20order%20Hydra%20Kiss%20Lip%20Oil">
-          <button>Order Now</button>
-        </a>
+        <img src="product8.jpg">
+
+        <h3>
+          Mini Lipgloss
+        </h3>
+
+        <p>
+          Portable cute mini lip shine.
+        </p>
+
+        <span>
+          ₦1,000
+        </span>
+
+        <button
+          onclick="addToCart('Mini Lipgloss',1000)"
+        >
+          Add To Cart
+        </button>
+
       </div>
 
       <!-- PRODUCT 9 -->
 
       <div class="product-card">
-        <img src="product9.jpg">
-        <h3>Kawaii Lip Oils</h3>
-        <p>Cute aesthetic lip glosses</p>
-        <span>₦5,000</span>
 
-        <a href="https://wa.me/2347012620748?text=Hi%20I%20want%20to%20order%20Kawaii%20Lip%20Oils">
-          <button>Order Now</button>
-        </a>
+        <img src="product9.jpg">
+
+        <h3>
+          Magic Lipgloss
+        </h3>
+
+        <p>
+          Soft glossy magical lip glow.
+        </p>
+
+        <span>
+          ₦1,200
+        </span>
+
+        <button
+          onclick="addToCart('Magic Lipgloss',1200)"
+        >
+          Add To Cart
+        </button>
+
       </div>
 
       <!-- PRODUCT 10 -->
 
       <div class="product-card">
-        <img src="product10.jpg">
-        <h3>Fruit Lip Oils</h3>
-        <p>Sweet glossy aesthetic shine</p>
-        <span>₦4,500</span>
 
-        <a href="https://wa.me/2347012620748?text=Hi%20I%20want%20to%20order%20Fruit%20Lip%20Oils">
-          <button>Order Now</button>
-        </a>
+        <img src="product10.jpg">
+
+        <h3>
+          Magic Lipgloss With Mirror
+        </h3>
+
+        <p>
+          Luxury glossy mirror lip oil.
+        </p>
+
+        <span>
+          ₦1,500
+        </span>
+
+        <button
+          onclick="addToCart('Magic Lipgloss With Mirror',1500)"
+        >
+          Add To Cart
+        </button>
+
       </div>
 
     </div>
 
   </section>
 
-  <!-- WHATSAPP FLOAT -->
+  <!-- CART -->
+
+  <section class="cart-section">
+
+    <h2>
+      🛒 Your Cart
+    </h2>
+
+    <div id="cart-items"></div>
+
+    <h3>
+      Total:
+      ₦<span id="cart-total">0</span>
+    </h3>
+
+    <p class="delivery-note">
+      🚚 Waybill delivery fee depends on your location in Nigeria and will be discussed on WhatsApp.
+    </p>
+
+    <button
+      class="checkout-btn"
+      onclick="checkoutWhatsApp()"
+    >
+      Order On WhatsApp
+    </button>
+
+  </section>
+
+  <!-- REVIEWS -->
+
+  <section class="reviews">
+
+    <h2>
+      Customer Reviews ✨
+    </h2>
+
+    <div class="review-card">
+
+      ⭐⭐⭐⭐⭐
+
+      <p>
+        Everything is sooo cute 😍
+      </p>
+
+      <small>
+        - Amanda
+      </small>
+
+    </div>
+
+    <div class="review-card">
+
+      ⭐⭐⭐⭐⭐
+
+      <p>
+        Fast delivery and amazing products 💖
+      </p>
+
+      <small>
+        - Sophia
+      </small>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <p>
+      © 2025 BLUSHORIA ✨
+    </p>
+
+  </footer>
+
+  <!-- WHATSAPP -->
 
   <a
     href="https://wa.me/2347012620748"
     class="whatsapp"
+    target="_blank"
   >
     💬
   </a>
+
+  <!-- SCRIPT -->
+
+  <script>
+
+    let cart = [];
+    let total = 0;
+
+    function addToCart(name,price){
+
+      cart.push({
+        name:name,
+        price:price
+      });
+
+      total += price;
+
+      updateCart();
+
+    }
+
+    function updateCart(){
+
+      let cartItems =
+      document.getElementById("cart-items");
+
+      cartItems.innerHTML = "";
+
+      cart.forEach((item,index)=>{
+
+        cartItems.innerHTML +=
+        `
+        <div class="cart-item">
+
+          <p>
+            ${item.name}
+          </p>
+
+          <span>
+            ₦${item.price}
+          </span>
+
+        </div>
+        `;
+
+      });
+
+      document.getElementById(
+        "cart-total"
+      ).innerText = total;
+
+    }
+
+    function checkoutWhatsApp(){
+
+      let message =
+      "Hello Blushoria 💖%0A%0A";
+
+      message +=
+      "I want to order:%0A";
+
+      cart.forEach((item)=>{
+
+        message +=
+        `• ${item.name} - ₦${item.price}%0A`;
+
+      });
+
+      message +=
+      `%0ATotal: ₦${total}%0A%0A`;
+
+      message +=
+      "Delivery fee depends on location.";
+
+      window.open(
+        `https://wa.me/2347012620748?text=${message}`
+      );
+
+    }
+
+  </script>
 
 </body>
 </html>
