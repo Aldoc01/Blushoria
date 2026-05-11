@@ -75,4 +75,127 @@ const products = [
   {
     name: "Magic Lipgloss With Mirror",
     price: 1500,
-    image: "images/IMG-202605
+    image: "images/IMG-20260509-WA0045.jpg",
+    description:
+      "Luxury glossy lip oil with mirror packaging and sparkling shine."
+  }
+
+];
+
+const productGrid = document.getElementById("product-grid");
+
+let cart = [];
+
+products.forEach((product) => {
+
+  const card = document.createElement("div");
+
+  card.classList.add("product-card");
+
+  card.innerHTML = `
+
+    <img src="${product.image}" alt="${product.name}">
+
+    <div class="product-info">
+
+      <h3>${product.name}</h3>
+
+      <p>${product.description}</p>
+
+      <span class="price">
+        ₦${product.price.toLocaleString()}
+      </span>
+
+      <button onclick="addToCart('${product.name}', ${product.price})">
+        Add To Cart
+      </button>
+
+    </div>
+
+  `;
+
+  productGrid.appendChild(card);
+
+});
+
+function addToCart(name, price){
+
+  cart.push({
+    name,
+    price
+  });
+
+  alert(name + " added to cart ✨");
+
+}
+
+function orderOnWhatsApp(){
+
+  const name =
+    document.getElementById("customerName").value;
+
+  const phone =
+    document.getElementById("customerPhone").value;
+
+  const address =
+    document.getElementById("customerAddress").value;
+
+  if(
+    name === "" ||
+    phone === "" ||
+    address === ""
+  ){
+
+    alert("Please fill all fields");
+
+    return;
+
+  }
+
+  if(cart.length === 0){
+
+    alert("Your cart is empty");
+
+    return;
+
+  }
+
+  let message =
+`Hello Blushoria Store ✨
+
+CUSTOMER DETAILS
+
+Name: ${name}
+Phone: ${phone}
+Address: ${address}
+
+ORDER LIST
+`;
+
+  let total = 0;
+
+  cart.forEach((item) => {
+
+    message += `
+• ${item.name} - ₦${item.price}
+`;
+
+    total += item.price;
+
+  });
+
+  message += `
+
+TOTAL: ₦${total}
+
+Delivery fee depends on customer location in Nigeria 🇳🇬
+`;
+
+  const whatsappNumber = "2347012620748";
+
+  const whatsappURL =
+`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+  window.open(whatsappURL, "_blank");
+
+}
