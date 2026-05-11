@@ -1,47 +1,3 @@
-const products = [
-
-{
-name:"Lip Masks",
-price:400,
-category:"Mask",
-description:"Soft pink hydrating lip mask.",
-badge:"HOT 🔥",
-stock:"In Stock",
-image:"images/IMG-20260509-WA0034.jpg"
-},
-
-{
-name:"Sadoer Face Mask Sheet",
-price:400,
-category:"Mask",
-description:"Refreshing skincare sheet mask.",
-badge:"NEW",
-stock:"Only 3 Left",
-image:"images/IMG-20260509-WA0035.jpg"
-},
-
-{
-name:"Cute Lip Gloss",
-price:1200,
-category:"Lip Gloss",
-description:"Cute glossy shine lip gloss.",
-badge:"BEST SELLER",
-stock:"In Stock",
-image:"images/IMG-20260509-WA0041.jpg"
-},
-
-{
-name:"Magic Lip Gloss",
-price:1200,
-category:"Lip Gloss",
-description:"Magic colour changing lip gloss.",
-badge:"LIMITED",
-stock:"Only 2 Left",
-image:"images/IMG-20260510-WA0005.jpg"
-}
-
-];
-
 let cart =
 JSON.parse(localStorage.getItem("cart"))
 || [];
@@ -49,11 +5,18 @@ JSON.parse(localStorage.getItem("cart"))
 const productsContainer =
 document.getElementById("products");
 
-function renderProducts(filteredProducts){
+function loadProducts(){
 
 productsContainer.innerHTML = "";
 
-filteredProducts.forEach((product,index)=>{
+db.collection("products")
+.onSnapshot(snapshot=>{
+
+productsContainer.innerHTML = "";
+
+snapshot.forEach(doc=>{
+
+const product = doc.data();
 
 productsContainer.innerHTML += `
 
@@ -83,28 +46,11 @@ ${product.description}
 ${product.stock}
 </p>
 
-<div class="quantity-controls">
-
-<button onclick="changeQty(${index},-1)">
--
-</button>
-
-<span id="qty-${index}">
-1
-</span>
-
-<button onclick="changeQty(${index},1)">
-+
-</button>
-
-</div>
-
 <button
 class="add-btn"
 onclick="addToCart(
 '${product.name}',
-${product.price},
-${index}
+${product.price}
 )">
 
 Add To Cart
@@ -119,38 +65,18 @@ Add To Cart
 
 });
 
-}
-
-renderProducts(products);
-
-let quantities = {};
-
-function changeQty(index,change){
-
-if(!quantities[index]){
-quantities[index] = 1;
-}
-
-quantities[index] += change;
-
-if(quantities[index] < 1){
-quantities[index] = 1;
-}
-
-document.getElementById(
-`qty-${index}`
-).innerText = quantities[index];
+});
 
 }
 
-function addToCart(name,price,index){
+loadProducts();
 
-const qty = quantities[index] || 1;
+function addToCart(name,price){
 
 cart.push({
 name,
 price,
-qty
+qty:1
 });
 
 saveCart();
@@ -181,7 +107,9 @@ JSON.stringify(cart)
 function updateCart(){
 
 const cartItems =
-document.getElementById("cartItems");
+document.getElementById(
+"cartItems"
+);
 
 const subtotal =
 document.getElementById(
@@ -199,10 +127,7 @@ let grandTotal = 0;
 
 cart.forEach((item,index)=>{
 
-const itemTotal =
-item.price * item.qty;
-
-grandTotal += itemTotal;
+grandTotal += item.price;
 
 cartItems.innerHTML += `
 
@@ -212,13 +137,11 @@ cartItems.innerHTML += `
 
 ${item.name}
 
-x${item.qty}
-
 </div>
 
 <div>
 
-₦${itemTotal.toLocaleString()}
+₦${item.price}
 
 <button
 class="remove-btn"
@@ -237,10 +160,10 @@ onclick="removeFromCart(${index})">
 });
 
 subtotal.innerText =
-`Subtotal: ₦${grandTotal.toLocaleString()}`;
+`Subtotal: ₦${grandTotal}`;
 
 total.innerText =
-`Grand Total: ₦${grandTotal.toLocaleString()}`;
+`Grand Total: ₦${grandTotal}`;
 
 }
 
@@ -268,17 +191,31 @@ document.getElementById(
 "deliveryLocation"
 ).value;
 
-if(cart.length === 0){
+let total = 0;
 
-alert("Cart is empty");
+let orderItems = "";
 
-return;
+cart.forEach(item=>{
 
-}
+orderItems +=
+`${item.name} - ₦${item.price}\n`;
 
-alert(
-"Thank you for shopping with Blushoria ✨"
-);
+total += item.price;
+
+});
+
+db.collection("orders")
+.add({
+
+customer:name,
+phone:phone,
+address:address,
+location:location,
+items:cart,
+total:total,
+createdAt:new Date()
+
+});
 
 let message =
 `Hello Blushoria Store,%0A%0A`;
@@ -293,7 +230,7 @@ message +=
 `Address: ${address}%0A`;
 
 message +=
-`Customer Location: ${location}%0A`;
+`Location: ${location}%0A`;
 
 message +=
 `Waybill Fee: To Be Discussed%0A%0A`;
@@ -301,97 +238,21 @@ message +=
 message +=
 `ORDER:%0A`;
 
-let total = 0;
-
 cart.forEach(item=>{
 
-const itemTotal =
-item.price * item.qty;
-
 message +=
-`- ${item.name}
-x${item.qty}
-(₦${itemTotal})%0A`;
-
-total += itemTotal;
+`- ${item.name} (₦${item.price})%0A`;
 
 });
 
 message +=
-`%0ATotal Product Cost:
-₦${total.toLocaleString()}`;
+`%0ATotal:
+₦${total}`;
 
 window.open(
 `https://wa.me/2347012620748?text=${message}`,
 "_blank"
 );
-
-}
-
-function searchProducts(){
-
-const search =
-document.getElementById(
-"searchInput"
-).value.toLowerCase();
-
-const filtered =
-products.filter(product =>
-
-product.name.toLowerCase()
-.includes(search)
-
-);
-
-renderProducts(filtered);
-
-}
-
-function filterCategory(category){
-
-if(category === "All"){
-
-renderProducts(products);
-
-return;
-
-}
-
-const filtered =
-products.filter(product =>
-
-product.category === category
-
-);
-
-renderProducts(filtered);
-
-}
-
-function addReview(){
-
-const review =
-document.getElementById(
-"reviewInput"
-).value;
-
-if(review === "") return;
-
-document.getElementById(
-"reviewsContainer"
-).innerHTML += `
-
-<div class="review-card">
-
-★★★★★ ${review}
-
-</div>
-
-`;
-
-document.getElementById(
-"reviewInput"
-).value = "";
 
 }
 
