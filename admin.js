@@ -1,4 +1,5 @@
-const ADMIN_PASSWORD = "blushoriaadmin";
+const ADMIN_PASSWORD =
+"MySecretBeautyStore2026";
 
 function loginAdmin(){
 
