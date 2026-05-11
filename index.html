@@ -1,55 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blushoria ✨</title>
+
+<link rel="stylesheet" href="styles.css">
+
+</head>
 <body>
 
 <header>
 <h1>BLUSHORIA ✨</h1>
-<p>Girlie Essentials & Cute Aesthetics 💕</p>
+<p>Luxury girly essentials & aesthetics 💕</p>
 </header>
 
 <section class="products">
 
-<div class="product">
+<div class="product-card">
 <img src="product1.jpg">
+
 <div class="product-info">
-<h2>Magic Lipgloss</h2>
-<p>Glossy pink mirror lip oil ✨</p>
+<h2 class="product-title">Magic Lipgloss</h2>
+
+<p class="product-desc">
+Glossy pink mirror lip oil ✨
+</p>
+
 <div class="price">₦1,500</div>
+
 <button onclick="addToCart('Magic Lipgloss',1500)">
 Add To Cart
 </button>
 </div>
 </div>
 
-<div class="product">
+<div class="product-card">
 <img src="product2.jpg">
+
 <div class="product-info">
-<h2>Fruit Lip Oil</h2>
-<p>Hydrating glossy aesthetic lip oil 💖</p>
+<h2 class="product-title">Fruit Lip Oil</h2>
+
+<p class="product-desc">
+Hydrating glossy aesthetic lip oil 💖
+</p>
+
 <div class="price">₦2,000</div>
+
 <button onclick="addToCart('Fruit Lip Oil',2000)">
 Add To Cart
 </button>
 </div>
 </div>
 
-<div class="product">
+<div class="product-card">
 <img src="product3.jpg">
-<div class="product-info">
-<h2>Collagen Lip Mask</h2>
-<p>Soft pink overnight lip care 💕</p>
-<div class="price">₦1,800</div>
-<button onclick="addToCart('Lip Mask',1800)">
-Add To Cart
-</button>
-</div>
-</div>
 
-<div class="product">
-<img src="product4.jpg">
 <div class="product-info">
-<h2>Hydrating Sheet Mask</h2>
-<p>Luxury self-care skincare ✨</p>
-<div class="price">₦2,500</div>
-<button onclick="addToCart('Sheet Mask',2500)">
+<h2 class="product-title">Pink Sheet Mask</h2>
+
+<p class="product-desc">
+Soft skincare glow masks 🌸
+</p>
+
+<div class="price">₦1,200</div>
+
+<button onclick="addToCart('Pink Sheet Mask',1200)">
 Add To Cart
 </button>
 </div>
@@ -57,8 +73,9 @@ Add To Cart
 
 </section>
 
-<div class="cart">
-<h3>🛒 Your Cart</h3>
+<section class="cart">
+
+<h2>🛒 Your Cart</h2>
 
 <div id="cart-items"></div>
 
@@ -66,24 +83,29 @@ Add To Cart
 Total: ₦<span id="cart-total">0</span>
 </div>
 
-<a id="whatsapp-order"
+<a
+id="whatsapp-order"
 class="whatsapp-btn"
-target="_blank">
+target="_blank"
+>
 Order On WhatsApp
 </a>
-</div>
+
+</section>
 
 <section class="reviews">
 
 <h2>Customer Reviews ✨</h2>
 
 <div class="review">
-<p>Everything is sooo cute 😍💕</p>
+<p>⭐⭐⭐⭐⭐</p>
+<p>Everything is sooo cute 😍</p>
 <span>- Amanda</span>
 </div>
 
 <div class="review">
-<p>Fast delivery and amazing quality ✨</p>
+<p>⭐⭐⭐⭐⭐</p>
+<p>Fast delivery and amazing products 💖</p>
 <span>- Sophia</span>
 </div>
 
@@ -96,3 +118,4 @@ Order On WhatsApp
 <script src="app.js"></script>
 
 </body>
+</html>
