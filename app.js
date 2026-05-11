@@ -5,6 +5,8 @@ JSON.parse(localStorage.getItem("cart"))
 const productsContainer =
 document.getElementById("products");
 
+/* LOAD PRODUCTS */
+
 function loadProducts(){
 
 productsContainer.innerHTML = "";
@@ -71,6 +73,8 @@ Add To Cart
 
 loadProducts();
 
+/* CART */
+
 function addToCart(name,price){
 
 cart.push({
@@ -79,7 +83,6 @@ price
 });
 
 saveCart();
-
 updateCart();
 
 }
@@ -89,7 +92,6 @@ function removeFromCart(index){
 cart.splice(index,1);
 
 saveCart();
-
 updateCart();
 
 }
@@ -125,9 +127,13 @@ cartItems.innerHTML = "";
 if(cart.length === 0){
 
 cartItems.innerHTML = `
+
 <p class="empty-cart">
+
 Your cart is empty 🛒
+
 </p>
+
 `;
 
 }
@@ -178,6 +184,8 @@ total.innerText =
 
 updateCart();
 
+/* CHECKOUT */
+
 function checkoutWhatsApp(){
 
 const name =
@@ -207,10 +215,6 @@ alert("Cart is empty");
 return;
 
 }
-
-alert(
-"Thank you for shopping with Blushoria ✨"
-);
 
 let total = 0;
 
@@ -268,6 +272,8 @@ window.open(
 
 }
 
+/* SEARCH */
+
 function searchProducts(){
 
 const search =
@@ -290,45 +296,7 @@ product.name.toLowerCase()
 .includes(search)
 ){
 
-productsContainer.innerHTML += `
-
-<div class="card">
-
-<img
-src="${product.image}">
-
-<div class="card-content">
-
-<div class="badge">
-${product.badge}
-</div>
-
-<h3>${product.name}</h3>
-
-<p class="desc">
-${product.description}
-</p>
-
-<p class="price">
-₦${product.price}
-</p>
-
-<button
-class="add-btn"
-onclick="addToCart(
-'${product.name}',
-${product.price}
-)">
-
-Add To Cart
-
-</button>
-
-</div>
-
-</div>
-
-`;
+displayProduct(product);
 
 }
 
@@ -337,6 +305,8 @@ Add To Cart
 });
 
 }
+
+/* CATEGORY */
 
 function filterCategory(category){
 
@@ -355,12 +325,27 @@ category === "All" ||
 product.category === category
 ){
 
+displayProduct(product);
+
+}
+
+});
+
+});
+
+}
+
+/* DISPLAY PRODUCT */
+
+function displayProduct(product){
+
 productsContainer.innerHTML += `
 
 <div class="card">
 
 <img
-src="${product.image}">
+src="${product.image}"
+onclick="openImage('${product.image}')">
 
 <div class="card-content">
 
@@ -376,6 +361,10 @@ ${product.description}
 
 <p class="price">
 ₦${product.price}
+</p>
+
+<p class="stock">
+${product.stock}
 </p>
 
 <button
@@ -397,11 +386,7 @@ Add To Cart
 
 }
 
-});
-
-});
-
-}
+/* REVIEWS */
 
 function addReview(){
 
@@ -429,6 +414,8 @@ document.getElementById(
 ).value = "";
 
 }
+
+/* OPEN IMAGE */
 
 function openImage(image){
 
