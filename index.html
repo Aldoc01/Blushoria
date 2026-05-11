@@ -7,20 +7,65 @@
 
   <link rel="stylesheet" href="styles.css"/>
 
-  <!-- Firebase CDN -->
+  <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-
 </head>
+
 <body>
 
   <header>
-    <h1>Blushoria Store</h1>
+    <h1>✨ Blushoria Store</h1>
+    <p>Luxury Beauty Products</p>
   </header>
 
-  <main>
-    <div id="products-container" class="products-grid"></div>
-  </main>
+  <section class="hero">
+    <h2>Glow With Confidence 💄</h2>
+    <p>Shop luxury beauty products in Nigeria.</p>
+  </section>
+
+  <section class="products">
+
+    <div class="card">
+      <img src="images/IMG-20260509-WA0044.jpg">
+      <h3>Luxury Lip Gloss</h3>
+      <p>₦8,000</p>
+      <button onclick="addToCart('Luxury Lip Gloss', 8000)">
+        Add to Cart
+      </button>
+    </div>
+
+    <div class="card">
+      <img src="images/IMG-20260510-WA0005.jpg">
+      <h3>Beauty Powder Kit</h3>
+      <p>₦15,000</p>
+      <button onclick="addToCart('Beauty Powder Kit', 15000)">
+        Add to Cart
+      </button>
+    </div>
+
+    <div class="card">
+      <img src="images/IMG-20260509-WA0021.jpg">
+      <h3>Matte Foundation</h3>
+      <p>₦12,000</p>
+      <button onclick="addToCart('Matte Foundation', 12000)">
+        Add to Cart
+      </button>
+    </div>
+
+  </section>
+
+  <section class="cart">
+    <h2>🛒 Cart</h2>
+
+    <div id="cart-items"></div>
+
+    <h3 id="total">Total: ₦0</h3>
+
+    <button class="whatsapp-btn" onclick="checkoutWhatsApp()">
+      Order via WhatsApp
+    </button>
+  </section>
 
   <script src="firebase.js"></script>
   <script src="app.js"></script>
