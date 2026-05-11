@@ -35,6 +35,18 @@ onkeyup="searchProducts()">
 
 </header>
 
+<section class="hero">
+
+<h2>
+Glow Naturally With Blushoria ✨
+</h2>
+
+<p>
+Luxury beauty products in Nigeria 🇳🇬
+</p>
+
+</section>
+
 <section class="categories">
 
 <button onclick="filterCategory('All')">
@@ -67,9 +79,18 @@ id="products">
 
 <div id="cartItems"></div>
 
-<h3 id="cartTotal">
-Total: ₦0
+<h3 id="cartSubtotal">
+Subtotal: ₦0
 </h3>
+
+<h3>
+Waybill:
+To Be Discussed
+</h3>
+
+<h2 id="cartTotal">
+Grand Total: ₦0
+</h2>
 
 <input
 type="text"
@@ -122,11 +143,33 @@ Order Via WhatsApp
 
 </section>
 
+<section class="instagram">
+
+<h2>
+Instagram Style Gallery ✨
+</h2>
+
+<div class="insta-grid">
+
+<img src="images/IMG-20260509-WA0041.jpg">
+
+<img src="images/IMG-20260509-WA0044.jpg">
+
+<img src="images/IMG-20260510-WA0003.jpg">
+
+<img src="images/IMG-20260510-WA0004.jpg">
+
+</div>
+
+</section>
+
 <section class="reviews">
 
 <h2>
 Customer Reviews ✨
 </h2>
+
+<div id="reviewsContainer">
 
 <div class="review-card">
 ★★★★★ Amazing quality products!
@@ -136,9 +179,16 @@ Customer Reviews ✨
 ★★★★★ Fast delivery in Nigeria 🇳🇬
 </div>
 
-<div class="review-card">
-★★★★★ Luxury packaging 😍
 </div>
+
+<input
+type="text"
+id="reviewInput"
+placeholder="Write a review...">
+
+<button onclick="addReview()">
+Submit Review
+</button>
 
 </section>
 
