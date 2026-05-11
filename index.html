@@ -5,41 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Blushoria Store</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"/>
 
-  <link rel="stylesheet" href="styles.css">
-
-  <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
 </head>
 
 <body>
 
   <!-- NAVBAR -->
   <header class="navbar">
-    <div class="logo">
+    <div class="logo-area">
       <img src="images/logo.jpg" alt="Blushoria Logo">
     </div>
 
     <nav>
-      <a href="#">HOME</a>
-      <a href="#products">SHOP</a>
-      <a href="#categories">CATEGORIES</a>
-      <a href="#reviews">REVIEWS</a>
-      <a href="#contact">CONTACT</a>
+      <a href="#">Home</a>
+      <a href="#">Shop</a>
+      <a href="#">Categories</a>
+      <a href="#">New Arrivals</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
     </nav>
 
-    <div class="cart-icon">
-      🛒 <span id="cart-count">0</span>
+    <div class="nav-icons">
+      <i class="fas fa-search"></i>
+      <i class="far fa-user"></i>
+      <i class="fas fa-shopping-bag"></i>
     </div>
   </header>
 
   <!-- HERO -->
   <section class="hero">
-
-    <div class="hero-overlay"></div>
+    <div class="overlay"></div>
 
     <div class="hero-content">
       <h4>WELCOME TO</h4>
@@ -48,181 +48,80 @@
 
       <h2>STORE</h2>
 
-      <p>
-        All Things Beauty. All In One Place.
-        Premium skincare, lip gloss, perfumes,
-        feminine accessories & luxury beauty products.
+      <p class="tagline">
+        ALL THINGS BEAUTY. ALL IN ONE PLACE.
       </p>
 
-      <a href="#products" class="shop-btn">
+      <p class="desc">
+        Your ultimate destination for premium beauty,
+        skincare, fashion, accessories and more.
+        Quality you love. Prices you'll adore.
+      </p>
+
+      <a href="#" class="btn">
         SHOP NOW →
       </a>
+    </div>
+  </section>
 
-      <div class="hero-features">
+  <!-- FEATURES -->
+  <section class="features">
 
-        <div>
-          ✨
-          <span>Premium Quality</span>
-        </div>
-
-        <div>
-          🚚
-          <span>Fast Delivery</span>
-        </div>
-
-        <div>
-          💎
-          <span>Luxury Beauty</span>
-        </div>
-
-        <div>
-          💬
-          <span>Customer Support</span>
-        </div>
-
-      </div>
-
+    <div class="feature-box">
+      <i class="fas fa-award"></i>
+      <h3>Premium Quality</h3>
     </div>
 
-  </section>
+    <div class="feature-box">
+      <i class="fas fa-truck"></i>
+      <h3>Fast Delivery</h3>
+    </div>
 
-  <!-- SEARCH -->
-  <section class="search-section">
+    <div class="feature-box">
+      <i class="fas fa-shield-heart"></i>
+      <h3>Trusted Store</h3>
+    </div>
 
-    <input
-      type="text"
-      id="searchInput"
-      placeholder="Search beauty products..."
-    >
-
-  </section>
-
-  <!-- CATEGORIES -->
-  <section id="categories" class="categories">
-
-    <h2>Shop By Categories ✨</h2>
-
-    <div class="category-grid">
-
-      <div class="category-card">
-        <img src="images/category1.jpg">
-        <p>Lip Gloss</p>
-      </div>
-
-      <div class="category-card">
-        <img src="images/category2.jpg">
-        <p>Skincare</p>
-      </div>
-
-      <div class="category-card">
-        <img src="images/category3.jpg">
-        <p>Perfumes</p>
-      </div>
-
-      <div class="category-card">
-        <img src="images/category4.jpg">
-        <p>Beauty Essentials</p>
-      </div>
-
+    <div class="feature-box">
+      <i class="fas fa-headset"></i>
+      <h3>24/7 Support</h3>
     </div>
 
   </section>
 
   <!-- PRODUCTS -->
-  <section id="products" class="products-section">
+  <section class="products">
 
     <h2>Featured Products ✨</h2>
 
-    <div id="products-container" class="products-grid"></div>
+    <div class="product-grid">
 
-  </section>
-
-  <!-- CART -->
-  <section class="cart-section">
-
-    <h2>🛒 Shopping Cart</h2>
-
-    <div id="cart-items"></div>
-
-    <div class="cart-total">
-      Total: ₦<span id="cart-total">0</span>
-    </div>
-
-    <div class="delivery-note">
-      🚚 Waybill delivery fee depends on your location in Nigeria and will be discussed on WhatsApp.
-    </div>
-
-    <form id="checkout-form">
-
-      <input
-        type="text"
-        id="customerName"
-        placeholder="Your Name"
-        required
-      >
-
-      <input
-        type="tel"
-        id="customerPhone"
-        placeholder="Phone Number"
-        required
-      >
-
-      <textarea
-        id="customerAddress"
-        placeholder="Delivery Address"
-        required
-      ></textarea>
-
-      <button type="submit">
-        Order Via WhatsApp
-      </button>
-
-    </form>
-
-  </section>
-
-  <!-- GALLERY -->
-  <section class="gallery">
-
-    <h2>Instagram Beauty Gallery ✨</h2>
-
-    <div class="gallery-grid">
-
-      <img src="images/gallery1.jpg">
-      <img src="images/gallery2.jpg">
-      <img src="images/gallery3.jpg">
-      <img src="images/gallery4.jpg">
-      <img src="images/gallery5.jpg">
-      <img src="images/gallery6.jpg">
-
-    </div>
-
-  </section>
-
-  <!-- REVIEWS -->
-  <section id="reviews" class="reviews">
-
-    <h2>Customer Reviews ✨</h2>
-
-    <div class="reviews-grid">
-
-      <div class="review-card">
-        ⭐⭐⭐⭐⭐
-        <p>Amazing quality products!</p>
-        <span>- Amanda</span>
+      <div class="product-card">
+        <img src="images/IMG-20260509-WA0021.jpg">
+        <h3>Luxury Lip Gloss</h3>
+        <p>₦1,500</p>
+        <button>Add To Cart</button>
       </div>
 
-      <div class="review-card">
-        ⭐⭐⭐⭐⭐
-        <p>Very fast delivery in Nigeria 🇳🇬</p>
-        <span>- Chioma</span>
+      <div class="product-card">
+        <img src="images/IMG-20260509-WA0034.jpg">
+        <h3>Glow Serum</h3>
+        <p>₦3,500</p>
+        <button>Add To Cart</button>
       </div>
 
-      <div class="review-card">
-        ⭐⭐⭐⭐⭐
-        <p>The lip gloss is soooo pretty 😍</p>
-        <span>- Blessing</span>
+      <div class="product-card">
+        <img src="images/IMG-20260509-WA0035.jpg">
+        <h3>Night Cream</h3>
+        <p>₦2,800</p>
+        <button>Add To Cart</button>
+      </div>
+
+      <div class="product-card">
+        <img src="images/IMG-20260509-WA0036.jpg">
+        <h3>Beauty Essentials</h3>
+        <p>₦4,000</p>
+        <button>Add To Cart</button>
       </div>
 
     </div>
@@ -230,39 +129,23 @@
   </section>
 
   <!-- FOOTER -->
-  <footer id="contact">
-
-    <div class="footer-logo">
-      Blushoria Store
-    </div>
+  <footer>
+    <h2>Blushoria Store</h2>
 
     <p>
       Luxury Beauty Store In Nigeria 🇳🇬
     </p>
 
-    <p>
-      WhatsApp:
-      +2347012620748
-    </p>
+    <div class="socials">
+      <i class="fab fa-whatsapp"></i>
+      <i class="fab fa-instagram"></i>
+      <i class="fab fa-facebook"></i>
+    </div>
 
-    <p>
-      Instagram:
-      @blushoria
+    <p class="copy">
+      © 2026 Blushoria Store. All Rights Reserved.
     </p>
-
   </footer>
-
-  <!-- FLOATING WHATSAPP -->
-  <a
-    href="https://wa.me/2347012620748"
-    class="floating-whatsapp"
-    target="_blank"
-  >
-    💬
-  </a>
-
-  <script src="firebase.js"></script>
-  <script src="app.js"></script>
 
 </body>
 </html>
