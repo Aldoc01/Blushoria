@@ -1,19 +1,15 @@
 import {
-  db
-} from "./firebase.js";
-
-import {
   collection,
   getDocs
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-const productsContainer =
-document.getElementById("products");
+import { db } from "./firebase-config.js";
+
+const productsContainer = document.getElementById("products-container");
 
 async function loadProducts(){
 
-  const querySnapshot =
-  await getDocs(collection(db,"products"));
+  const querySnapshot = await getDocs(collection(db,"products"));
 
   productsContainer.innerHTML = "";
 
@@ -23,32 +19,23 @@ async function loadProducts(){
 
     productsContainer.innerHTML += `
 
-    <div class="product-card">
+      <div class="product-card">
 
-      <img src="${product.image}" />
+        <img src="${product.image}" />
 
-      <div class="product-info">
+        <div class="product-info">
 
-        <h3>${product.name}</h3>
+          <h3>${product.name}</h3>
 
-        <p class="price">
-        $${product.price}
-        </p>
+          <p>${product.description}</p>
 
-        <p>
-        ${product.description}
-        </p>
+          <div class="price">
+            UGX ${product.price}
+          </div>
 
-        <br>
-
-        <button class="buy-btn">
-        Add To Cart
-        </button>
+        </div>
 
       </div>
-
-    </div>
-
     `;
   });
 }
