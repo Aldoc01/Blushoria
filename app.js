@@ -1,82 +1,157 @@
+const products = [
+  {
+    name: "Magic Lipgloss",
+    price: 1500,
+    image: "product1.jpg",
+    description: "Glossy pink mirror lip oil ✨"
+  },
+
+  {
+    name: "Mini Perfume",
+    price: 3000,
+    image: "product2.jpg",
+    description: "Soft feminine fragrance 💕"
+  },
+
+  {
+    name: "Girlie Lip Balm",
+    price: 1800,
+    image: "product3.jpg",
+    description: "Soft pink glossy lips 🎀"
+  },
+
+  {
+    name: "Glow Face Mask",
+    price: 1200,
+    image: "product4.jpg",
+    description: "Soft skincare glow masks 🌸"
+  },
+
+  {
+    name: "Cute Beauty Set",
+    price: 4500,
+    image: "product5.jpg",
+    description: "Luxury beauty essentials ✨"
+  },
+
+  {
+    name: "Pink Makeup Kit",
+    price: 5500,
+    image: "product6.jpg",
+    description: "Everything cute and feminine 💖"
+  },
+
+  {
+    name: "Soft Girl Package",
+    price: 7000,
+    image: "product7.jpg",
+    description: "Aesthetic beauty combo 🎀"
+  },
+
+  {
+    name: "Luxury Spa Set",
+    price: 8500,
+    image: "product8.jpg",
+    description: "Relax and glow ✨"
+  },
+
+  {
+    name: "Princess Collection",
+    price: 9500,
+    image: "product9.jpg",
+    description: "Girlie luxury products 👑"
+  },
+
+  {
+    name: "Blushoria Premium Box",
+    price: 12000,
+    image: "product10.jpg",
+    description: "Ultimate feminine collection 💕"
+  }
+];
+
 let cart = [];
-let total = 0;
 
-function addToCart(product, price){
+const productsContainer = document.getElementById("products");
+const cartTotal = document.getElementById("cart-total");
 
-  cart.push({
-    product,
-    price
-  });
+function displayProducts() {
+  productsContainer.innerHTML = "";
 
-  total += price;
+  products.forEach((product, index) => {
+    const productCard = document.createElement("div");
 
-  displayCart();
-}
+    productCard.classList.add("product-card");
 
-function displayCart(){
+    productCard.innerHTML = `
+      <img src="${product.image}" alt="${product.name}">
+      
+      <div class="product-info">
+        <h2>${product.name}</h2>
+        <p>${product.description}</p>
+        <h3>₦${product.price.toLocaleString()}</h3>
 
-  const cartItems = document.getElementById("cart-items");
-
-  cartItems.innerHTML = "";
-
-  cart.forEach(item => {
-
-    cartItems.innerHTML += `
-      <p>
-        ${item.product} - ₦${item.price}
-      </p>
+        <button onclick="addToCart(${index})">
+          Add To Cart
+        </button>
+      </div>
     `;
-  });
 
-  document.getElementById("total").innerText =
-    `Total: ₦${total}`;
+    productsContainer.appendChild(productCard);
+  });
 }
 
-function checkoutWhatsApp(){
+function addToCart(index) {
+  cart.push(products[index]);
 
-  const name =
-    document.getElementById("customerName").value;
+  updateCart();
 
-  const phone =
-    document.getElementById("customerPhone").value;
+  alert(products[index].name + " added to cart 💕");
+}
 
-  if(cart.length === 0){
-    alert("Cart is empty");
-    return;
-  }
-
-  if(name === "" || phone === ""){
-    alert("Please enter your name and phone number");
-    return;
-  }
-
-  let message =
-`Hello Blushoria ✨
-
-Customer Name: ${name}
-
-Phone Number: ${phone}
-
-Order Details:
-`;
+function updateCart() {
+  let total = 0;
 
   cart.forEach(item => {
-    message += `
-${item.product} - ₦${item.price}
-`;
+    total += item.price;
   });
 
-  message += `
-
-Total: ₦${total}
-
-Waybill delivery fee will be discussed on WhatsApp.
-`;
-
-  const whatsappNumber = "2347012620748";
-
-  const url =
-`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-
-  window.open(url, "_blank");
+  cartTotal.innerText = `₦${total.toLocaleString()}`;
 }
+
+function orderOnWhatsApp() {
+  const name = document.getElementById("customer-name").value;
+  const phone = document.getElementById("customer-phone").value;
+
+  if (cart.length === 0) {
+    alert("Your cart is empty.");
+    return;
+  }
+
+  let message = `🛍️ *NEW ORDER - BLUSHORIA* %0A%0A`;
+
+  message += `👩 Name: ${name}%0A`;
+  message += `📞 Phone: ${phone}%0A%0A`;
+
+  message += `✨ ORDER ITEMS ✨%0A`;
+
+  let total = 0;
+
+  cart.forEach(item => {
+    message += `• ${item.name} - ₦${item.price}%0A`;
+
+    total += item.price;
+  });
+
+  message += `%0A💰 Total: ₦${total.toLocaleString()}%0A`;
+  message += `%0A📍 Delivery fee depends on location`;
+
+  const whatsappNumber = "234XXXXXXXXXX";
+
+  window.open(
+    `https://wa.me/${whatsappNumber}?text=${message}`,
+    "_blank"
+  );
+}
+
+displayProducts();
