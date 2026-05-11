@@ -3,90 +3,114 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blushoria ✨</title>
+<title>BLUSHORIA ✨</title>
 
 <link rel="stylesheet" href="styles.css">
 
 </head>
 <body>
 
-<header>
+<header class="hero">
+
 <h1>BLUSHORIA ✨</h1>
-<p>Luxury girly essentials & aesthetics 💕</p>
+
+<p>
+Luxury girly essentials & aesthetics 💕
+</p>
+
 </header>
 
 <section class="products">
 
 <div class="product-card">
+
 <img src="product1.jpg">
 
 <div class="product-info">
-<h2 class="product-title">Magic Lipgloss</h2>
 
-<p class="product-desc">
-Glossy pink mirror lip oil ✨
-</p>
+<h2>Magic Lipgloss</h2>
+
+<p>Glossy pink mirror lip oil ✨</p>
 
 <div class="price">₦1,500</div>
 
 <button onclick="addToCart('Magic Lipgloss',1500)">
 Add To Cart
 </button>
+
 </div>
 </div>
 
 <div class="product-card">
+
 <img src="product2.jpg">
 
 <div class="product-info">
-<h2 class="product-title">Fruit Lip Oil</h2>
 
-<p class="product-desc">
-Hydrating glossy aesthetic lip oil 💖
-</p>
+<h2>Fruit Lip Oil</h2>
+
+<p>Hydrating glossy aesthetic lip oil 💖</p>
 
 <div class="price">₦2,000</div>
 
 <button onclick="addToCart('Fruit Lip Oil',2000)">
 Add To Cart
 </button>
+
 </div>
 </div>
 
 <div class="product-card">
+
 <img src="product3.jpg">
 
 <div class="product-info">
-<h2 class="product-title">Pink Sheet Mask</h2>
 
-<p class="product-desc">
-Soft skincare glow masks 🌸
-</p>
+<h2>Pink Sheet Mask</h2>
+
+<p>Soft skincare glow masks 🌸</p>
 
 <div class="price">₦1,200</div>
 
 <button onclick="addToCart('Pink Sheet Mask',1200)">
 Add To Cart
 </button>
+
 </div>
 </div>
 
 </section>
 
-<section class="cart">
+<section class="cart-section">
 
 <h2>🛒 Your Cart</h2>
 
 <div id="cart-items"></div>
 
-<div class="total">
+<h3>
 Total: ₦<span id="cart-total">0</span>
-</div>
+</h3>
+
+<input
+type="text"
+id="customer-name"
+placeholder="Your Name"
+/>
+
+<input
+type="tel"
+id="customer-phone"
+placeholder="Your Phone Number"
+/>
+
+<p class="delivery-note">
+🚚 Waybill delivery fee depends on your location in Nigeria and will be discussed on WhatsApp.
+</p>
 
 <a
 id="whatsapp-order"
-class="whatsapp-btn"
 target="_blank"
+class="whatsapp-btn"
 >
 Order On WhatsApp
 </a>
@@ -98,15 +122,13 @@ Order On WhatsApp
 <h2>Customer Reviews ✨</h2>
 
 <div class="review">
-<p>⭐⭐⭐⭐⭐</p>
-<p>Everything is sooo cute 😍</p>
-<span>- Amanda</span>
+⭐⭐⭐⭐⭐ <br>
+Everything is sooo cute 😍
 </div>
 
 <div class="review">
-<p>⭐⭐⭐⭐⭐</p>
-<p>Fast delivery and amazing products 💖</p>
-<span>- Sophia</span>
+⭐⭐⭐⭐⭐ <br>
+Fast delivery and amazing products 💖
 </div>
 
 </section>
