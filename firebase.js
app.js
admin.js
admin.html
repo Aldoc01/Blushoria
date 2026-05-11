@@ -2,33 +2,42 @@ import { initializeApp }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
-getFirestore
+  getFirestore
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 import {
-getAuth
+  getAuth
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
+/* FIREBASE CONFIG */
+
 const firebaseConfig = {
 
-apiKey: "YOUR_API_KEY",
+  apiKey: "AIzaSyABLuEiYrf8BvuC2hjwimhoqHYnK8ZxKs",
 
-authDomain: "YOUR_AUTH_DOMAIN",
+  authDomain: "blushoriastore.firebaseapp.com",
 
-projectId: "YOUR_PROJECT_ID",
+  projectId: "blushoriastore",
 
-storageBucket: "YOUR_STORAGE_BUCKET",
+  storageBucket: "blushoriastore.appspot.com",
 
-messagingSenderId: "YOUR_SENDER_ID",
+  messagingSenderId: "574652420119",
 
-appId: "YOUR_APP_ID"
+  appId: "1:574652420119:web:3157682a34e9e942a40c52"
 
 };
 
+/* INITIALIZE FIREBASE */
+
 const app = initializeApp(firebaseConfig);
 
-export const db = getFirestore(app);
+const db = getFirestore(app);
 
-export const auth = getAuth(app);
+const auth = getAuth(app);
+
+export {
+  db,
+  auth
+};
