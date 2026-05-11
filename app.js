@@ -75,8 +75,7 @@ function addToCart(name,price){
 
 cart.push({
 name,
-price,
-qty:1
+price
 });
 
 saveCart();
@@ -122,6 +121,16 @@ document.getElementById(
 );
 
 cartItems.innerHTML = "";
+
+if(cart.length === 0){
+
+cartItems.innerHTML = `
+<p class="empty-cart">
+Your cart is empty 🛒
+</p>
+`;
+
+}
 
 let grandTotal = 0;
 
@@ -191,18 +200,19 @@ document.getElementById(
 "deliveryLocation"
 ).value;
 
+if(cart.length === 0){
+
+alert("Cart is empty");
+
+return;
+
+}
+
+alert(
+"Thank you for shopping with Blushoria ✨"
+);
+
 let total = 0;
-
-let orderItems = "";
-
-cart.forEach(item=>{
-
-orderItems +=
-`${item.name} - ₦${item.price}\n`;
-
-total += item.price;
-
-});
 
 db.collection("orders")
 .add({
@@ -212,7 +222,6 @@ phone:phone,
 address:address,
 location:location,
 items:cart,
-total:total,
 createdAt:new Date()
 
 });
@@ -241,7 +250,10 @@ message +=
 cart.forEach(item=>{
 
 message +=
-`- ${item.name} (₦${item.price})%0A`;
+`- ${item.name}
+(₦${item.price})%0A`;
+
+total += item.price;
 
 });
 
@@ -253,6 +265,168 @@ window.open(
 `https://wa.me/2347012620748?text=${message}`,
 "_blank"
 );
+
+}
+
+function searchProducts(){
+
+const search =
+document.getElementById(
+"searchInput"
+).value.toLowerCase();
+
+db.collection("products")
+.get()
+.then(snapshot=>{
+
+productsContainer.innerHTML = "";
+
+snapshot.forEach(doc=>{
+
+const product = doc.data();
+
+if(
+product.name.toLowerCase()
+.includes(search)
+){
+
+productsContainer.innerHTML += `
+
+<div class="card">
+
+<img
+src="${product.image}">
+
+<div class="card-content">
+
+<div class="badge">
+${product.badge}
+</div>
+
+<h3>${product.name}</h3>
+
+<p class="desc">
+${product.description}
+</p>
+
+<p class="price">
+₦${product.price}
+</p>
+
+<button
+class="add-btn"
+onclick="addToCart(
+'${product.name}',
+${product.price}
+)">
+
+Add To Cart
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+}
+
+});
+
+});
+
+}
+
+function filterCategory(category){
+
+db.collection("products")
+.get()
+.then(snapshot=>{
+
+productsContainer.innerHTML = "";
+
+snapshot.forEach(doc=>{
+
+const product = doc.data();
+
+if(
+category === "All" ||
+product.category === category
+){
+
+productsContainer.innerHTML += `
+
+<div class="card">
+
+<img
+src="${product.image}">
+
+<div class="card-content">
+
+<div class="badge">
+${product.badge}
+</div>
+
+<h3>${product.name}</h3>
+
+<p class="desc">
+${product.description}
+</p>
+
+<p class="price">
+₦${product.price}
+</p>
+
+<button
+class="add-btn"
+onclick="addToCart(
+'${product.name}',
+${product.price}
+)">
+
+Add To Cart
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+}
+
+});
+
+});
+
+}
+
+function addReview(){
+
+const review =
+document.getElementById(
+"reviewInput"
+).value;
+
+if(review === "") return;
+
+document.getElementById(
+"reviewsContainer"
+).innerHTML += `
+
+<div class="review-card">
+
+★★★★★ ${review}
+
+</div>
+
+`;
+
+document.getElementById(
+"reviewInput"
+).value = "";
 
 }
 
