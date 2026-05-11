@@ -1,31 +1,45 @@
-const buttons = document.querySelectorAll(".order-btn");
+let cart = [];
+let total = 0;
 
-buttons.forEach((button)=>{
+function addToCart(name, price){
 
-  button.addEventListener("click",()=>{
+cart.push({name, price});
 
-    const product =
-    button.getAttribute("data-product");
+total += price;
 
-    const price =
-    button.getAttribute("data-price");
+updateCart();
 
-    const message =
-`Hello Blushoria ✨
+}
 
-I want to order:
+function updateCart(){
 
-🛍 Product: ${product}
+const cartItems = document.getElementById("cart-items");
 
-💵 Price: ${price}
+cartItems.innerHTML = "";
 
-Please tell me the delivery fee to my location in Nigeria 🇳🇬`;
+cart.forEach(item => {
 
-    const whatsappURL =
-`https://wa.me/2347012620748?text=${encodeURIComponent(message)}`;
-
-    window.open(whatsappURL,"_blank");
-
-  });
+cartItems.innerHTML += `
+<div class="cart-item">
+${item.name} - ₦${item.price}
+</div>
+`;
 
 });
+
+document.getElementById("cart-total").innerText = total;
+
+let message = "Hello BLUSHORIA ✨%0A%0AI want to order:%0A";
+
+cart.forEach(item => {
+
+message += `- ${item.name} ₦${item.price}%0A`;
+
+});
+
+message += `%0ATotal: ₦${total}`;
+
+document.getElementById("whatsapp-link").href =
+"https://wa.me/2347012620748?text=" + message;
+
+}
