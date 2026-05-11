@@ -4,15 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Blushoria Store</title>
-
   <link rel="stylesheet" href="styles.css"/>
 
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-  />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
   <!-- NAVBAR -->
@@ -23,128 +19,198 @@
 
     <nav>
       <a href="#">Home</a>
-      <a href="#">Shop</a>
-      <a href="#">Categories</a>
-      <a href="#">New Arrivals</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
+      <a href="#products">Products</a>
+      <a href="#categories">Categories</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
     </nav>
-
-    <div class="nav-icons">
-      <i class="fas fa-search"></i>
-      <i class="far fa-user"></i>
-      <i class="fas fa-shopping-bag"></i>
-    </div>
   </header>
 
-  <!-- HERO -->
+  <!-- HERO SECTION -->
   <section class="hero">
-    <div class="overlay"></div>
+    <img src="images/hero.jpg" alt="Hero Image">
 
-    <div class="hero-content">
-      <h4>WELCOME TO</h4>
-
-      <h1>Blushoria</h1>
-
-      <h2>STORE</h2>
-
-      <p class="tagline">
-        ALL THINGS BEAUTY. ALL IN ONE PLACE.
+    <div class="hero-overlay">
+      <h1>Glow With Confidence</h1>
+      <p>
+        Luxury beauty products, skincare, perfumes,
+        fashion accessories and everything elegant.
       </p>
 
-      <p class="desc">
-        Your ultimate destination for premium beauty,
-        skincare, fashion, accessories and more.
-        Quality you love. Prices you'll adore.
-      </p>
-
-      <a href="#" class="btn">
-        SHOP NOW →
+      <a href="#products" class="btn">
+        Shop Now
       </a>
     </div>
   </section>
 
   <!-- FEATURES -->
   <section class="features">
-
     <div class="feature-box">
-      <i class="fas fa-award"></i>
-      <h3>Premium Quality</h3>
+      ✨ Premium Quality
     </div>
 
     <div class="feature-box">
-      <i class="fas fa-truck"></i>
-      <h3>Fast Delivery</h3>
+      🚚 Fast Delivery
     </div>
 
     <div class="feature-box">
-      <i class="fas fa-shield-heart"></i>
-      <h3>Trusted Store</h3>
+      💖 Luxury Beauty
     </div>
 
     <div class="feature-box">
-      <i class="fas fa-headset"></i>
-      <h3>24/7 Support</h3>
+      🛍 Customer Support
     </div>
+  </section>
 
+  <!-- CATEGORIES -->
+  <section class="categories" id="categories">
+    <h2>Shop Categories</h2>
+
+    <div class="category-grid">
+      <div class="category-card">
+        <h3>Skincare</h3>
+      </div>
+
+      <div class="category-card">
+        <h3>Perfumes</h3>
+      </div>
+
+      <div class="category-card">
+        <h3>Beauty Essentials</h3>
+      </div>
+
+      <div class="category-card">
+        <h3>Fashion</h3>
+      </div>
+    </div>
   </section>
 
   <!-- PRODUCTS -->
-  <section class="products">
-
-    <h2>Featured Products ✨</h2>
+  <section class="products" id="products">
+    <h2>Featured Products</h2>
 
     <div class="product-grid">
 
       <div class="product-card">
-        <img src="images/IMG-20260509-WA0021.jpg">
-        <h3>Luxury Lip Gloss</h3>
-        <p>₦1,500</p>
-        <button>Add To Cart</button>
+        <img src="images/IMG-20260509-WA0021.jpg" alt="">
+        <h3>Luxury Perfume</h3>
+        <p>Elegant fragrance for classy women.</p>
+        <span>₦25,000</span>
+        <button>Order Now</button>
       </div>
 
       <div class="product-card">
-        <img src="images/IMG-20260509-WA0034.jpg">
+        <img src="images/IMG-20260509-WA0034.jpg" alt="">
         <h3>Glow Serum</h3>
-        <p>₦3,500</p>
-        <button>Add To Cart</button>
+        <p>Bright glowing skin every day.</p>
+        <span>₦18,000</span>
+        <button>Order Now</button>
       </div>
 
       <div class="product-card">
-        <img src="images/IMG-20260509-WA0035.jpg">
-        <h3>Night Cream</h3>
-        <p>₦2,800</p>
-        <button>Add To Cart</button>
+        <img src="images/IMG-20260509-WA0035.jpg" alt="">
+        <h3>Velvet Lipstick</h3>
+        <p>Soft matte luxury lipstick.</p>
+        <span>₦12,000</span>
+        <button>Order Now</button>
       </div>
 
       <div class="product-card">
-        <img src="images/IMG-20260509-WA0036.jpg">
-        <h3>Beauty Essentials</h3>
-        <p>₦4,000</p>
-        <button>Add To Cart</button>
+        <img src="images/IMG-20260509-WA0036.jpg" alt="">
+        <h3>Beauty Kit</h3>
+        <p>Everything you need in one set.</p>
+        <span>₦40,000</span>
+        <button>Order Now</button>
+      </div>
+
+      <div class="product-card">
+        <img src="images/IMG-20260509-WA0041.jpg" alt="">
+        <h3>Body Spray</h3>
+        <p>Fresh long lasting fragrance.</p>
+        <span>₦15,000</span>
+        <button>Order Now</button>
+      </div>
+
+      <div class="product-card">
+        <img src="images/IMG-20260509-WA0043.jpg" alt="">
+        <h3>Face Cream</h3>
+        <p>Luxury skincare cream.</p>
+        <span>₦20,000</span>
+        <button>Order Now</button>
+      </div>
+
+      <div class="product-card">
+        <img src="images/IMG-20260509-WA0044.jpg" alt="">
+        <h3>Fashion Bag</h3>
+        <p>Elegant ladies handbag.</p>
+        <span>₦35,000</span>
+        <button>Order Now</button>
+      </div>
+
+      <div class="product-card">
+        <img src="images/IMG-20260510-WA0003.jpg" alt="">
+        <h3>Luxury Watch</h3>
+        <p>Beautiful stylish watch.</p>
+        <span>₦28,000</span>
+        <button>Order Now</button>
+      </div>
+
+      <div class="product-card">
+        <img src="images/IMG-20260510-WA0004.jpg" alt="">
+        <h3>Makeup Set</h3>
+        <p>Complete beauty collection.</p>
+        <span>₦45,000</span>
+        <button>Order Now</button>
+      </div>
+
+      <div class="product-card">
+        <img src="images/IMG-20260510-WA0005.jpg" alt="">
+        <h3>Luxury Heels</h3>
+        <p>Elegant classy footwear.</p>
+        <span>₦38,000</span>
+        <button>Order Now</button>
       </div>
 
     </div>
+  </section>
 
+  <!-- REVIEWS -->
+  <section class="reviews" id="reviews">
+    <h2>Customer Reviews</h2>
+
+    <div class="review-box">
+      ⭐⭐⭐⭐⭐
+      <p>
+        Amazing quality products!
+      </p>
+      <h4>- Amanda</h4>
+    </div>
+
+    <div class="review-box">
+      ⭐⭐⭐⭐⭐
+      <p>
+        Very fast delivery in Nigeria 🇳🇬
+      </p>
+      <h4>- Sophia</h4>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <h2>Contact Us</h2>
+
+    <p>WhatsApp: +234 XXX XXX XXXX</p>
+    <p>Email: blushoriastore@gmail.com</p>
+
+    <a class="whatsapp-btn"
+       href="https://wa.me/2340000000000">
+       Chat on WhatsApp
+    </a>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <h2>Blushoria Store</h2>
-
-    <p>
-      Luxury Beauty Store In Nigeria 🇳🇬
-    </p>
-
-    <div class="socials">
-      <i class="fab fa-whatsapp"></i>
-      <i class="fab fa-instagram"></i>
-      <i class="fab fa-facebook"></i>
-    </div>
-
-    <p class="copy">
-      © 2026 Blushoria Store. All Rights Reserved.
-    </p>
+    <p>© 2026 Blushoria Store. All Rights Reserved.</p>
   </footer>
 
 </body>
