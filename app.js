@@ -4,80 +4,90 @@ const products = [
     name: "Lip Masks",
     price: 400,
     image: "product1.jpg",
+
     description:
-    "Deeply hydrating lip masks designed to moisturize, soften, and smooth dry lips."
+    "Deeply hydrating lip masks designed to moisturize, soften, and smooth dry lips. Infused with fruity ingredients for soft glossy lips."
   },
 
   {
-    name: "Sadoer Fruit Face Mask Sheets",
+    name: "Sadoer Face Mask Sheet",
     price: 400,
     image: "product2.jpg",
+
     description:
-    "Luxury fruit-infused Sadoer face masks enriched with honey, coconut, raspberry, oatmeal, and orange."
+    "Refreshing Sadoer sheet masks made to hydrate and nourish the skin while giving your face a soft glowing look."
   },
 
   {
     name: "Sadoer Salicylic Acid Face Mask",
     price: 400,
     image: "product3.jpg",
+
     description:
-    "Helps reduce acne, calm irritated skin, control excess oil, and hydrate the face."
+    "A soothing salicylic acid face mask that helps reduce acne, calm irritated skin, and control excess oil."
   },
 
   {
-    name: "Sadoer Serum Face Masks",
+    name: "Sadoer Face Masks",
     price: 400,
     image: "product4.jpg",
+
     description:
-    "Vitamin C, Hyaluronic Acid, and Golden Serum masks that deeply hydrate and brighten the skin."
+    "Luxury fruit infused Sadoer face masks enriched with honey, coconut, raspberry, oatmeal, and orange."
   },
 
   {
-    name: "Cute Cat Lip Gloss",
+    name: "Cute Lipgloss",
     price: 1200,
     image: "product5.jpg",
+
     description:
-    "Adorable cat-themed glossy lip products with moisturizing shine."
+    "Adorable glossy lip products with cute stylish packaging that give lips a shiny smooth finish."
   },
 
   {
-    name: "Cherry Fruit Lip Oil",
-    price: 1200,
+    name: "Clear Lip Gloss With Mirror",
+    price: 1500,
     image: "product6.jpg",
+
     description:
-    "Cute fruit-inspired lip oil that keeps lips soft, glossy, hydrated, and smooth."
+    "Crystal clear lip gloss with built in mirror for quick touch ups anywhere."
   },
 
   {
-    name: "Mini Nude Lip Gloss Set",
+    name: "Coloured Lipgloss",
     price: 1500,
     image: "product7.jpg",
+
     description:
-    "Beautiful mini nude lip gloss collection with a glossy everyday makeup look."
+    "Beautiful pigmented lip gloss available in lovely shades that add shine and moisture."
   },
 
   {
-    name: "Hydrating Lip Oil",
-    price: 1200,
+    name: "Mini Lipgloss",
+    price: 1000,
     image: "product8.jpg",
+
     description:
-    "Moisturizing hydrating lip oils that leave lips soft, smooth, glossy, and nourished."
+    "Small portable lip gloss perfect for handbags and pockets with smooth glossy shine."
   },
 
   {
-    name: "Magic Glitter Lip Gloss",
-    price: 1500,
+    name: "Magic Lipgloss",
+    price: 1200,
     image: "product9.jpg",
+
     description:
-    "Trendy glitter lip gloss with sparkling glossy shine."
+    "Color changing magic lip gloss that creates a beautiful glossy tint while hydrating lips."
   },
 
   {
-    name: "Fruit Lip Oil Collection",
+    name: "Magic Lipgloss With Mirror",
     price: 1500,
     image: "product10.jpg",
+
     description:
-    "Cute fruit-themed lip oils with moisturizing glossy formulas."
+    "Trendy magic lip gloss with built in mirror and beautiful color changing effect."
   }
 
 ];
@@ -90,6 +100,8 @@ document.getElementById("cart-total");
 
 let cart = [];
 
+/* DISPLAY PRODUCTS */
+
 function displayProducts(){
 
   productsContainer.innerHTML = "";
@@ -99,8 +111,7 @@ function displayProducts(){
     const card =
     document.createElement("div");
 
-    card.className =
-    "product-card";
+    card.className = "product-card";
 
     card.innerHTML = `
 
@@ -111,9 +122,7 @@ function displayProducts(){
 
       <div class="product-info">
 
-        <h2>
-          ${product.name}
-        </h2>
+        <h2>${product.name}</h2>
 
         <p>
           ${product.description}
@@ -123,13 +132,12 @@ function displayProducts(){
           ₦${product.price.toLocaleString()}
         </h3>
 
-        <button
-          onclick="addToCart(${index})"
-        >
+        <button onclick="addToCart(${index})">
           Add To Cart 💖
         </button>
 
       </div>
+
     `;
 
     productsContainer.appendChild(card);
@@ -137,6 +145,8 @@ function displayProducts(){
   });
 
 }
+
+/* ADD TO CART */
 
 function addToCart(index){
 
@@ -150,6 +160,8 @@ function addToCart(index){
   );
 
 }
+
+/* UPDATE TOTAL */
 
 function updateCart(){
 
@@ -165,6 +177,8 @@ function updateCart(){
   `₦${total.toLocaleString()}`;
 
 }
+
+/* WHATSAPP ORDER */
 
 function orderOnWhatsApp(){
 
@@ -183,19 +197,19 @@ function orderOnWhatsApp(){
     alert("Your cart is empty");
 
     return;
+
   }
 
   if(!name || !address){
 
-    alert(
-      "Please enter your details"
-    );
+    alert("Please enter your details");
 
     return;
+
   }
 
   let message =
-  `✨ BLUSHORIA ORDER ✨%0A%0A`;
+  `✨ BLUSHORIA STORE ORDER ✨%0A%0A`;
 
   message +=
   `👩 Name: ${name}%0A`;
@@ -211,7 +225,7 @@ function orderOnWhatsApp(){
   cart.forEach(item=>{
 
     message +=
-    `• ${item.name} - ₦${item.price.toLocaleString()}%0A`;
+    `• ${item.name} - ₦${item.price}%0A`;
 
     total += item.price;
 
@@ -221,7 +235,7 @@ function orderOnWhatsApp(){
   `%0A💰 TOTAL: ₦${total.toLocaleString()}%0A`;
 
   message +=
-  `%0A🚚 Waybill fee depends on location`;
+  `%0A🚚 Delivery fee depends on location`;
 
   const phone =
   "2347012620748";
