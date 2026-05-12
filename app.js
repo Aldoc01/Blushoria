@@ -1,73 +1,85 @@
 const products = [
+
   {
-    name: "Magic Lipgloss",
-    price: 1500,
+    name: "Lip Masks",
+    price: 400,
     image: "product1.jpg",
-    description: "Glossy pink mirror lip oil ✨"
+    description:
+    "Deeply hydrating lip masks designed to moisturize, soften, and smooth dry lips. Infused with fruity ingredients for soft glossy lips."
   },
 
   {
-    name: "Mini Perfume",
-    price: 3000,
+    name: "Sadoer Fruit Face Mask Sheets",
+    price: 400,
     image: "product2.jpg",
-    description: "Soft feminine fragrance 💕"
+    description:
+    "Luxury fruit-infused Sadoer face masks enriched with honey, coconut, raspberry, oatmeal, and orange for glowing skin."
   },
 
   {
-    name: "Girlie Lip Balm",
-    price: 1800,
+    name: "Sadoer Salicylic Acid Face Mask",
+    price: 400,
     image: "product3.jpg",
-    description: "Soft pink glossy lips 🎀"
+    description:
+    "Helps reduce acne, calm irritated skin, control excess oil, and hydrate the face for smoother clearer skin."
   },
 
   {
-    name: "Beauty Bundle",
-    price: 5000,
+    name: "Sadoer Serum Face Masks",
+    price: 400,
     image: "product4.jpg",
-    description: "Everything girly in one set 💖"
+    description:
+    "Vitamin C, Hyaluronic Acid, and Golden Serum masks that deeply hydrate and brighten the skin."
   },
 
   {
-    name: "Luxury Perfume Oil",
-    price: 4500,
+    name: "Cute Cat Lip Gloss",
+    price: 1200,
     image: "product5.jpg",
-    description: "Long lasting sweet fragrance ✨"
+    description:
+    "Adorable cat-themed glossy lip products with cute stylish packaging and moisturizing shine."
   },
 
   {
-    name: "Blushoria Special Box",
-    price: 8000,
+    name: "Cherry Fruit Lip Oil",
+    price: 1200,
     image: "product6.jpg",
-    description: "Premium beauty collection 💕"
+    description:
+    "Cute fruit-inspired lip oil that keeps lips soft, glossy, hydrated, and smooth."
   },
 
   {
-    name: "Lip Care Set",
-    price: 2500,
+    name: "Mini Nude Lip Gloss Set",
+    price: 1500,
     image: "product7.jpg",
-    description: "Cute lip care essentials 💋"
+    description:
+    "Beautiful mini nude lip gloss collection that adds moisture, shine, and a glossy everyday makeup look."
   },
 
   {
-    name: "Pink Glow Oil",
-    price: 3500,
+    name: "Hydrating Lip Oil",
+    price: 1200,
     image: "product8.jpg",
-    description: "Shiny smooth glow skin ✨"
+    description:
+    "Moisturizing hydrating lip oils that leave lips soft, smooth, glossy, and nourished."
   },
 
   {
-    name: "Soft Girl Package",
-    price: 7000,
+    name: "Magic Glitter Lip Gloss",
+    price: 1500,
     image: "product9.jpg",
-    description: "Luxury soft girl vibes 💕"
+    description:
+    "Trendy glitter lip gloss with cute keychain-style packaging for sparkling glossy lips."
   },
 
   {
-    name: "Cherry Lip Oil",
-    price: 2000,
+    name: "Fruit Lip Oil Collection",
+    price: 1500,
     image: "product10.jpg",
-    description: "Sweet cherry glossy lips 🍒"
+    description:
+    "Cute fruit-themed lip oils with moisturizing glossy formulas for soft shiny lips."
   }
+
 ];
 
 const productsContainer =
@@ -103,7 +115,7 @@ function displayProducts(){
         </h3>
 
         <button onclick="addToCart(${index})">
-          Add To Cart
+          Add To Cart 💖
         </button>
 
       </div>
@@ -179,7 +191,7 @@ function orderOnWhatsApp(){
   cart.forEach(item=>{
 
     message +=
-    `• ${item.name} - ₦${item.price}%0A`;
+    `• ${item.name} - ₦${item.price.toLocaleString()}%0A`;
 
     total += item.price;
 
