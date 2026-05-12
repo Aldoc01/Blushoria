@@ -10,7 +10,7 @@ html{
 }
 
 body{
-  background:#1a0011;
+  background:#17000f;
   color:white;
   overflow-x:hidden;
 }
@@ -18,13 +18,14 @@ body{
 /* HERO */
 
 .hero{
+
   position:relative;
 
   min-height:100vh;
 
   display:flex;
-  align-items:center;
   justify-content:center;
+  align-items:center;
 
   text-align:center;
 
@@ -35,25 +36,31 @@ body{
 
   background-size:cover;
   background-position:center;
+
 }
 
 .hero-overlay{
+
   position:absolute;
   inset:0;
 
   background:
   linear-gradient(
-    rgba(18,0,13,0.55),
-    rgba(18,0,13,0.88)
+    rgba(18,0,13,0.45),
+    rgba(18,0,13,0.78)
   );
+
 }
 
 .hero-content{
   position:relative;
   z-index:2;
+
+  animation:fadeUp 1s ease;
 }
 
 .logo{
+
   width:190px;
   height:190px;
 
@@ -63,51 +70,62 @@ body{
 
   border:8px solid #ff0099;
 
-  box-shadow:
-  0 0 40px #ff0099,
-  0 0 80px rgba(255,0,153,0.5);
-
   margin-bottom:25px;
+
+  animation:glow 3s infinite;
+
 }
 
 .hero h1{
-  font-size:4.5rem;
+
+  font-size:4.7rem;
 
   color:#ff0099;
 
   text-shadow:
-  0 0 20px #ff0099,
-  0 0 50px #ff0099;
+  0 0 15px #ff0099,
+  0 0 40px #ff0099;
 
   margin-bottom:15px;
+
 }
 
 .hero p{
+
   font-size:1.5rem;
 
   color:#ffe0f3;
 
-  margin-bottom:25px;
+  margin-bottom:30px;
+
 }
 
 .shop-btn{
   width:auto;
-  padding:18px 40px;
+  padding:18px 45px;
 }
 
-/* PRODUCTS HEADING */
+/* PRODUCTS TITLE */
 
 .products-heading{
-  padding:40px 20px 10px;
+
+  padding:45px 20px 35px;
+
 }
 
 .products-heading h2{
+
   font-size:3rem;
+
+  text-shadow:
+  0 0 10px #ff0099;
+
 }
 
 /* PRODUCTS */
 
 .products{
+
   position:relative;
 
   display:grid;
@@ -117,10 +135,12 @@ body{
 
   gap:35px;
 
-  padding:30px 20px 60px;
+  padding:0 20px 60px;
+
 }
 
 .products::before{
+
   content:"";
 
   position:absolute;
@@ -134,32 +154,38 @@ body{
   );
 
   pointer-events:none;
+
 }
 
 .product-card{
-  background:#2a0017;
+
+  background:#260015;
 
   border-radius:30px;
 
   overflow:hidden;
 
-  position:relative;
-
   box-shadow:
-  0 0 20px rgba(255,0,153,0.3);
+  0 0 20px rgba(255,0,153,0.25);
 
   transition:0.4s;
+
+  animation:fadeUp 1s ease;
+
 }
 
 .product-card:hover{
+
   transform:
-  translateY(-8px);
+  translateY(-10px);
 
   box-shadow:
   0 0 35px rgba(255,0,153,0.5);
+
 }
 
 .product-card img{
+
   width:100%;
 
   height:320px;
@@ -167,6 +193,7 @@ body{
   object-fit:cover;
 
   display:block;
+
 }
 
 .product-info{
@@ -174,19 +201,25 @@ body{
 }
 
 .product-info h2{
+
   font-size:2rem;
+
   margin-bottom:15px;
+
 }
 
 .product-info p{
+
   color:#ffd6f0;
 
-  line-height:1.7;
+  line-height:1.8;
 
   margin-bottom:20px;
+
 }
 
 .product-info h3{
+
   color:#ff0099;
 
   font-size:2.2rem;
@@ -195,11 +228,13 @@ body{
 
   text-shadow:
   0 0 12px #ff0099;
+
 }
 
 /* BUTTONS */
 
 button{
+
   width:100%;
 
   padding:18px;
@@ -224,29 +259,39 @@ button{
   cursor:pointer;
 
   transition:0.3s;
+
 }
 
 button:hover{
+
   transform:
   translateY(-3px);
 
   box-shadow:
   0 0 25px #ff0099;
+
 }
 
 /* CART */
 
 .cart-section{
+
   padding:70px 20px;
+
+  animation:fadeUp 1s ease;
+
 }
 
 .cart-section h2{
+
   font-size:4rem;
 
   margin-bottom:20px;
+
 }
 
 .cart-section h3{
+
   color:#ff4db8;
 
   font-size:2rem;
@@ -255,9 +300,11 @@ button:hover{
 
   text-shadow:
   0 0 10px #ff0099;
+
 }
 
 .cart-section input{
+
   width:100%;
 
   padding:22px;
@@ -272,22 +319,38 @@ button:hover{
 
   color:white;
 
-  font-size:1.2rem;
+  font-size:1.15rem;
+
+  outline:none;
+
+}
+
+.cart-section input:focus{
+
+  border:
+  2px solid #ff0099;
+
+  box-shadow:
+  0 0 15px rgba(255,0,153,0.5);
+
 }
 
 .delivery-note{
+
   color:#ffe0f3;
 
   line-height:1.8;
 
-  font-size:1.2rem;
+  font-size:1.15rem;
 
   margin-bottom:35px;
+
 }
 
 /* FOOTER */
 
 footer{
+
   text-align:center;
 
   padding:60px 20px;
@@ -296,18 +359,75 @@ footer{
 
   border-top:
   1px solid rgba(255,255,255,0.08);
+
 }
 
 footer p{
+
   font-size:1.3rem;
 
   margin-bottom:12px;
+
 }
 
 footer span{
+
   color:#ffd6f0;
 
   font-size:1.15rem;
+
+}
+
+/* LOGO GLOW */
+
+@keyframes glow{
+
+  0%{
+
+    box-shadow:
+    0 0 30px #ff0099;
+
+  }
+
+  50%{
+
+    box-shadow:
+    0 0 60px #ff0099,
+    0 0 100px rgba(255,0,153,0.6);
+
+  }
+
+  100%{
+
+    box-shadow:
+    0 0 30px #ff0099;
+
+  }
+
+}
+
+/* FADE ANIMATION */
+
+@keyframes fadeUp{
+
+  from{
+
+    opacity:0;
+
+    transform:
+    translateY(30px);
+
+  }
+
+  to{
+
+    opacity:1;
+
+    transform:
+    translateY(0);
+
+  }
+
 }
 
 /* WHATSAPP FLOAT BUTTON */
@@ -326,6 +446,7 @@ footer span{
 
   bottom:25px !important;
   right:25px !important;
+
 }
 
 /* MOBILE */
@@ -337,11 +458,11 @@ footer span{
   }
 
   .hero h1{
-    font-size:3.3rem;
+    font-size:3.2rem;
   }
 
   .hero p{
-    font-size:1.3rem;
+    font-size:1.25rem;
   }
 
   .logo{
