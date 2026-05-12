@@ -132,6 +132,7 @@ function displayProducts(){
         </button>
 
       </div>
+
     `;
 
     productsContainer.appendChild(card);
