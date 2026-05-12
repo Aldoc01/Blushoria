@@ -1,69 +1,104 @@
-<!-- index.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>BLUSHORIA STORE ✨</title>
+  <meta charset="UTF-8" />
 
-  <link rel="stylesheet" href="styles.css">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>BLUSHORIA ✨</title>
+
+  <link
+    rel="stylesheet"
+    href="styles.css"
+  />
+
 </head>
 
 <body>
 
   <!-- HERO -->
+
   <section class="hero">
 
-    <img src="logo.png" class="logo">
+    <div class="hero-overlay"></div>
 
-    <h1>BLUSHORIA ✨</h1>
+    <div class="hero-content">
 
-    <p>
-      Luxury Girlie Essentials 💕
-    </p>
+      <img
+        src="logo.png"
+        alt="Blushoria Logo"
+        class="logo"
+      />
 
-    <a href="#products" class="shop-btn">
-      Shop Now 💖
-    </a>
+      <h1>
+        BLUSHORIA ✨
+      </h1>
+
+      <p>
+        Luxury Girlie Essentials 💕
+      </p>
+
+      <a href="#products">
+        <button class="shop-btn">
+          Shop Now 💖
+        </button>
+      </a>
+
+    </div>
 
   </section>
 
   <!-- PRODUCTS TITLE -->
-  <h2 class="section-title">
-    Our Products ✨
-  </h2>
+
+  <section class="products-heading">
+
+    <h2>
+      Our Products ✨
+    </h2>
+
+  </section>
 
   <!-- PRODUCTS -->
-  <section class="products" id="products"></section>
+
+  <section
+    class="products"
+    id="products"
+  ></section>
 
   <!-- CART -->
+
   <section class="cart-section">
 
-    <h2>Your Cart 🛒</h2>
-
-    <div id="cart-items"></div>
+    <h2>
+      Your Cart 🛒
+    </h2>
 
     <h3>
       Total:
-      <span id="cart-total">₦0</span>
+      <span id="cart-total">
+        ₦0
+      </span>
     </h3>
 
     <input
       type="text"
       id="customer-name"
       placeholder="Your Name"
-    >
+    />
 
     <input
       type="text"
       id="customer-address"
       placeholder="Delivery Address"
-    >
+    />
 
     <p class="delivery-note">
-      🚚 Waybill fee depends on your location and will be discussed on WhatsApp.
+      🚚 Waybill fee depends on your location
+      and will be discussed on WhatsApp.
     </p>
 
     <button onclick="orderOnWhatsApp()">
@@ -73,19 +108,18 @@
   </section>
 
   <!-- FOOTER -->
-  <footer>
-    <p>© 2025 BLUSHORIA STORE ✨</p>
-    <p>Luxury Girlie Essentials 💕</p>
-  </footer>
 
-  <!-- FLOATING WHATSAPP -->
-  <a
-    href="https://wa.me/2347012620748"
-    class="whatsapp-float"
-    target="_blank"
-  >
-    💬
-  </a>
+  <footer>
+
+    <p>
+      © 2025 BLUSHORIA STORE ✨
+    </p>
+
+    <span>
+      Luxury Girlie Essentials 💕
+    </span>
+
+  </footer>
 
   <script src="app.js"></script>
 
