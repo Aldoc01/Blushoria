@@ -1,21 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
   <meta charset="UTF-8">
 
   <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"/>
 
   <title>Blushoria Store ✨</title>
 
-  <link
-    rel="stylesheet"
-    href="styles.css"
-  >
+  <link rel="stylesheet" href="styles.css">
 
 </head>
 
@@ -26,62 +21,68 @@
   <section class="hero">
 
     <img
-      src="logo.png"
-      alt="Blushoria Logo"
-      class="logo"
-    >
+    src="logo.png"
+    alt="Blushoria Logo"
+    class="logo">
 
-    <h1>
-      Blushoria Store ✨
-    </h1>
+    <h1>BLUSHORIA ✨</h1>
 
     <p>
-      Luxury feminine beauty essentials with a soft pink aesthetic 💖
+      Luxury Girlie Essentials • Cute • Soft • Feminine
     </p>
+
+    <a href="#products" class="hero-btn">
+      Shop Now 💖
+    </a>
 
   </section>
 
   <!-- PRODUCTS -->
 
+  <h2 class="section-title">
+    Our Products 💕
+  </h2>
+
   <section
-    class="products"
-    id="products"
-  ></section>
+  class="products"
+  id="products"></section>
 
   <!-- CART -->
 
   <section class="cart-section">
 
-    <h2>
-      Your Cart 🛒
-    </h2>
+    <div class="cart-box">
 
-    <h3>
-      Total:
-      <span id="cart-total">
-        ₦0
-      </span>
-    </h3>
+      <h2>Your Cart 🛒</h2>
 
-    <input
+      <div
+      id="cart-items"
+      class="cart-items"></div>
+
+      <h3 class="cart-total">
+        Total:
+        <span id="cart-total">₦0</span>
+      </h3>
+
+      <input
       type="text"
       id="customer-name"
-      placeholder="Your Name"
-    >
+      placeholder="Your Name">
 
-    <input
+      <input
       type="text"
       id="customer-address"
-      placeholder="Delivery Address"
-    >
+      placeholder="Delivery Address">
 
-    <p class="delivery-note">
-      🚚 Waybill fee depends on your location and will be discussed on WhatsApp.
-    </p>
+      <p class="delivery-note">
+        🚚 Waybill delivery fee depends on your location and will be discussed on WhatsApp.
+      </p>
 
-    <button onclick="orderOnWhatsApp()">
-      Order On WhatsApp 💖
-    </button>
+      <button onclick="orderOnWhatsApp()">
+        Order On WhatsApp ✨
+      </button>
+
+    </div>
 
   </section>
 
