@@ -1,11 +1,13 @@
 const products = [
 
+  // FACE MASKS
+
   {
     name: "Lip Masks",
     price: 400,
     image: "product1.jpg",
     description:
-    "Deeply hydrating lip masks designed to moisturize, soften, and smooth dry lips. Infused with fruity ingredients for soft glossy lips."
+    "Deeply hydrating lip masks designed to moisturize, soften, and smooth dry lips."
   },
 
   {
@@ -13,7 +15,7 @@ const products = [
     price: 400,
     image: "product2.jpg",
     description:
-    "Luxury fruit-infused Sadoer face masks enriched with honey, coconut, raspberry, oatmeal, and orange for glowing skin."
+    "Luxury fruit-infused Sadoer face masks enriched with honey, coconut, raspberry, oatmeal, and orange."
   },
 
   {
@@ -21,7 +23,7 @@ const products = [
     price: 400,
     image: "product3.jpg",
     description:
-    "Helps reduce acne, calm irritated skin, control excess oil, and hydrate the face for smoother clearer skin."
+    "Helps reduce acne, calm irritated skin, control excess oil, and hydrate the face."
   },
 
   {
@@ -32,20 +34,16 @@ const products = [
     "Vitamin C, Hyaluronic Acid, and Golden Serum masks that deeply hydrate and brighten the skin."
   },
 
+
+
+  // LIP GLOSSES
+
   {
     name: "Cute Cat Lip Gloss",
     price: 1200,
     image: "product5.jpg",
     description:
-    "Adorable cat-themed glossy lip products with cute stylish packaging and moisturizing shine."
-  },
-
-  {
-    name: "Cherry Fruit Lip Oil",
-    price: 1200,
-    image: "product6.jpg",
-    description:
-    "Cute fruit-inspired lip oil that keeps lips soft, glossy, hydrated, and smooth."
+    "Adorable cat-themed glossy lip products with moisturizing shine."
   },
 
   {
@@ -53,7 +51,27 @@ const products = [
     price: 1500,
     image: "product7.jpg",
     description:
-    "Beautiful mini nude lip gloss collection that adds moisture, shine, and a glossy everyday makeup look."
+    "Beautiful mini nude lip gloss collection with a glossy everyday makeup look."
+  },
+
+  {
+    name: "Magic Glitter Lip Gloss",
+    price: 1500,
+    image: "product9.jpg",
+    description:
+    "Trendy glitter lip gloss with sparkling glossy shine."
+  },
+
+
+
+  // LIP OILS
+
+  {
+    name: "Cherry Fruit Lip Oil",
+    price: 1200,
+    image: "product6.jpg",
+    description:
+    "Cute fruit-inspired lip oil that keeps lips soft, glossy, hydrated, and smooth."
   },
 
   {
@@ -65,19 +83,11 @@ const products = [
   },
 
   {
-    name: "Magic Glitter Lip Gloss",
-    price: 1500,
-    image: "product9.jpg",
-    description:
-    "Trendy glitter lip gloss with cute keychain-style packaging for sparkling glossy lips."
-  },
-
-  {
     name: "Fruit Lip Oil Collection",
     price: 1500,
     image: "product10.jpg",
     description:
-    "Cute fruit-themed lip oils with moisturizing glossy formulas for soft shiny lips."
+    "Cute fruit-themed lip oils with moisturizing glossy formulas."
   }
 
 ];
@@ -99,22 +109,33 @@ function displayProducts(){
     const card =
     document.createElement("div");
 
-    card.className = "product-card";
+    card.className =
+    "product-card";
 
     card.innerHTML = `
-      <img src="${product.image}" alt="${product.name}">
+
+      <img
+        src="${product.image}"
+        alt="${product.name}"
+      >
 
       <div class="product-info">
 
-        <h2>${product.name}</h2>
+        <h2>
+          ${product.name}
+        </h2>
 
-        <p>${product.description}</p>
+        <p>
+          ${product.description}
+        </p>
 
         <h3>
           ₦${product.price.toLocaleString()}
         </h3>
 
-        <button onclick="addToCart(${index})">
+        <button
+          onclick="addToCart(${index})"
+        >
           Add To Cart 💖
         </button>
 
@@ -133,7 +154,10 @@ function addToCart(index){
 
   updateCart();
 
-  alert(products[index].name + " added to cart 💖");
+  alert(
+    products[index].name +
+    " added to cart 💖"
+  );
 
 }
 
@@ -155,10 +179,14 @@ function updateCart(){
 function orderOnWhatsApp(){
 
   const name =
-  document.getElementById("customer-name").value;
+  document.getElementById(
+    "customer-name"
+  ).value;
 
   const address =
-  document.getElementById("customer-address").value;
+  document.getElementById(
+    "customer-address"
+  ).value;
 
   if(cart.length === 0){
 
@@ -169,7 +197,9 @@ function orderOnWhatsApp(){
 
   if(!name || !address){
 
-    alert("Please enter your details");
+    alert(
+      "Please enter your details"
+    );
 
     return;
   }
