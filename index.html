@@ -1,97 +1,93 @@
+<!-- index.html -->
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>BLUSHORIA STORE ✨</title>
 
   <link rel="stylesheet" href="styles.css">
-
 </head>
 
 <body>
 
   <!-- HERO -->
-
   <section class="hero">
 
-    <img
-      src="logo.png"
-      alt="Blushoria Logo"
-      class="logo"
-    >
+    <img src="logo.png" class="logo">
 
-    <h1>
-      BLUSHORIA STORE ✨
-    </h1>
+    <h1>BLUSHORIA ✨</h1>
 
     <p>
-      Luxury Girlie Essentials 💖
+      Luxury Girlie Essentials 💕
     </p>
+
+    <a href="#products" class="shop-btn">
+      Shop Now 💖
+    </a>
 
   </section>
 
-  <!-- PRODUCTS -->
+  <!-- PRODUCTS TITLE -->
+  <h2 class="section-title">
+    Our Products ✨
+  </h2>
 
-  <section
-    class="products"
-    id="products"
-  ></section>
+  <!-- PRODUCTS -->
+  <section class="products" id="products"></section>
 
   <!-- CART -->
-
   <section class="cart-section">
 
-    <div class="cart-box">
+    <h2>Your Cart 🛒</h2>
 
-      <h2>
-        Your Cart 🛒
-      </h2>
+    <div id="cart-items"></div>
 
-      <h3>
-        Total:
-        <span id="cart-total">₦0</span>
-      </h3>
+    <h3>
+      Total:
+      <span id="cart-total">₦0</span>
+    </h3>
 
-      <input
-        type="text"
-        id="customer-name"
-        placeholder="Your Name"
-      >
+    <input
+      type="text"
+      id="customer-name"
+      placeholder="Your Name"
+    >
 
-      <input
-        type="text"
-        id="customer-address"
-        placeholder="Delivery Address"
-      >
+    <input
+      type="text"
+      id="customer-address"
+      placeholder="Delivery Address"
+    >
 
-      <p class="delivery-note">
-        🚚 Waybill fee depends on your location and will be discussed on WhatsApp.
-      </p>
+    <p class="delivery-note">
+      🚚 Waybill fee depends on your location and will be discussed on WhatsApp.
+    </p>
 
-      <button onclick="orderOnWhatsApp()">
-        Order On WhatsApp 💖
-      </button>
-
-    </div>
+    <button onclick="orderOnWhatsApp()">
+      Order On WhatsApp ✨
+    </button>
 
   </section>
 
   <!-- FOOTER -->
-
   <footer>
-    © 2025 BLUSHORIA STORE ✨
+    <p>© 2025 BLUSHORIA STORE ✨</p>
+    <p>Luxury Girlie Essentials 💕</p>
   </footer>
+
+  <!-- FLOATING WHATSAPP -->
+  <a
+    href="https://wa.me/2347012620748"
+    class="whatsapp-float"
+    target="_blank"
+  >
+    💬
+  </a>
 
   <script src="app.js"></script>
 
 </body>
-
 </html>
