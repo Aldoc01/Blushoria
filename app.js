@@ -1,7 +1,5 @@
 const products = [
 
-  // FACE MASKS
-
   {
     name: "Lip Masks",
     price: 400,
@@ -34,16 +32,20 @@ const products = [
     "Vitamin C, Hyaluronic Acid, and Golden Serum masks that deeply hydrate and brighten the skin."
   },
 
-
-
-  // LIP GLOSSES
-
   {
     name: "Cute Cat Lip Gloss",
     price: 1200,
     image: "product5.jpg",
     description:
     "Adorable cat-themed glossy lip products with moisturizing shine."
+  },
+
+  {
+    name: "Cherry Fruit Lip Oil",
+    price: 1200,
+    image: "product6.jpg",
+    description:
+    "Cute fruit-inspired lip oil that keeps lips soft, glossy, hydrated, and smooth."
   },
 
   {
@@ -55,31 +57,19 @@ const products = [
   },
 
   {
-    name: "Magic Glitter Lip Gloss",
-    price: 1500,
-    image: "product9.jpg",
-    description:
-    "Trendy glitter lip gloss with sparkling glossy shine."
-  },
-
-
-
-  // LIP OILS
-
-  {
-    name: "Cherry Fruit Lip Oil",
-    price: 1200,
-    image: "product6.jpg",
-    description:
-    "Cute fruit-inspired lip oil that keeps lips soft, glossy, hydrated, and smooth."
-  },
-
-  {
     name: "Hydrating Lip Oil",
     price: 1200,
     image: "product8.jpg",
     description:
     "Moisturizing hydrating lip oils that leave lips soft, smooth, glossy, and nourished."
+  },
+
+  {
+    name: "Magic Glitter Lip Gloss",
+    price: 1500,
+    image: "product9.jpg",
+    description:
+    "Trendy glitter lip gloss with sparkling glossy shine."
   },
 
   {
