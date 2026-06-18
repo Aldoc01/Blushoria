@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blushoria — Girlie Essentials & Aesthetics</title>
+<meta name="description" content="Blushoria — Premium lipgloss, face masks, lip oils & girlie beauty essentials. 100% original products. Nationwide delivery in Nigeria. Wholesale & retail available.">
+<meta property="og:title" content="Blushoria — Girlie Essentials & Aesthetics">
+<meta property="og:description" content="Shop beautiful. Feel confident. Be Blushoria. Premium skincare & lipgloss delivered nationwide. Free gift on orders above ₦5,000!">
+<meta property="og:image" content="https://images.pexels.com/photos/3997993/pexels-photo-3997993.jpeg?auto=compress&cs=tinysrgb&w=1200">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Blushoria — Girlie Essentials & Aesthetics">
+<meta name="twitter:description" content="Premium lipgloss, face masks & beauty essentials. Nationwide delivery. Wholesale available.">
+<meta name="twitter:image" content="https://images.pexels.com/photos/3997993/pexels-photo-3997993.jpeg?auto=compress&cs=tinysrgb&w=1200">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎀</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --rose:#c9737a;--gold:#c9a460;--blush:#f2d5d8;
+  --cream:#fdf6f0;--gray:#7a6e6e;--dark:#1a1212;
+  --text:#5a4a4a;--light:#faf2ee;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--dark);font-family:'Jost',sans-serif;font-weight:300;overflow-x:hidden;cursor:none;}
+
+/* CURSOR - desktop only */
+.cursor{position:fixed;width:8px;height:8px;background:var(--rose);border-radius:50%;pointer-events:none;z-index:9999;mix-blend-mode:multiply;transition:transform 0.1s;display:none;}
+.cursor-ring{position:fixed;width:32px;height:32px;border:1px solid rgba(201,115,122,0.45);border-radius:50%;pointer-events:none;z-index:9998;display:none;}
+@media(hover:hover){.cursor,.cursor-ring{display:block;}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 5vw;background:rgba(253,246,240,0.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(201,115,122,0.1);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;letter-spacing:0.06em;color:var(--dark);text-decoration:none;}
+.nav-logo span{color:var(--rose);}
+.nav-links{display:flex;gap:2.2rem;list-style:none;}
+.nav-links a{font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--text);text-decoration:none;transition:color 0.3s;}
+.nav-links a:hover{color:var(--rose);}
+.nav-right{display:flex;align-items:center;gap:1rem;}
+.nav-wa{display:flex;align-items:center;gap:7px;background:var(--rose);color:white;padding:0.5rem 1.2rem;border-radius:50px;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;transition:all 0.3s;}
+.nav-wa:hover{background:#b5565d;transform:translateY(-1px);}
+.nav-wa svg{width:13px;height:13px;}
+
+/* HAMBURGER */
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;z-index:300;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--dark);border-radius:2px;transition:all 0.3s;}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+
+@media(max-width:768px){
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  nav{padding:0.8rem 5vw;}
+}
+
+#mobileDrawer{position:fixed;top:60px;left:0;width:100%;background:var(--cream);max-height:0;overflow:hidden;transition:max-height 0.3s;z-index:150;box-shadow:0 4px 12px rgba(0,0,0,0.1);}
+#mobileDrawer.open{max-height:400px;}
+.drawer-link{display:block;padding:1rem 5vw;border-bottom:1px solid rgba(0,0,0,0.05);color:var(--text);text-decoration:none;transition:background 0.2s;}
+.drawer-link:hover{background:var(--light);}
+
+#drawerOverlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.3);display:none;z-index:100;}
+#drawerOverlay.open{display:block;}
+
+/* HERO */
+.hero{position:relative;width:100%;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(135deg,var(--cream) 0%,var(--light) 100%);}
+.hero-bg{position:absolute;top:-10%;left:0;width:100%;height:120%;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><pattern id="dots" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="3" fill="rgba(201,115,122,0.08)"/></pattern></defs><rect fill="url(%23dots)" width="1200" height="800"/></svg>');background-size:100px 100px;z-index:0;}
+.hero-content{position:relative;z-index:1;text-align:center;max-width:700px;padding:0 5vw;}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,6vw,4.5rem);font-weight:300;line-height:1.2;letter-spacing:-0.02em;margin-bottom:1.5rem;}
+.hero-title em{font-style:italic;color:var(--rose);font-weight:400;}
+.hero-subtitle{font-size:clamp(1rem,2vw,1.3rem);color:var(--text);font-weight:300;margin-bottom:2.5rem;line-height:1.6;}
+.hero-cta{display:inline-flex;gap:1rem;margin-bottom:3rem;flex-wrap:wrap;justify-content:center;}
+.btn-primary,.btn-secondary{padding:0.9rem 2rem;border:none;border-radius:2px;font-family:'Jost',sans-serif;font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-block;}
+.btn-primary{background:var(--rose);color:white;}
+.btn-primary:hover{background:#b5565d;transform:translateY(-2px);}
+.btn-secondary{background:transparent;border:1px solid var(--rose);color:var(--rose);}
+.btn-secondary:hover{background:var(--rose);color:white;}
+
+/* PRODUCTS */
+.products{padding:4rem 5vw;max-width:1400px;margin:0 auto;}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:2rem;}
+.product-card{background:white;border-radius:4px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.08);transition:all 0.3s;cursor:pointer;}
+.product-card:hover{transform:translateY(-8px);box-shadow:0 8px 24px rgba(0,0,0,0.15);}
+.product-image{width:100%;aspect-ratio:1;object-fit:cover;overflow:hidden;background:var(--light);}
+.product-image img{width:100%;height:100%;object-fit:cover;transition:transform 0.3s;}
+.product-card:hover .product-image img{transform:scale(1.05);}
+.product-info{padding:1.5rem;}
+.product-name{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;margin-bottom:0.5rem;color:var(--dark);}
+.product-price{font-size:1.1rem;color:var(--rose);font-weight:500;margin-bottom:0.8rem;}
+.product-desc{font-size:0.85rem;color:var(--text);margin-bottom:1rem;line-height:1.5;}
+.product-controls{display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem;}
+.qty-btn{background:var(--light);border:none;width:32px;height:32px;border-radius:4px;cursor:pointer;font-size:1rem;transition:background 0.2s;}
+.qty-btn:hover{background:var(--blush);}
+.qty-display{flex:1;text-align:center;font-weight:500;}
+.btn-add{width:100%;padding:0.8rem;background:var(--rose);color:white;border:none;border-radius:4px;cursor:pointer;font-size:0.9rem;transition:all 0.3s;}
+.btn-add:hover{background:#b5565d;}
+.btn-add.added{background:var(--gold);}
+
+/* TESTIMONIALS */
+.testimonials{padding:4rem 5vw;background:var(--light);text-align:center;}
+.testimonial{max-width:400px;margin:0 auto 2rem;padding:1.5rem;background:white;border-radius:4px;box-shadow:0 2px 8px rgba(0,0,0,0.08);}
+.testimonial-text{font-style:italic;color:var(--text);margin-bottom:1rem;line-height:1.6;}
+.testimonial-author{font-weight:500;color:var(--rose);}
+
+/* SECTION STYLES */
+.section-label{font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rose);margin-bottom:0.5rem;}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.2;margin-bottom:2rem;}
+.section-title em{font-style:italic;}
+
+/* CART BAR */
+#cartBar{position:fixed;bottom:-120px;right:2rem;background:var(--rose);color:white;padding:1.5rem;border-radius:8px;box-shadow:0 4px 20px rgba(201,115,122,0.3);transition:all 0.3s;z-index:190;max-width:300px;}
+#cartBar.show{bottom:2rem;}
+.cart-content{margin-bottom:1rem;}
+.cart-total{font-size:1.2rem;font-weight:500;margin-bottom:0.5rem;}
+.cart-count{font-size:0.85rem;opacity:0.9;}
+#cartOrderBtn{display:block;width:100%;background:white;color:var(--rose);padding:0.7rem 1.5rem;border-radius:4px;text-decoration:none;font-weight:500;font-size:0.8rem;transition:all 0.3s;margin-top:0.5rem;border:none;cursor:pointer;}
+#cartOrderBtn:hover{transform:scale(1.05);}
+
+/* FOOTER */
+footer{background:var(--dark);color:white;padding:3rem 5vw;text-align:center;font-size:0.85rem;}
+footer p{margin:0.5rem 0;}
+
+/* ANIMATIONS */
+@keyframes fadeInUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+.scroll-reveal{animation:fadeInUp 0.8s ease forwards;opacity:0;}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor"></div>
+<div class="cursor-ring"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Blushoria<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#products">Shop</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="hamburger" id="hamburger" onclick="toggleDrawer()">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="https://wa.me/2347012620748" class="nav-wa">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-4.99 1.494 9.869 9.869 0 001.637 15.13 9.86 9.86 0 005.065.817 9.88 9.88 0 003.77-1.318 9.866 9.866 0 001.956-3.267 9.905 9.905 0 00-.5-12.04 9.862 9.862 0 00-5.938-1.816z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+</nav>
+
+<!-- MOBILE DRAWER -->
+<div id="drawerOverlay" onclick="closeDrawer()"></div>
+<div id="mobileDrawer">
+  <a href="#products" class="drawer-link" onclick="closeDrawer()">Shop</a>
+  <a href="#about" class="drawer-link" onclick="closeDrawer()">About</a>
+  <a href="#testimonials" class="drawer-link" onclick="closeDrawer()">Reviews</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <h1 class="hero-title">Shop Beautiful<br><em>Feel Confident</em></h1>
+    <p class="hero-subtitle">Premium lipgloss, face masks & girlie beauty essentials. 100% original products. Nationwide delivery.</p>
+    <div class="hero-cta">
+      <button class="btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Shop Now</button>
+      <a href="https://wa.me/2347012620748" class="btn-secondary">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" class="products">
+  <div class="section-label">Shop</div>
+  <h2 class="section-title">Girlie Essentials <em>& Aesthetics</em></h2>
+  <div class="product-grid">
+    <div class="product-card scroll-reveal" data-product-id="1">
+      <div class="product-image"><img src="https://images.pexels.com/photos/3622614/pexels-photo-3622614.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Rose Gold Lipgloss" onerror="this.src='https://via.placeholder.com/300'"></div>
+      <div class="product-info">
+        <div class="product-name">Rose Gold Lipgloss</div>
+        <div class="product-price">₦3,500</div>
+        <div class="product-desc">Shimmery, long-lasting gloss with a hint of rose gold.</div>
+        <div class="product-controls">
+          <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
+          <div class="qty-display">1</div>
+          <button class="qty-btn" onclick="changeQty(this,1)">+</button>
+        </div>
+        <button class="btn-add" onclick="addToCart('Rose Gold Lipgloss', 3500, this)">🛒 Add</button>
+      </div>
+    </div>
+    <div class="product-card scroll-reveal" data-product-id="2">
+      <div class="product-image"><img src="https://images.pexels.com/photos/3622615/pexels-photo-3622615.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Hydrating Face Mask" onerror="this.src='https://via.placeholder.com/300'"></div>
+      <div class="product-info">
+        <div class="product-name">Hydrating Face Mask</div>
+        <div class="product-price">₦4,200</div>
+        <div class="product-desc">Deep moisturizing mask with natural ingredients.</div>
+        <div class="product-controls">
+          <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
+          <div class="qty-display">1</div>
+          <button class="qty-btn" onclick="changeQty(this,1)">+</button>
+        </div>
+        <button class="btn-add" onclick="addToCart('Hydrating Face Mask', 4200, this)">🛒 Add</button>
+      </div>
+    </div>
+    <div class="product-card scroll-reveal" data-product-id="3">
+      <div class="product-image"><img src="https://images.pexels.com/photos/3622616/pexels-photo-3622616.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Vanilla Lip Oil" onerror="this.src='https://via.placeholder.com/300'"></div>
+      <div class="product-info">
+        <div class="product-name">Vanilla Lip Oil</div>
+        <div class="product-price">₦2,800</div>
+        <div class="product-desc">Nourishing oil with a sweet vanilla scent.</div>
+        <div class="product-controls">
+          <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
+          <div class="qty-display">1</div>
+          <button class="qty-btn" onclick="changeQty(this,1)">+</button>
+        </div>
+        <button class="btn-add" onclick="addToCart('Vanilla Lip Oil', 2800, this)">🛒 Add</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="testimonials">
+  <div class="section-label">Love from our customers</div>
+  <h2 class="section-title">Real <em>Reviews</em></h2>
+  <div class="testimonial">
+    <div class="testimonial-text">"The quality is amazing! I've been using the lipgloss for weeks and it still looks perfect. Highly recommend!"</div>
+    <div class="testimonial-author">— Chioma, Lagos</div>
+  </div>
+  <div class="testimonial">
+    <div class="testimonial-text">"Fast delivery and excellent customer service. Blushoria is my go-to for girlie essentials now!"</div>
+    <div class="testimonial-author">— Zainab, Abuja</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2025 Blushoria. All rights reserved.</p>
+  <p>📍 Nigeria | 📱 +234 701 262 0748</p>
+</footer>
+
+<!-- CART BAR -->
+<div id="cartBar">
+  <div class="cart-content">
+    <div class="cart-total" id="cartTotal">₦0</div>
+    <div class="cart-count" id="cartCount">0 items</div>
+  </div>
+  <button onclick="orderOnWhatsApp()" id="cartOrderBtn">📲 Checkout</button>
+</div>
+
+<!-- JAVASCRIPT -->
+<script>
+// ── CURSOR TRACKING
+const cursor=document.querySelector('.cursor');
+const cursorRing=document.querySelector('.cursor-ring');
+document.addEventListener('mousemove',e=>{
+  cursor.style.left=e.clientX+'px';
+  cursor.style.top=e.clientY+'px';
+  cursorRing.style.left=(e.clientX-16)+'px';
+  cursorRing.style.top=(e.clientY-16)+'px';
+});
+
+// ── SCROLL REVEAL
+const scrollObs=new IntersectionObserver((entries)=>{
+  entries.forEach((entry,i)=>{
+    if(entry.isIntersecting){
+      entry.target.style.animation=`fadeInUp 0.8s ease ${i*0.1}s forwards`;
+    }
+  });
+},{threshold:0.1});
+document.querySelectorAll('.scroll-reveal').forEach((card,i)=>{
+  card.style.transitionDelay=(i%4*0.1)+'s';
+  scrollObs.observe(card);
+});
+
+// ── MOBILE DRAWER
+function toggleDrawer(){
+  document.getElementById('mobileDrawer').classList.toggle('open');
+  document.getElementById('drawerOverlay').classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('open');
+}
+function closeDrawer(){
+  document.getElementById('mobileDrawer').classList.remove('open');
+  document.getElementById('drawerOverlay').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+}
+
+// ── QUANTITY
+function changeQty(btn,delta){
+  const controls=btn.closest('.product-controls');
+  const disp=controls.querySelector('.qty-display');
+  let q=parseInt(disp.textContent)+delta;
+  if(q<1)q=1;if(q>99)q=99;
+  disp.textContent=q;
+}
+
+// ── CART
+let cart=[];
+function getQty(btn){
+  return parseInt(btn.closest('.product-controls').querySelector('.qty-display').textContent)||1;
+}
+function updateCartBar(){
+  const bar=document.getElementById('cartBar');
+  if(cart.length===0){bar.classList.remove('show');return;}
+  bar.classList.add('show');
+  const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  const count=cart.reduce((s,i)=>s+i.qty,0);
+  document.getElementById('cartCount').textContent=count+' item'+(count!==1?'s':'');
+  document.getElementById('cartTotal').textContent='₦'+total.toLocaleString();
+}
+function addToCart(name,price,btn){
+  const qty=getQty(btn);
+  const existing=cart.find(i=>i.name===name);
+  if(existing){existing.qty+=qty;}else{cart.push({name,price,qty});}
+  
+  // Track in analytics
+  if(window.blushAnalytics){
+    window.blushAnalytics.trackAddToCart(null, name, price);
+  }
+  
+  btn.textContent='✓ Added';
+  btn.classList.add('added');
+  setTimeout(()=>{btn.textContent='🛒 Add';btn.classList.remove('added');},1400);
+  updateCartBar();
+}
+function clearCart(){
+  cart=[];
+  updateCartBar();
+}
+
+// ── CHECKOUT FUNCTION (NEW - Uses order system)
+async function orderOnWhatsApp(){
+  if(cart.length===0){alert('Your cart is empty');return;}
+  
+  const name=prompt('Enter your name:');
+  const phone=prompt('Enter your phone number:');
+  const address=prompt('Enter your delivery address:');
+  
+  if(!name||!phone||!address){
+    alert('All fields are required');
+    return;
+  }
+  
+  // Process order with new system
+  const orderResult=await window.blushOrders?.processWhatsAppCheckout?.(
+    cart,
+    name,
+    phone
+  );
+  
+  if(!orderResult?.success){
+    alert('Error: '+(orderResult?.message||'Order processing failed'));
+    return;
+  }
+  
+  // Show WhatsApp message
+  let message=`✨ BLUSHORIA ORDER #${orderResult.orderId} ✨%0A%0A`;
+  message+=`👩 Name: ${name}%0A`;
+  message+=`📍 Address: ${address}%0A%0A`;
+  message+=`🛍️ ITEMS:%0A`;
+  
+  let total=0;
+  cart.forEach(item=>{
+    message+=`• ${item.name} x${item.qty} - ₦${(item.price*item.qty).toLocaleString()}%0A`;
+    total+=item.price*item.qty;
+  });
+  
+  message+=`%0A💰 TOTAL: ₦${total.toLocaleString()}%0A`;
+  message+=`%0A🚚 Delivery fee depends on location`;
+  
+  window.open(`https://wa.me/2347012620748?text=${message}`,'_blank');
+  
+  cart=[];
+  updateCartBar();
+}
+</script>
+
+<!-- ===== NEW FEATURE SCRIPTS ===== -->
+<script src="analytics.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="recommendations.js"></script>
+<script src="inventory.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/build/index.min.js"></script>
+<script>
+  emailjs.init('ggqG171hRYuZVGa9');
+</script>
+<script src="orders.js"></script>
+<!-- ===== END NEW FEATURE SCRIPTS ===== -->
+
+</body>
+</html>
