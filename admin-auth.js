@@ -4,8 +4,7 @@
 const SUPABASE_URL = 'https://emcdsuboutrbpsofxdjn.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_duaRAaTPArjd3sqyV69b-Q_N7iOmx2c';
 
-// ⚠️ UPDATE THESE WITH YOUR KEYS!
-// Go to Supabase → Settings → API → Copy your Project URL and Anon Key
+// ✅ YOUR CREDENTIALS ADDED
 
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
