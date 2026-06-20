@@ -60,7 +60,6 @@
     .modal-content{background:white;padding:2rem;border-radius:12px;max-width:500px;width:100%;box-shadow:0 10px 40px rgba(0,0,0,0.3);position:relative;}
     .modal-header{font-family:'Cormorant Garamond',serif;font-size:1.6rem;margin-bottom:1.5rem;color:var(--dark);}
     .modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:2rem;cursor:pointer;color:var(--gray);}
-    .modal-close:hover{color:var(--rose);}
     
     .success{background:#e8f5e9;color:#2e7d32;padding:1rem;border-radius:6px;margin-bottom:1rem;display:none;}
     .error{background:#ffebee;color:#c62828;padding:1rem;border-radius:6px;margin-bottom:1rem;display:none;}
@@ -71,6 +70,7 @@
     .login-box{background:white;padding:3rem;border-radius:12px;max-width:400px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,0.3);}
     .login-title{font-family:'Cormorant Garamond',serif;font-size:2rem;margin-bottom:2rem;color:var(--dark);text-align:center;}
     .login-error{background:#ffebee;color:#c62828;padding:1rem;border-radius:6px;margin-bottom:1rem;display:none;}
+    .loading{opacity:0.6;pointer-events:none;}
     
     @media(max-width:768px){
       .admin-container{grid-template-columns:1fr;}
@@ -85,18 +85,23 @@
 <!-- LOGIN SCREEN -->
 <div class="login-container show" id="loginContainer">
   <div class="login-box">
-    <div class="login-title">🎀 Admin Login</div>
+    <div class="login-title">🎀 Blushoria Admin</div>
     <div class="login-error" id="loginError"></div>
     
     <div class="form-group">
-      <label>Password</label>
-      <input type="password" id="adminPassword" placeholder="Enter admin password" onkeypress="if(event.key==='Enter') adminLogin()">
+      <label>Username</label>
+      <input type="text" id="adminUsername" placeholder="Enter username" onkeypress="if(event.key==='Enter') adminLoginSupabase()">
     </div>
     
-    <button class="btn btn-primary" style="width:100%;margin-top:1rem;" onclick="adminLogin()">Login</button>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" id="adminPassword" placeholder="Enter password" onkeypress="if(event.key==='Enter') adminLoginSupabase()">
+    </div>
+    
+    <button class="btn btn-primary" style="width:100%;margin-top:1rem;" id="loginBtn" onclick="adminLoginSupabase()">Login</button>
     
     <p style="text-align:center;margin-top:1.5rem;font-size:0.85rem;color:var(--gray);">
-      Default: admin123
+      Default: username: <strong>admin</strong> | password: <strong>admin123</strong>
     </p>
   </div>
 </div>
@@ -107,6 +112,7 @@
   <!-- SIDEBAR -->
   <div class="admin-sidebar">
     <div class="admin-logo">🎀 Admin</div>
+    <div style="color:rgba(255,255,255,0.6);font-size:0.8rem;margin-bottom:1.5rem;" id="adminUsername">Admin</div>
     <div class="admin-nav">
       <a href="#" onclick="showSection('products')" class="nav-item active">Products</a>
       <a href="#" onclick="showSection('analytics')" class="nav-item">Analytics</a>
@@ -190,12 +196,15 @@
 </div>
 
 <!-- SCRIPTS -->
-<script src="admin-auth.js?v=2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="admin-auth.js?v=3"></script>
 <script>
   // Check if already logged in
   if(isAdminLoggedIn()) {
+    const user = getCurrentAdminUser();
     document.getElementById('loginContainer').classList.remove('show');
     document.getElementById('adminPanel').style.display = 'grid';
+    document.getElementById('adminUsername').textContent = 'User: ' + user.username;
     renderProducts();
   }
   
@@ -208,25 +217,36 @@
   
   let products = JSON.parse(localStorage.getItem('blushoriaProducts')) || DEMO_PRODUCTS;
   
-  // ===== ADMIN LOGIN =====
-  function adminLogin() {
+  // ===== ADMIN LOGIN SUPABASE =====
+  async function adminLoginSupabase() {
+    const username = document.getElementById('adminUsername').value.trim();
     const password = document.getElementById('adminPassword').value.trim();
+    const loginBtn = document.getElementById('loginBtn');
+    const loginError = document.getElementById('loginError');
     
-    console.log('Password entered:', password);
-    console.log('Expected password:', ADMIN_PASSWORD);
+    if(!username || !password) {
+      loginError.textContent = '❌ Enter both username and password';
+      loginError.style.display = 'block';
+      return;
+    }
     
-    if(verifyAdminPassword(password)) {
-      setAdminLoggedIn(true);
+    loginBtn.classList.add('loading');
+    loginBtn.textContent = 'Logging in...';
+    
+    const result = await adminLoginToSupabase(username, password);
+    
+    if(result.success) {
+      loginError.style.display = 'none';
       document.getElementById('loginContainer').classList.remove('show');
       document.getElementById('adminPanel').style.display = 'grid';
+      document.getElementById('adminUsername').textContent = 'User: ' + result.user.username;
       renderProducts();
     } else {
-      document.getElementById('loginError').textContent = '❌ Incorrect password. Try: admin123';
-      document.getElementById('loginError').style.display = 'block';
+      loginError.textContent = '❌ ' + result.message;
+      loginError.style.display = 'block';
       document.getElementById('adminPassword').value = '';
-      setTimeout(() => {
-        document.getElementById('loginError').style.display = 'none';
-      }, 3000);
+      loginBtn.classList.remove('loading');
+      loginBtn.textContent = 'Login';
     }
   }
   
