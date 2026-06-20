@@ -18,7 +18,7 @@
     .admin-nav{display:flex;flex-direction:column;gap:0.5rem;}
     .admin-nav a{display:block;padding:1rem;border-radius:6px;color:rgba(255,255,255,0.8);text-decoration:none;transition:all 0.3s;cursor:pointer;}
     .admin-nav a:hover,.admin-nav a.active{background:var(--rose);color:white;}
-    .admin-logout{margin-top:auto;padding:1rem;background:rgba(255,255,255,0.1);border-radius:6px;color:rgba(255,255,255,0.8);text-decoration:none;text-align:center;transition:all 0.3s;}
+    .admin-logout{margin-top:auto;padding:1rem;background:rgba(255,255,255,0.1);border-radius:6px;color:rgba(255,255,255,0.8);text-decoration:none;text-align:center;transition:all 0.3s;cursor:pointer;}
     .admin-logout:hover{background:rgba(255,0,0,0.3);color:white;}
     
     /* MAIN CONTENT */
@@ -54,28 +54,55 @@
     .product-info p{font-size:0.9rem;color:var(--gray);}
     .product-actions{display:flex;gap:0.5rem;}
     
-    /* RESPONSIVE */
-    @media(max-width:768px){
-      .admin-container{grid-template-columns:1fr;}
-      .admin-sidebar{position:fixed;width:200px;z-index:1000;}
-      .admin-main{margin-left:200px;padding:1rem;}
-      .product-actions{flex-direction:column;}
-    }
-    
     /* MODAL */
     .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:1001;align-items:center;justify-content:center;padding:1rem;}
     .modal.show{display:flex;}
     .modal-content{background:white;padding:2rem;border-radius:12px;max-width:500px;width:100%;box-shadow:0 10px 40px rgba(0,0,0,0.3);position:relative;}
     .modal-header{font-family:'Cormorant Garamond',serif;font-size:1.6rem;margin-bottom:1.5rem;color:var(--dark);}
     .modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:2rem;cursor:pointer;color:var(--gray);}
+    .modal-close:hover{color:var(--rose);}
     
     .success{background:#e8f5e9;color:#2e7d32;padding:1rem;border-radius:6px;margin-bottom:1rem;display:none;}
     .error{background:#ffebee;color:#c62828;padding:1rem;border-radius:6px;margin-bottom:1rem;display:none;}
+    
+    /* LOGIN MODAL */
+    .login-container{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:9999;align-items:center;justify-content:center;}
+    .login-container.show{display:flex;}
+    .login-box{background:white;padding:3rem;border-radius:12px;max-width:400px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,0.3);}
+    .login-title{font-family:'Cormorant Garamond',serif;font-size:2rem;margin-bottom:2rem;color:var(--dark);text-align:center;}
+    .login-error{background:#ffebee;color:#c62828;padding:1rem;border-radius:6px;margin-bottom:1rem;display:none;}
+    
+    @media(max-width:768px){
+      .admin-container{grid-template-columns:1fr;}
+      .admin-sidebar{position:fixed;width:200px;z-index:1000;}
+      .admin-main{margin-left:200px;padding:1rem;}
+      .product-actions{flex-direction:column;}
+    }
   </style>
 </head>
 <body>
 
-<div class="admin-container">
+<!-- LOGIN SCREEN -->
+<div class="login-container show" id="loginContainer">
+  <div class="login-box">
+    <div class="login-title">🎀 Admin Login</div>
+    <div class="login-error" id="loginError"></div>
+    
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" id="adminPassword" placeholder="Enter admin password" onkeypress="if(event.key==='Enter') adminLogin()">
+    </div>
+    
+    <button class="btn btn-primary" style="width:100%;margin-top:1rem;" onclick="adminLogin()">Login</button>
+    
+    <p style="text-align:center;margin-top:1.5rem;font-size:0.85rem;color:var(--gray);">
+      Default: admin123
+    </p>
+  </div>
+</div>
+
+<!-- ADMIN PANEL (Hidden until logged in) -->
+<div class="admin-container" id="adminPanel" style="display:none;">
   
   <!-- SIDEBAR -->
   <div class="admin-sidebar">
@@ -163,19 +190,45 @@
 </div>
 
 <!-- SCRIPTS -->
-<script src="admin-auth.js?v=1"></script>
+<script src="admin-auth.js?v=2"></script>
 <script>
-  // Protect page
-  protectAdminPage();
+  // Check if already logged in
+  if(isAdminLoggedIn()) {
+    document.getElementById('loginContainer').classList.remove('show');
+    document.getElementById('adminPanel').style.display = 'grid';
+    renderProducts();
+  }
   
   // Demo products
   const DEMO_PRODUCTS = [
-    {id:1,name:'Sadoer Fruit Lip Masks',category:'lipmask',description:'Sweet Strawberry, Avocado, Blueberry variants.',price:400,image:'product1.jpg',badge:'Best Seller'},
+    {id:1,name:'Sadoer Fruit Lip Masks',category:'lipmask',description:'Sweet variants. Plumper lips.',price:400,image:'product1.jpg',badge:'Best Seller'},
     {id:5,name:'Cute Glitter Lipgloss',category:'lipgloss',description:'Holographic glitter with bear charm.',price:1200,image:'product5.jpg',badge:'Girlie Fave'},
     {id:6,name:'Hanlanya Lip Oil',category:'lipoil',description:'Hydrating with high-gloss mirror finish.',price:1500,image:'product6.jpg'},
   ];
   
   let products = JSON.parse(localStorage.getItem('blushoriaProducts')) || DEMO_PRODUCTS;
+  
+  // ===== ADMIN LOGIN =====
+  function adminLogin() {
+    const password = document.getElementById('adminPassword').value.trim();
+    
+    console.log('Password entered:', password);
+    console.log('Expected password:', ADMIN_PASSWORD);
+    
+    if(verifyAdminPassword(password)) {
+      setAdminLoggedIn(true);
+      document.getElementById('loginContainer').classList.remove('show');
+      document.getElementById('adminPanel').style.display = 'grid';
+      renderProducts();
+    } else {
+      document.getElementById('loginError').textContent = '❌ Incorrect password. Try: admin123';
+      document.getElementById('loginError').style.display = 'block';
+      document.getElementById('adminPassword').value = '';
+      setTimeout(() => {
+        document.getElementById('loginError').style.display = 'none';
+      }, 3000);
+    }
+  }
   
   // ===== SECTION NAVIGATION =====
   function showSection(sectionName) {
@@ -285,9 +338,6 @@
     el.style.display = 'block';
     setTimeout(() => el.style.display = 'none', 3000);
   }
-  
-  // ===== INIT =====
-  renderProducts();
   
   // ===== CLOSE MODAL ON ESCAPE =====
   document.addEventListener('keydown', (e) => {
