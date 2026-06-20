@@ -1,6 +1,6 @@
 // ===== ADMIN AUTHENTICATION =====
 
-const ADMIN_PASSWORD = 'admin123';
+const ADMIN_PASSWORD = 'Blushoria13$';
 
 // Check if admin is logged in
 function isAdminLoggedIn() {
