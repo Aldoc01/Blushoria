@@ -1,6 +1,6 @@
 # Blushoria Store
 
-Luxury beauty ecommerce website powered by Firebase and GitHub Pages.
+Luxury beauty ecommerce website powered by Supabase base and GitHub Pages.
 
 Features:
 - Supabase Authentication
