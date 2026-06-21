@@ -3,7 +3,7 @@
 Luxury beauty ecommerce website powered by Firebase and GitHub Pages.
 
 Features:
-- Firebase Authentication
+- Supabase Authentication
 - Firestore Database
 - Realtime Products
 - Admin Dashboard
