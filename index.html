@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Blushoria - Premium girlie essentials & aesthetics">
+  <meta property="og:title" content="Blushoria - Girlie Essentials">
+  <title>Blushoria - Premium Girlie Essentials</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="logo">🎀 Blushoria</div>
+  <button onclick="openLoginModal()">Admin</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Girlie Essentials & Aesthetics</h1>
+  <p>Premium beauty products for the confident you</p>
+</section>
+
+<!-- MAIN -->
+<div class="container">
+  <h2 class="section-title">Our Collection</h2>
+  
+  <!-- FILTERS -->
+  <div class="filters">
+    <button class="filter-btn active" onclick="filterProducts('all', this)">All</button>
+    <button class="filter-btn" onclick="filterProducts('lipgloss', this)">Lipgloss</button>
+    <button class="filter-btn" onclick="filterProducts('facemask', this)">Face Mask</button>
+    <button class="filter-btn" onclick="filterProducts('lipmask', this)">Lip Mask</button>
+    <button class="filter-btn" onclick="filterProducts('lipoil', this)">Lip Oil</button>
+  </div>
+  
+  <!-- PRODUCTS -->
+  <div id="productsGrid" class="products-grid"></div>
+</div>
+
+<!-- LOGIN MODAL -->
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeLoginModal()">✕</button>
+    <h2>Admin Login</h2>
+    <div id="loginError" class="error-msg"></div>
+    
+    <form onsubmit="handleLogin(event)">
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="loginEmail" required placeholder="admin@blushoria.com">
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="loginPassword" required placeholder="Password">
+      </div>
+      <button type="submit" class="btn-submit">Login</button>
+    </form>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2024 Blushoria. All rights reserved.</p>
+  <p>WhatsApp: <a href="https://wa.me/2347012620748">+234 701 262 0748</a></p>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="admin-auth.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
