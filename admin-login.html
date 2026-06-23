@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blushoria Admin Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: linear-gradient(135deg, #fdf3f7 0%, #fce9f3 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .login-container {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 450px;
+      padding: 60px 40px;
+      text-align: center;
+    }
+
+    .logo {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: #d4a5a5;
+      margin-bottom: 10px;
+      letter-spacing: 0.5px;
+    }
+
+    .subtitle {
+      color: #999;
+      font-size: 0.95rem;
+      margin-bottom: 40px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      color: #333;
+      font-weight: 500;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid #f0e0e6;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-family: 'DM Sans', sans-serif;
+      transition: all 0.3s ease;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #d4a5a5;
+      box-shadow: 0 0 0 3px rgba(212, 165, 165, 0.1);
+    }
+
+    .btn-login {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #e8b4d4 0%, #d4a5a5 100%);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .btn-login:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(212, 165, 165, 0.3);
+    }
+
+    .btn-login:active {
+      transform: translateY(0);
+    }
+
+    .btn-login.loading {
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .error-msg {
+      display: none;
+      background: #ffe0e6;
+      color: #c41e3a;
+      padding: 12px 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      font-size: 0.9rem;
+      border-left: 4px solid #c41e3a;
+    }
+
+    .success-msg {
+      display: none;
+      background: #e0f7e0;
+      color: #2d5016;
+      padding: 12px 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      font-size: 0.9rem;
+      border-left: 4px solid #2d5016;
+    }
+
+    .footer-link {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #999;
+    }
+
+    .footer-link a {
+      color: #d4a5a5;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .footer-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<div class="login-container">
+  <div class="logo">🎀</div>
+  <h1>Blushoria Admin</h1>
+  <p class="subtitle">Manage your products</p>
+
+  <div id="errorMsg" class="error-msg"></div>
+  <div id="successMsg" class="success-msg"></div>
+
+  <form id="loginForm" onsubmit="handleLogin(event)">
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input 
+        type="email" 
+        id="email" 
+        placeholder="admin@blushoria.com" 
+        required
+        autocomplete="email"
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input 
+        type="password" 
+        id="password" 
+        placeholder="••••••••" 
+        required
+        autocomplete="current-password"
+      >
+    </div>
+
+    <button type="submit" class="btn-login">Login</button>
+  </form>
+
+  <div class="footer-link">
+    Contact your administrator for access
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="admin-auth.js"></script>
+
+<script>
+async function handleLogin(event) {
+  event.preventDefault();
+  
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  const btn = event.target.querySelector('button');
+  
+  btn.classList.add('loading');
+  btn.textContent = 'Logging in...';
+
+  const result = await adminLoginWithEmail(email, password);
+  
+  btn.classList.remove('loading');
+  btn.textContent = 'Login';
+
+  if(result.success) {
+    document.getElementById('successMsg').textContent = 'Login successful! Redirecting...';
+    document.getElementById('successMsg').style.display = 'block';
+    document.getElementById('errorMsg').style.display = 'none';
+    
+    setTimeout(() => {
+      window.location.href = 'admin.html';
+    }, 1500);
+  } else {
+    document.getElementById('errorMsg').textContent = result.message;
+    document.getElementById('errorMsg').style.display = 'block';
+    document.getElementById('successMsg').style.display = 'none';
+  }
+}
+</script>
+
+</body>
+</html>
