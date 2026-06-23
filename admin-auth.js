@@ -8,6 +8,8 @@ const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 // Login with email and password
 async function adminLoginWithEmail(email, password) {
   try {
+    console.log('Attempting login for:', email);
+    
     const { data, error } = await supabase
       .from('admin_users')
       .select('*')
@@ -16,7 +18,10 @@ async function adminLoginWithEmail(email, password) {
       .eq('is_active', true)
       .single();
 
+    console.log('Login response:', { data, error });
+
     if (error || !data) {
+      console.error('Login error:', error?.message || 'No user found');
       return { success: false, message: 'Invalid email or password' };
     }
 
@@ -30,7 +35,8 @@ async function adminLoginWithEmail(email, password) {
 
     return { success: true, user: data };
   } catch (error) {
-    return { success: false, message: 'Connection error' };
+    console.error('Connection error:', error);
+    return { success: false, message: 'Connection error: ' + error.message };
   }
 }
 
@@ -61,9 +67,13 @@ async function getProductsFromSupabase() {
       .eq('is_active', true)
       .order('created_at', { ascending: false });
 
-    if (error) return [];
+    if (error) {
+      console.error('Error fetching products:', error);
+      return [];
+    }
     return data || [];
   } catch (error) {
+    console.error('Connection error fetching products:', error);
     return [];
   }
 }
@@ -76,10 +86,14 @@ async function addProductToSupabase(product) {
       .insert([product])
       .select();
 
-    if (error) return { success: false, message: error.message };
+    if (error) {
+      console.error('Add product error:', error);
+      return { success: false, message: error.message };
+    }
     return { success: true, data: data[0] };
   } catch (error) {
-    return { success: false, message: 'Add failed' };
+    console.error('Add product exception:', error);
+    return { success: false, message: 'Add failed: ' + error.message };
   }
 }
 
@@ -92,10 +106,14 @@ async function updateProductInSupabase(id, product) {
       .eq('id', id)
       .select();
 
-    if (error) return { success: false, message: error.message };
+    if (error) {
+      console.error('Update product error:', error);
+      return { success: false, message: error.message };
+    }
     return { success: true, data: data[0] };
   } catch (error) {
-    return { success: false, message: 'Update failed' };
+    console.error('Update product exception:', error);
+    return { success: false, message: 'Update failed: ' + error.message };
   }
 }
 
@@ -107,9 +125,13 @@ async function deleteProductFromSupabase(id) {
       .update({ is_active: false })
       .eq('id', id);
 
-    if (error) return { success: false, message: error.message };
+    if (error) {
+      console.error('Delete product error:', error);
+      return { success: false, message: error.message };
+    }
     return { success: true };
   } catch (error) {
-    return { success: false, message: 'Delete failed' };
+    console.error('Delete product exception:', error);
+    return { success: false, message: 'Delete failed: ' + error.message };
   }
 }
